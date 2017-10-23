@@ -1,0 +1,4 @@
+services:
+#    sebcom.example:
+#        class: sebcomBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

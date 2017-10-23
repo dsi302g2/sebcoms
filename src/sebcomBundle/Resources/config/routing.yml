@@ -1,0 +1,6 @@
+sebcom_homepage:
+    path:     /
+    defaults: { _controller: sebcomBundle:Default:index }
+sebcom_show:
+    path: /show
+    defaults: { _controller: sebcomBundle:Default:show }

@@ -1,0 +1,30 @@
+sebcomBundle\Entity\sebcom\compte:
+    type: entity
+    table: null
+    repositoryClass: sebcomBundle\Repository\sebcom\compteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        login:
+            type: string
+            length: '25'
+        password:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        nom:
+            type: string
+            length: '25'
+        adresse:
+            type: string
+            length: 255
+        tel:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
