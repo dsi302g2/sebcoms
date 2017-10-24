@@ -18,4 +18,12 @@ class DefaultController extends Controller
 		var_dump($comptes);
 		die();
 	}
+	public function loginAction(){
+        if($_POST){
+                var_dump($_POST);
+                die();
+        }else{
+        return $this->render('sebcomBundle:Default:login.html.twig');
+        }
+    }
 }

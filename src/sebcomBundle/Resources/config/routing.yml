@@ -4,3 +4,6 @@ sebcom_homepage:
 sebcom_show:
     path: /show
     defaults: { _controller: sebcomBundle:Default:show }
+sebcom_authentification:
+    path: /login
+    defaults: { _controller: sebcomBundle:Default:login}
