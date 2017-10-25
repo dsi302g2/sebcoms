@@ -1,5 +1,32 @@
-<form action="/login" method="POST">
-    <label for="Pseudo">Pseudo</label> <input type="text" placeholder="Pseudo" id="Pseudo" name="Pseudo"/>
-    <label for="password">password</label><input type="password" placeholder="Mot de passe" id="password" name="Password"/>
-    <button type="submit">Connecter</button>
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style type="text/css">
+
+        body {background-image:url("{{ asset('bundles/images/backgroundLogin.jpg')}}");
+        background-size: cover;}
+    </style>{% endblock %}
+{% block title %}Login{% endblock %}
+{% block body %}
+ <div align="center">
+
+
+    <form name="f" action="/login" class="form-horizontal" method="POST">
+        <div class="inner-container">
+
+            <div class="box">
+                <div id="blur">
+                    <h1> Login </h1>
+                    <input type="text" name="Pseudo" onkeyup="inputValid()" id="usrId" class="form-control" placeholder="Pseudo" />
+                    <input type="password" name="Password" id="pwdId" class="form-control" placeholder="Password"  />
+                    {% if error is defined %}
+                        <span class="error">{{ error }}</span>
+                    {% endif %}
+                <input type="submit" id="btnCnx" style="border:0;" class="btn btn-success" /><br/>
+
+            </div>
+        </div>
 </form>
+
+</div>
+</div>
+{% endblock %}

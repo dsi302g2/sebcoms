@@ -20,8 +20,15 @@ class DefaultController extends Controller
 	}
 	public function loginAction(){
         if($_POST){
-                var_dump($_POST);
+                $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\compte');
+                $user=$em->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
+                if($user){
+                echo $user;
+                }else{
+                    return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>"Mot De passe OU login Incorrect !"));
+                }
                 die();
+
         }else{
         return $this->render('sebcomBundle:Default:login.html.twig');
         }
