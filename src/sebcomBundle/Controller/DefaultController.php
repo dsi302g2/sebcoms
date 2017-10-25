@@ -23,7 +23,7 @@ class DefaultController extends Controller
                 $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\compte');
                 $user=$em->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
                 if($user){
-                echo $user;
+                    return $this->render('sebcomBundle:Default:menu.html.twig');
                 }else{
                     return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>"Mot De passe OU login Incorrect !"));
                 }
@@ -32,5 +32,10 @@ class DefaultController extends Controller
         }else{
         return $this->render('sebcomBundle:Default:login.html.twig');
         }
+    }
+    public function menuAction(){
+
+            return $this->render('sebcomBundle:Default:menu.html.twig');
+
     }
 }

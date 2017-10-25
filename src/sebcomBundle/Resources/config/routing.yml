@@ -7,3 +7,6 @@ sebcom_show:
 sebcom_authentification:
     path: /login
     defaults: { _controller: sebcomBundle:Default:login}
+sebcom_menu:
+    path: /menu
+    defaults: { _controller: sebcomBundle:Default:menu}
