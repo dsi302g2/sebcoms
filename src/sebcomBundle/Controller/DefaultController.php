@@ -38,4 +38,9 @@ class DefaultController extends Controller
             return $this->render('sebcomBundle:Default:menu.html.twig');
 
     }
+    public function ajoutcatAction(){
+        return $this->render('sebcomBundle:Default:ajoutcat.html.twig');
+
+    }
+
 }

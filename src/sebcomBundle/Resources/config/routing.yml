@@ -10,3 +10,7 @@ sebcom_authentification:
 sebcom_menu:
     path: /menu
     defaults: { _controller: sebcomBundle:Default:menu}
+sebcom_ajoutcat:
+    path: /ajoutcat
+    defaults: { _controller: sebcomBundle:Default:ajoutcat}
+
