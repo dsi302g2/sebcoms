@@ -4,6 +4,8 @@ namespace sebcomBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use sebcomBundle\Entity\compte;
+use sebcomBundle\Entity\categorie;
+
 
 class DefaultController extends Controller
 {
@@ -23,7 +25,7 @@ class DefaultController extends Controller
                 $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\compte');
                 $user=$em->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
                 if($user){
-                    return $this->render('sebcomBundle:Default:menu.html.twig');
+                    return $this->render('sebcomBundle:Default:menu.html.twig',array('name'=> $user->getLogin()));
                 }else{
                     return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>"Mot De passe OU login Incorrect !"));
                 }
@@ -35,12 +37,18 @@ class DefaultController extends Controller
     }
     public function menuAction(){
 
-            return $this->render('sebcomBundle:Default:menu.html.twig');
 
     }
-    public function ajoutcatAction(){
-        return $this->render('sebcomBundle:Default:ajoutcat.html.twig');
 
+    public function ajoutcatAction(){
+
+        $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
+        $cat=$em->findAll();
+        if($cat){
+            return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array('cat'=> $cat));
+        }else{
+            return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array("error"=>"Pas de categories!"));
+        }
     }
 
 }

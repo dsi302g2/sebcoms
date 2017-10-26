@@ -1,17 +1,9 @@
-<?php require_once('bdconnexion.php'); ?>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Ajouter Catégorie</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block stylesheets %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="StyleFileAjoutCat.css" />
-    <script type="text/javascript" src="InputTest.js"></script>
-</head>
-
-<body style="background: linear-gradient(to left,#602020,#ffb380,#66004d);">
+{% endblock %}
+{% block body %}
 <!--
 <?php
 $n = $bdd->query('SELECT * FROM categorie where parentid =0 ;');
@@ -96,21 +88,25 @@ $a = $bdd->query('SELECT * FROM categorie ;');
             <tbody>
 
 
-            <?php
-        while($donnees =$a->fetch())
-            {
-            ?>
-            <tr>
-                <th><?php echo $donnees['nom'];?></th>
+
+
+                {% for c in cat %}
+                <tr>
+                {% if cat is defined %}
+                <th>{{ c.nom }}</th>
+                {% endif %}
+                {% if error is defined %}
+                    <th>{{ error }}</th>
+                {% endif %}
                 <th><a href="modifiercat.php?x='<?php echo $donnees['id']?>'">Modifier      </a><a href="supprimercat.php?x='<?php echo $donnees['id']?>'">Supprimer</a></th>
-            </tr>
-            <?php
-        }
-        ?>
+                </tr>
+                {% endfor %}
+
+
+
 
             </tbody>
         </table>
     </div>
 </form>
-</body>
-</html>﻿
+{% endblock %}
