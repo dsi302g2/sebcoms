@@ -1,10 +1,12 @@
 <?php
 
 namespace sebcomBundle\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use sebcomBundle\Entity\compte;
-use sebcomBundle\Entity\categorie;
+use sebcomBundle\Entity\sebcom\compte;
+use sebcomBundle\Entity\sebcom\Categorie;
+use Symfony\Component\BrowserKit\Response;
+
 
 
 class DefaultController extends Controller
@@ -50,5 +52,25 @@ class DefaultController extends Controller
             return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array("error"=>"Pas de categories!"));
         }
     }
+
+    /**
+     * @Route("/delete/{id}", name="categorie_delete")
+     *
+     * @return Response
+     */
+    public function deletecatAction(Categorie $categorie){
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($categorie);
+        $em->flush();
+        return $this->render('sebcomBundle:Default:delete.html.twig');
+
+
+    }
+    public function deletedAction(){
+        return $this->render('sebcomBundle:Default:delete.html.twig');
+
+
+    }
+
 
 }
