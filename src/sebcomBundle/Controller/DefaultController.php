@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use sebcomBundle\Entity\sebcom\compte;
 use sebcomBundle\Entity\sebcom\Categorie;
 use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 
 
 
@@ -51,6 +53,11 @@ class DefaultController extends Controller
         }else{
             return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array("error"=>"Pas de categories!"));
         }
+        $em= $this->getDoctrine()->getManager();
+        $em->
+        $em->flush();
+        return $this->render('sebcomBundle:Default:ajoutcat.html.twig');
+
     }
 
     /**
@@ -59,15 +66,28 @@ class DefaultController extends Controller
      * @return Response
      */
     public function deletecatAction(Categorie $categorie){
+
+
+
+
         $em= $this->getDoctrine()->getManager();
         $em->remove($categorie);
         $em->flush();
-        return $this->render('sebcomBundle:Default:delete.html.twig');
+        $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
+        $cat=$ems->findAll();
+        return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array('cat'=> $cat));
 
 
     }
     public function deletedAction(){
-        return $this->render('sebcomBundle:Default:delete.html.twig');
+        $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
+        $cat=$em->findAll();
+        if($cat){
+            return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array('cat'=> $cat));
+        }else{
+            return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array("error"=>"Pas de categories!"));
+        }
+        return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array('cat'=> $cat));
 
 
     }

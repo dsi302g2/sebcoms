@@ -9,6 +9,8 @@ app:
 categorie_delete:
     path:     /ajoutcat/{id}
     defaults: { _controller: sebcomBundle:Default:deletecat }
+
 delete:
     path:     /deleted
     defaults: { _controller: sebcomBundle:Default:deleted }
+
