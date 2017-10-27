@@ -101,17 +101,16 @@ class DefaultController extends Controller
 
 
     }
-    public function deletedAction(){
-        $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
-        $cat=$em->findAll();
-        if($cat){
-            return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array('cat'=> $cat));
-        }else{
-            return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array("error"=>"Pas de categories!"));
-        }
-        return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array('cat'=> $cat));
+
+    /**
+     * @Route("/modifier/{id}", name="categorie_modifier")
+     *
+     * @return Response
+     */
+    public function modifiercatAction(Categorie $categorie){
 
 
+        return $this->render('sebcomBundle:Default:modifiercat.html.twig');
     }
 
 
