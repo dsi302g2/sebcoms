@@ -50,6 +50,7 @@ $a = $bdd->query('SELECT * FROM categorie ;');
                         <option value="0">
                             None
                         </option>
+                        {% if cat is defined %}
                         {% for c in cat %}
                         <option value="{{ c.id }}">
                             {% if cat is defined %}
@@ -57,6 +58,7 @@ $a = $bdd->query('SELECT * FROM categorie ;');
                             {% endif %}
                         </option>
                         {% endfor %}
+                        {% endif %}
                         <!-- other options mel base de donnée : code symfony -->
                     </select>
 
@@ -91,12 +93,12 @@ $a = $bdd->query('SELECT * FROM categorie ;');
                 {% if cat is defined %}
                 <th>{{ c.nom }}</th>
                 {% endif %}
-                {% if error is defined %}
-                    <th>{{ error }}</th>
-                {% endif %}
                 <th><a href="modifiercat.php?x='<?php echo $donnees['id']?>'">Modifier      </a><a href="{{ path('categorie_delete',{'id':c.id}) }}">Supprimer</a></th>
                 </tr>
                 {% endfor %}
+            {% endif %}
+            {% if error is defined %}
+                <th>{{ error }}</th>
             {% endif %}
 
 
