@@ -1,7 +1,9 @@
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css') }}">
+
+    <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
+    <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
+    <script src=" {{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
 {% endblock %}
 {% block body %}
 <!--
@@ -11,26 +13,7 @@ $a = $bdd->query('SELECT * FROM categorie ;');
 ?>
 -->
 
-<nav class="navbar navbar-inverse" style="background-image:url('backgroundLogin.jpg');background-size: cover;font-color:black">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">SebCom</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="menu.php">&nbsp;&nbsp;&nbsp; Home &nbsp;&nbsp;&nbsp;</a></li>
 
-            <li><a href="AjoutCat.php">Gestion categories</a></li>
-            <li><a href="#">Gestion articles</a></li>
-            <li><a href="#">Gestion livreurs</a></li>
-            <li><a href="#">Gestion des commandes</a></li>
-            <li><a href="#">Gestion des promotions</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> UserName</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
-        </ul>
-    </div>
-</nav>
 
 <form name="f" action="ajoutcatsql.php" class="form-horizontal" method="POST">
     <div class="container" style="margin-top: 3%">
