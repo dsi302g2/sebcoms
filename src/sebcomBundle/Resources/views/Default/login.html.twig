@@ -4,28 +4,27 @@
 
         body {background-image:url("{{ asset('bundles/images/backgroundLogin.jpg')}}");
         background-size: cover;}
-    </style>{% endblock %}
+    </style>
+{% endblock %}
 {% block title %}Login{% endblock %}
 {% block body %}
- <div align="center">
+
 
 
     <form name="f" action="/login" class="form-horizontal" method="POST">
         <div class="inner-container">
             <div class="box">
-                <div id="blur">
+                <div id="noblur">
                     <h1> Login </h1>
                     <input type="text" name="Pseudo" onkeyup="inputValid()" id="usrId" class="form-control" placeholder="Pseudo" />
                     <input type="password" name="Password" id="pwdId" class="form-control" placeholder="Password"  />
                     {% if error is defined %}
                         <span class="error">{{ error }}</span>
                     {% endif %}
-                <input type="submit" id="btnCnx" style="border:0;" class="btn btn-success" /><br/>
+                    <input type="submit" id="btnCnx" style="border:0;" class="btn btn-success" /><br/>
 
+                </div>
             </div>
         </div>
-</form>
-
-</div>
-</div>
+    </form>
 {% endblock %}
