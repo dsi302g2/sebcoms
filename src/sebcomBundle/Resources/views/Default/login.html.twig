@@ -19,7 +19,13 @@
                     <input type="text" name="Pseudo" onkeyup="inputValid()" id="usrId" class="form-control" placeholder="Pseudo" />
                     <input type="password" name="Password" id="pwdId" class="form-control" placeholder="Password"  />
                     {% if error is defined %}
-                        <span class="error">{{ error }}</span>
+
+                            <div class="alert alert-danger" style="width: 350px;margin-left:25px"role="alert">
+                                <strong>Erreur !</strong> {{ error }}
+                            </div>
+
+
+
                     {% endif %}
                     <input type="submit" id="btnCnx" style="border:0;" class="btn btn-success" /><br/>
 
