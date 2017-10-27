@@ -1,0 +1,17 @@
+#rech {
+    width: 130px;
+    height:45px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-size: contain;
+    background: white url('../images/searchicon.png') no-repeat -10px -1px;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#rech:focus {
+    width: 30%;
+}
