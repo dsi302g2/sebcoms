@@ -13,5 +13,9 @@ sebcom_menu:
 sebcom_ajoutcat:
     path: /ajoutcat
     defaults: { _controller: sebcomBundle:Default:ajoutcat}
+sebcom_modifiercat:
+    path: /modifiercat
+    defaults: { _controller: sebcomBundle:Default:modifiercat}
+
 
 

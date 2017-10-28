@@ -1,0 +1,88 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css') }}">
+
+    <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
+    <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
+    <script src=" {{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
+{% endblock %}
+{% block body %}
+
+
+
+
+    <form name="f" action="/modifiercat" class="form-horizontal" method="POST">
+        <div class="container" style="margin-top: 3%">
+
+            <div class="panel panel-default" style="background: none">
+                <div class="panel-heading">Ajout Catégorie</div>
+                <div class="panel-body">
+
+                    <p>Nom </p>
+                    <input type="text" onkeyup="inputValidV2()" class="form-control" id="nomCat" name="nom" />
+
+                    <p>Parent </p>
+
+                    <div  class="form-group" style="width: 100%; margin-left: 0%">
+
+                        <select class="form-control" id="sel1" name="parent">
+                            <option value="0">
+                                None
+                            </option>
+                            {% if cat is defined %}
+                                {% for c in cat %}
+                                    <option value="{{ c.id }}">
+                                        {% if cat is defined %}
+                                            <th>{{ c.nom }}</th>
+                                        {% endif %}
+                                    </option>
+                                {% endfor %}
+                            {% endif %}
+                            <!-- other options mel base de donnée : code symfony -->
+                        </select>
+
+
+
+                    </div><br/>
+                    <input type="submit" id="btnAjt"  value="Ajouter" class="btn btn-success btn-block" /><br/>
+                </div>
+
+
+            </div>
+            <br/>
+            <hr WIDTH="100%" />
+
+            <input type="text" style="float: right;margin-bottom: 2%" id="rech" name="search" placeholder="Search.. ">
+
+
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Nom Catégorie</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% if cat is defined %}
+
+                    {% for c in cat %}
+                        <tr>
+                            {% if cat is defined %}
+                                <th>{{ c.nom }}</th>
+                            {% endif %}
+                            <th><a href="modifiercat.php?x='<?php echo $donnees['id']?>'">Modifier      </a><a href="{{ path('categorie_delete',{'id':c.id}) }}">Supprimer</a></th>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                {% if error is defined %}
+                    <th>{{ error }}</th>
+                {% endif %}
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </form>
+{% endblock %}
