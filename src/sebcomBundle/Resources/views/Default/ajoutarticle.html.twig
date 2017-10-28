@@ -1,9 +1,22 @@
 
-{% block stylesheets %}
+
+<head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css') }}">
+
+    <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
+
+    <script src=" {{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
+
+    <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutArticle.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
 
-{% endblock %}
-
+    {% block stylesheets %}{% endblock %}
+    <meta charset="UTF-8">
+    <title>Article</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
 {% block body %}
 
 
@@ -34,12 +47,13 @@
                     </div><br/>
 
                     <p>Description</p>
-                    <textarea class="form-control" rows="5" id="descArt"></textarea>
+                    <textarea class="form-control" rows="5" id="descArt"></textarea><br/>
 
                     <p>Prix</p>
 
-                    <input type="text" onkeyup="" placeholder="..DT" class="form-control" id="prixArt" name="nom" />
-                    <p>Images</p>
+                    <input type="text" onkeyup="" placeholder="..DT" class="form-control" id="prixArt" name="nom" /><br/>
+                    <p>Images</p><br/>
+
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-btn">
@@ -53,8 +67,8 @@
                         </div>
                             <p>Quantité</p>
 
-                            <input type="number" onkeyup="" class="form-control" id="qteArt" name="nom" />
-
+                            <input type="number" onkeyup="" style="width:10%;" class="form-control" id="qteArt" name="nom" value="1" min="1"/>
+                                <br/>
 
                             <input type="submit" id="btnAjt"  value="Ajouter" class="btn btn-success btn-block" /><br/>
                 </div>
@@ -63,6 +77,28 @@
             </div>
             <br/>
 
+            <br/>
+            <hr width="100%" />
+            <input type="text" id="rech" placeholder="Search.." style="margin-bottom: 3%"/>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Nom Catégorie</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Article 1</td>
+                <th><a href="#">Modifier      </a><a href="#">Supprimer</a></th>
+                        </tr>
+
+
+
+
+                </tbody>
+            </table>
 
         </div>
     </form>
