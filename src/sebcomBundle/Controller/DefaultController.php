@@ -107,10 +107,13 @@ class DefaultController extends Controller
      *
      * @return Response
      */
-    public function modifiercatAction(Categorie $categorie){
+    public function modifiercatAction(){
 
+        $em= $this->getDoctrine()->getManager();
+        $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
+        $cat=$ems->findAll();
 
-        return $this->render('sebcomBundle:Default:modifiercat.html.twig');
+        return $this->render('sebcomBundle:Default:modifiercat.html.twig',array('cat'=> $cat));
     }
 
 
