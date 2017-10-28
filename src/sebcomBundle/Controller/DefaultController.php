@@ -36,7 +36,7 @@ class DefaultController extends Controller
                 if($user){
                     return $this->render('sebcomBundle:Default:menu.html.twig',array('name'=> $user->getLogin()));
                 }else{
-                    return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>"Mot De passe OU login Incorrect !"));
+                    return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>"Mot De passe ou login Incorrect !"));
                 }
                 die();
 
@@ -109,12 +109,26 @@ class DefaultController extends Controller
      */
     public function modifiercatAction(){
 
-        $em= $this->getDoctrine()->getManager();
+
+        if($_POST){
+            $em=$this->getDoctrine()->getManager();
+            $Categorie= new Categorie();
+            $Categorie->setNom($_POST['nom']);
+            if($_POST['parent']==0){
+                $Categorie->setParentid(0);
+            }else{
+                $Categorie->setParentid($_POST['parent']);
+            }
+            $em->update($Categorie);
+            $em->flush();
+
+
+
         $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
         $cat=$ems->findAll();
 
         return $this->render('sebcomBundle:Default:modifiercat.html.twig',array('cat'=> $cat));
     }
-
-
+        return $this->render('sebcomBundle:Default:modifiercat.html.twig');
+    }
 }

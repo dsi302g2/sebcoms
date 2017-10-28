@@ -1,9 +1,7 @@
+{% extends 'navbar.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css') }}">
-
-    <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
     <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
-    <script src=" {{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
+
 {% endblock %}
 {% block body %}
 
@@ -68,7 +66,7 @@
                         {% if cat is defined %}
                             <th>{{ c.nom }}</th>
                         {% endif %}
-                        <th><a href="modifiercat.php?x='<?php echo $donnees['id']?>'">Modifier      </a><a href="{{ path('categorie_delete',{'id':c.id}) }}">Supprimer</a></th>
+                        <th><a href="modifiercat'">Modifier      </a><a href="{{ path('categorie_delete',{'id':c.id}) }}">Supprimer</a></th>
                     </tr>
                 {% endfor %}
             {% endif %}
