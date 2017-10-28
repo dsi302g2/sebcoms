@@ -47,7 +47,6 @@
         <br/>
 
 
-<<<<<<< HEAD
         <table class="table table-hover">
             <thead>
             <tr>
@@ -64,7 +63,7 @@
                         {% if cat is defined %}
                             <th>{{ c.nom }}</th>
                         {% endif %}
-                        <th><a href="modifiercat'">Modifier      </a><a href="{{ path('categorie_delete',{'id':c.id}) }}">Supprimer</a></th>
+                        <th><a href="{{ path('categorie_modifier',{'id':c.id}) }}">Modifier      </a><a href="{{ path('categorie_delete',{'id':c.id}) }}">Supprimer</a></th>
                     </tr>
                 {% endfor %}
             {% endif %}
@@ -76,8 +75,6 @@
 
             </tbody>
         </table>
-=======
->>>>>>> 879667864a79c0c251d2948b582ddb864be5b5f5
     </div>
 </form>
 {% endblock %}

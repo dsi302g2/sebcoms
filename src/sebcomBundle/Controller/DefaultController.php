@@ -119,16 +119,13 @@ class DefaultController extends Controller
             }else{
                 $Categorie->setParentid($_POST['parent']);
             }
-            $em->update($Categorie);
             $em->flush();
+            
 
-
-
+        return $this->render('sebcomBundle:Default:modifiercat.html.twig');
+    }
         $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
         $cat=$ems->findAll();
 
-        return $this->render('sebcomBundle:Default:modifiercat.html.twig',array('cat'=> $cat));
-    }
-        return $this->render('sebcomBundle:Default:modifiercat.html.twig');
-    }
+        return $this->render('sebcomBundle:Default:modifiercat.html.twig',array('cat'=> $cat));    }
 }
