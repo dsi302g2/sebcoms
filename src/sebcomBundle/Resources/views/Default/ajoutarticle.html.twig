@@ -89,11 +89,20 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% if art is defined %}
+                {% for c in art %}
                 <tr>
-                    <td>Article 1</td>
+                    {% if cat is defined %}
+                        <th>{{ c.nom }}</th>
+                    {% endif %}
                 <th><a href="#">Modifier      </a><a href="#">Supprimer</a></th>
-                        </tr>
 
+                        </tr>
+                {% endfor %}
+                {% endif %}
+                {% if error is defined %}
+                    <th>{{ error }}</th>
+                {% endif %}
 
 
 

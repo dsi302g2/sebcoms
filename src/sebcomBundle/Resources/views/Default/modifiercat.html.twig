@@ -11,7 +11,7 @@
 
 
 
-    <form name="f" action="/modifiercat" class="form-horizontal" method="POST">
+    <form name="f" action="/modifiercat/{{ id }}" class="form-horizontal" method="POST">
         <div class="container" style="margin-top: 3%">
 
             <div class="panel panel-default" style="background: none">
@@ -19,7 +19,7 @@
                 <div class="panel-body">
 
                     <p>Nom </p>
-                    <input type="text" onkeyup="inputValidV2()" class="form-control" id="nomCat" name="nom" />
+                    <input type="text" onkeyup="inputValidV2()" class="form-control" id="nomCat" name="nom" value="{{ catname }}" />
 
                     <p>Parent </p>
 
@@ -29,8 +29,10 @@
                             <option value="0">
                                 None
                             </option>
+
                             {% if cat is defined %}
                                 {% for c in cat %}
+
                                     <option value="{{ c.id }}">
                                         {% if cat is defined %}
                                             <th>{{ c.nom }}</th>

@@ -9,19 +9,17 @@ sebcomBundle\Entity\sebcom\article:
             generator:
                 strategy: AUTO
     fields:
-        ref:
-            type: integer
         nom:
             type: string
-            length: 255
+            length: '55'
         description:
             type: string
-            length: 255
+            length: '55'
         prix:
             type: float
         image:
             type: string
-            length: 255
+            length: '200'
         quantite:
             type: integer
     lifecycleCallbacks: {  }

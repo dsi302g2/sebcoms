@@ -13,11 +13,6 @@ class article
     private $id;
 
     /**
-     * @var int
-     */
-    private $ref;
-
-    /**
      * @var string
      */
     private $nom;
@@ -51,30 +46,6 @@ class article
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set ref
-     *
-     * @param integer $ref
-     *
-     * @return article
-     */
-    public function setRef($ref)
-    {
-        $this->ref = $ref;
-
-        return $this;
-    }
-
-    /**
-     * Get ref
-     *
-     * @return int
-     */
-    public function getRef()
-    {
-        return $this->ref;
     }
 
     /**
