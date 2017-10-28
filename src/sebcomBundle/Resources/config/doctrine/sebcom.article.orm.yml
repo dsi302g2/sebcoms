@@ -1,0 +1,27 @@
+sebcomBundle\Entity\sebcom\article:
+    type: entity
+    table: null
+    repositoryClass: sebcomBundle\Repository\sebcom\articleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        ref:
+            type: integer
+        nom:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        prix:
+            type: float
+        image:
+            type: string
+            length: 255
+        quantite:
+            type: integer
+    lifecycleCallbacks: {  }
