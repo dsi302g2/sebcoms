@@ -120,7 +120,7 @@ class DefaultController extends Controller
                 $Categorie->setParentid($_POST['parent']);
             }
             $em->flush();
-            
+
 
         return $this->render('sebcomBundle:Default:modifiercat.html.twig');
     }
@@ -128,4 +128,8 @@ class DefaultController extends Controller
         $cat=$ems->findAll();
 
         return $this->render('sebcomBundle:Default:modifiercat.html.twig',array('cat'=> $cat));    }
+
+        public function ajoutarticleAction(){
+            return $this->render('sebcomBundle:Default:ajoutarticle.html.twig');    }
+
 }

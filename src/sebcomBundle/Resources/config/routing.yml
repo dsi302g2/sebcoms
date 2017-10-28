@@ -16,6 +16,9 @@ sebcom_ajoutcat:
 sebcom_modifiercat:
     path: /modifiercat
     defaults: { _controller: sebcomBundle:Default:modifiercat}
+sebcom_ajoutarticle:
+    path: /ajoutarticle
+    defaults: { _controller: sebcomBundle:Default:ajoutarticle}
 
 
 
