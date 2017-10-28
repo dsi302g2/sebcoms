@@ -69,40 +69,8 @@
 
         </div>
         <br/>
-        <hr WIDTH="100%" />
-
-        <input type="text" style="float: right;margin-bottom: 2%" id="rech" name="search" placeholder="Search.. ">
 
 
-
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Nom Catégorie</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            {% if cat is defined %}
-
-            {% for c in cat %}
-                <tr>
-                {% if cat is defined %}
-                <th>{{ c.nom }}</th>
-                {% endif %}
-                <th><a href="modifiercat.php?x='<?php echo $donnees['id']?>'">Modifier      </a><a href="{{ path('categorie_delete',{'id':c.id}) }}">Supprimer</a></th>
-                </tr>
-                {% endfor %}
-            {% endif %}
-            {% if error is defined %}
-                <th>{{ error }}</th>
-            {% endif %}
-
-
-
-            </tbody>
-        </table>
     </div>
 </form>
 {% endblock %}
