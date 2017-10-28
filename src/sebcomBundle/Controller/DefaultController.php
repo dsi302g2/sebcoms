@@ -36,7 +36,8 @@ class DefaultController extends Controller
                 $user=$em->findOneBy(array('login'=>$_POST['Pseudo'],'password'=>$_POST['Password']));
                 if($user){
                     $session = new session();
-                    $session->set('userSession',$user);
+                    $session->set('name',$user->getLogin());
+                    $session->get('name');
                     return $this->redirect('/menu');
                     die();
                 }else{
