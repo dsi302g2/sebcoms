@@ -109,6 +109,7 @@ class DefaultController extends Controller
      */
     public function modifiercatAction(){
 
+        $conn = $this->get('database_connection');
 
         if($_POST){
             $em=$this->getDoctrine()->getManager();
@@ -119,6 +120,9 @@ class DefaultController extends Controller
             }else{
                 $Categorie->setParentid($_POST['parent']);
             }
+
+            $em = $conn->query("UPDATE categorie SET nom='$Categorie->getNom()',parentid='$Categorie->getParentid()' WHERE id='$Categorie->getId()'");
+
             $em->flush();
 
 
@@ -130,6 +134,14 @@ class DefaultController extends Controller
         return $this->render('sebcomBundle:Default:modifiercat.html.twig',array('cat'=> $cat));    }
 
         public function ajoutarticleAction(){
-            return $this->render('sebcomBundle:Default:ajoutarticle.html.twig');    }
+
+            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+            $art=$em->findAll();
+            if($art){
+                return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('cat'=> $art));
+            }else{
+                return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array("error"=>"Pas d'article!"));
+            }
+    }
 
 }
