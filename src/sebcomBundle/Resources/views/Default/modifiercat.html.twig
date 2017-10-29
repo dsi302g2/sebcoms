@@ -32,12 +32,14 @@
 
                             {% if cat is defined %}
                                 {% for c in cat %}
+                                    {% if c.nom != catname %}
 
                                     <option value="{{ c.id }}">
                                         {% if cat is defined %}
                                             <th>{{ c.nom }}</th>
                                         {% endif %}
                                     </option>
+                                    {% endif %}
                                 {% endfor %}
                             {% endif %}
                             <!-- other options mel base de donnée : code symfony -->
