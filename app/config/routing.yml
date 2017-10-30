@@ -15,4 +15,8 @@ categorie_modifier:
 article_delete:
     path:     /ajoutarticle/{id}
     defaults: { _controller: sebcomBundle:Default:deleteart }
+article_modifier:
+    path:     /modifierarticle/{id}
+    defaults: { _controller: sebcomBundle:Default:modifierarticle }
+
 

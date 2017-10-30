@@ -20,7 +20,7 @@
 {% block body %}
 
 
-    <form name="f" action="/ajoutarticle" class="form-horizontal" method="POST">
+    <form name="f" action="/modifierarticle/{{ id }}" class="form-horizontal" method="POST">
         <div class="container" style="margin-top: 5%">
 
             <div class="panel panel-default" style="background: none">
@@ -31,7 +31,7 @@
 
                     <p>Titre </p>
 
-                    <input type="text" onkeyup="" class="form-control" id="titreArt" name="nom" />
+                    <input type="text" onkeyup="" class="form-control" id="titreArt" name="nom" value="{{ artname }}"/>
                     <p>Catégorie </p>
                     <div  class="form-group" style="width: 100%; margin-left: 0%">
 
@@ -54,30 +54,30 @@
                     </div><br/>
 
                     <p>Description</p>
-                    <textarea class="form-control" rows="5" id="descArt" name="description"></textarea><br/>
+                    <textarea class="form-control" rows="5" id="descArt" name="description">{{ artdescription }}</textarea><br/>
 
                     <p>Prix</p>
 
-                    <input type="text" onkeyup="" placeholder="..DT" class="form-control" id="prixArt" name="prix" /><br/>
+                    <input type="text" onkeyup="" placeholder="..DT" class="form-control" id="prixArt" name="prix" value="{{ artprix }}" /><br/>
                     <p>Images</p><br/>
 
-                        <div class="form-group">
-                            <div class="input-group">
+                    <div class="form-group">
+                        <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgArt" name="image">
+                                        Browse… <input type="file" id="imgArt" name="image" value="{{ artimage }}">
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" readonly>
-                            </div>
-                            <img id='img-upload'/>
+                            <input type="text" class="form-control" readonly>
                         </div>
-                            <p>Quantité</p>
+                        <img id='img-upload'/>
+                    </div>
+                    <p>Quantité</p>
 
-                            <input type="number" onkeyup="" style="width:10%;" class="form-control" id="qteArt" name="quantite" value="1" min="1"/>
-                                <br/>
+                    <input type="number" onkeyup="" style="width:10%;" class="form-control" id="qteArt" name="quantite" value="{{ artquantite }}" min="1"/>
+                    <br/>
 
-                            <input type="submit" id="btnAjt"  value="Ajouter" class="btn btn-success btn-block" /><br/>
+                    <input type="submit" id="btnAjt"  value="Modifier" class="btn btn-success btn-block" /><br/>
                 </div>
 
 
@@ -85,35 +85,9 @@
             <br/>
 
             <br/>
-            <hr width="100%" />
-            <input type="text" id="rech" placeholder="Search.." style="margin-bottom: 3%"/>
-
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Nom Article</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% if art is defined %}
-                {% for c in art %}
-                <tr>
-                    {% if art is defined %}
-                        <th>{{ c.nom }}</th>
-                    {% endif %}
-                <th><a href="{{ path('article_modifier',{'id':c.id}) }}">Modifier      </a><a href="{{ path('article_delete',{'id':c.id}) }}">Supprimer</a></th>
-
-                        </tr>
-                {% endfor %}
-                {% endif %}
-                {% if error is defined %}
-                    <th>{{ error }}</th>
-                {% endif %}
 
 
-                </tbody>
-            </table>
+
 
         </div>
     </form>

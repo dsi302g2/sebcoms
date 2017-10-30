@@ -130,14 +130,6 @@ class DefaultController extends Controller
             $em->flush();
             return $this->render('sebcomBundle:Default:ajoutcat.html.twig');
         }
-
-      /*  $em = $this->getDoctrine()->getManager();
-        $sql = "SELECT p FROM sebcomBundle\Entity\sebcom\Categorie WHERE id != ?1";
-        $query = $em->createQuery($sql);
-        $query->setParameter(1, $id);
-        $result = $query->getResult();
-        var_dump($result);
-        die();*/
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
         $cat = $ems->findAll();
         $categorie=$ems->findByid($id);
@@ -208,5 +200,44 @@ class DefaultController extends Controller
 
 
     }
+
+    /**
+     * @Route("/modifier/{id}", name="article_modifier")
+     *
+     * @return Response
+     */
+
+    public function modifierarticleAction($id)
+    {
+        if ($_POST) {
+
+            $em = $this->getDoctrine()->getManager();
+            $article = $em->getRepository('sebcomBundle\Entity\sebcom\article')->find($id);
+            $article->setNom($_POST['nom']);
+            $article->setCategorie($_POST['categorie']);
+            $article->setDescription($_POST['description']);
+            $article->setPrix($_POST['prix']);
+            $article->setImage($_POST['image']);
+            $article->setQuantite($_POST['quantite']);
+            $em->flush();
+            return $this->render('sebcomBundle:Default:ajoutarticle.html.twig');
+        }
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
+        $em=$this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
+        $cat = $em->findAll();
+        $article=$ems->findByid($id);
+        $artname=$article[0]->getNom();
+        $artcategorie=$article[0]->getCategorie();
+        $artdescription=$article[0]->getDescription();
+        $artprix=$article[0]->getPrix();
+        $artimage=$article[0]->getImage();
+        $artquantite=$article[0]->getQuantite();
+        return $this->render('sebcomBundle:Default:modifierarticle.html.twig', array('cat' => $cat,'id'=>$id,'artname'=>$artname,'artcategorie'=>$artcategorie,'artdescription'=>$artdescription,'artprix'=>$artprix,'artimage'=>$artimage,'artquantite'=>$artquantite));
+
+
+    }
+
+
+
 
 }
