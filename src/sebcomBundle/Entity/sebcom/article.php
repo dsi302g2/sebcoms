@@ -20,6 +20,11 @@ class article
     /**
      * @var string
      */
+    private $categorie;
+
+    /**
+     * @var string
+     */
     private $description;
 
     /**
@@ -70,6 +75,30 @@ class article
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param string $categorie
+     *
+     * @return article
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return string
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 
     /**
@@ -168,3 +197,4 @@ class article
         return $this->quantite;
     }
 }
+

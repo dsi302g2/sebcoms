@@ -1,6 +1,7 @@
 <?php
 
 namespace sebcomBundle\Controller;
+use sebcomBundle\Entity\sebcom\article;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use sebcomBundle\Entity\sebcom\compte;
@@ -43,8 +44,6 @@ class DefaultController extends Controller
                 }else{
                     return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>"Mot De passe ou login Incorrect !"));
                 }
-
-
         }else{
         return $this->render('sebcomBundle:Default:login.html.twig');
         }
@@ -52,6 +51,11 @@ class DefaultController extends Controller
     public function menuAction(){
 	    return $this->render('sebcomBundle:Default:menu.html.twig');
     }
+
+
+    /*  ----------Categorie--------------------------  */
+
+
 
     public function ajoutcatAction(){
         if($_POST){
@@ -116,7 +120,7 @@ class DefaultController extends Controller
         if ($_POST) {
 
             $em = $this->getDoctrine()->getManager();
-            $Categorie =  $em->getRepository('sebcomBundle\Entity\sebcom\Categorie')->find($id);
+            $Categorie = $em->getRepository('sebcomBundle\Entity\sebcom\Categorie')->find($id);
             $Categorie->setNom($_POST['nom']);
             if ($_POST['parent'] == 0) {
                 $Categorie->setParentid(0);
@@ -126,6 +130,7 @@ class DefaultController extends Controller
             $em->flush();
             return $this->render('sebcomBundle:Default:ajoutcat.html.twig');
         }
+
       /*  $em = $this->getDoctrine()->getManager();
         $sql = "SELECT p FROM sebcomBundle\Entity\sebcom\Categorie WHERE id != ?1";
         $query = $em->createQuery($sql);
@@ -143,16 +148,65 @@ class DefaultController extends Controller
 
     }
 
-        public function ajoutarticleAction(){
+    /*  ----------Article--------------------------  */
 
-            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
-            $art=$em->findAll();
 
-            if($art){
-                return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('art'=> $art));
-            }else{
-return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array("error"=>"Pas d'article!"));
-}
-}
+    public function ajoutarticleAction(){
+
+            if($_POST){
+                $em=$this->getDoctrine()->getManager();
+                $article= new article();
+                $article->setNom($_POST['nom']);
+                $article->setCategorie($_POST['categorie']);
+                $article->setDescription($_POST['description']);
+                $article->setPrix($_POST['prix']);
+                $article->setImage($_POST['image']);
+                $article->setQuantite($_POST['quantite']);
+
+                $em->persist($article);
+                $em->flush();
+                $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+                $art=$em->findAll();
+                if($art){
+                    return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('art'=> $art));
+                }else{
+                    return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array("error"=>"Pas de categories!"));
+                }
+            }
+
+            else {
+                $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
+                $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
+                $cat = $ems->findAll();
+                $art = $em->findAll();
+
+                if ($art) {
+                    return $this->render('sebcomBundle:Default:ajoutarticle.html.twig', array('art' => $art, 'cat' => $cat));
+                } else {
+                    return $this->render('sebcomBundle:Default:ajoutarticle.html.twig', array("error" => "Pas d'article!"));
+                }
+            }
+
+        }
+
+    /**
+     * @Route("/delete/{id}", name="article_delete")
+     *
+     * @return Response
+     */
+    public function deleteartAction(article $article){
+
+
+
+
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($article);
+        $em->flush();
+        $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+        $art=$ems->findAll();
+        return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('art'=> $art));
+
+
+    }
 
 }

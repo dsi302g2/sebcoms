@@ -12,14 +12,17 @@ sebcomBundle\Entity\sebcom\article:
         nom:
             type: string
             length: '55'
+        categorie:
+            type: string
+            length: '30'
         description:
             type: string
-            length: '55'
+            length: '50'
         prix:
             type: float
         image:
             type: string
-            length: '200'
+            length: '30'
         quantite:
             type: integer
     lifecycleCallbacks: {  }
