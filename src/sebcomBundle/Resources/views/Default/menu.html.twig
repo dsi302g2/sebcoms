@@ -5,11 +5,15 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        $('#home').click(function(){
+            $("#content").empty();
+        });
         $('a').click(function(e){
             e.preventDefault();
             $("#content").load($(this).attr('href'));
         });
     });
+
 </script>
     {% block javascripts %}{% endblock %}
 
