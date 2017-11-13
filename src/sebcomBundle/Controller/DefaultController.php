@@ -237,7 +237,40 @@ class DefaultController extends Controller
 
     }
 
-    /*  ----------Commande--------------------------  */
+    /*  ----------Livreur--------------------------  */
+    public function ajoutlivreurAction(){
+
+        if($_POST){
+            $em=$this->getDoctrine()->getManager();
+            $livreur= new livreur();
+            $livreur->setNom($_POST['nom']);
+            $livreur->setVehicule($_POST['vehicule']);
+            $livreur->setNumtel($_POST['numtel']);
+
+            $em->persist($livreur);
+            $em->flush();
+            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur') ;
+            $liv=$em->findAll();
+            if($liv){
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array('liv'=> $liv));
+            }else{
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array("error"=>"Pas de livreur!"));
+            }
+        }
+
+        else {
+            $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur');
+            $liv = $em->findAll();
+
+            if ($liv) {
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig', array('liv' => $liv));
+            } else {
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig', array("error" => "Pas de livreur!"));
+            }
+        }
+
+    }
+
 
 
 

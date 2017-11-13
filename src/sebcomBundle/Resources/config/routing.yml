@@ -22,6 +22,8 @@ sebcom_ajoutarticle:
 sebcom_modifierarticle:
     path: /modifierarticle/:id
     defaults: { _controller: sebcomBundle:Default:modifierarticle}
-
+sebcom_ajoutlivreur:
+    path: /ajoutlivreur
+    defaults: { _controller: sebcomBundle:Default:ajoutlivreur}
 
 
