@@ -17,12 +17,11 @@
     <title>Admin</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body style="background: linear-gradient(to left,#602020,#ffb380,#66004d);">
+<body style="background-image: url({{ asset('bundles/images/backgroundMenu2.jpg') }}); background-size: cover;">
 {% block body %}{% endblock %}
 <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
 
-<nav class="navbar navbar-inverse" style="background-image:url('{{ asset('bundles/images/backgroundLogin.jpg')}}');
-        background-size: cover; position: fixed; top: 0;width: 100%;overflow: hidden;">
+<nav class="navbar navbar-default" >
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">SebCom</a>
