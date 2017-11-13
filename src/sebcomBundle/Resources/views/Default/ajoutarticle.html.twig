@@ -1,9 +1,6 @@
 {% extends 'navbar.html.twig' %}
 
 
-
-
-
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutArticle.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
@@ -14,34 +11,6 @@
 
 {% block body %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
-
-    <nav class="navbar navbar-default" >
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">SebCom</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">&nbsp;&nbsp;&nbsp; Home &nbsp;&nbsp;&nbsp;</a></li>
-
-                <li><a href="/ajoutcat">Gestion Catégories</a></li>
-                <li><a href="/ajoutarticle">Gestion Articles</a></li>
-                <li><a href="#">Gestion Commandes</a></li>
-                <li><a href="#">Gestion Livreurs</a></li>
-
-
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-
-                {% if name is defined %}
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ name }}</a></li>
-                {% endif %}
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
-            </ul>
-        </div>
-
-    </nav>
     {% block javascripts %}{% endblock %}
 
     <form name="f" action="/ajoutarticle" class="form-horizontal" method="POST">
