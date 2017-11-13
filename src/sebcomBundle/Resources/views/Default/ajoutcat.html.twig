@@ -5,8 +5,8 @@
 {% endblock %}
 {% block body %}
 
-
-<form name="f" action="/ajoutcat" class="form-horizontal" method="POST">
+    <iframe name="frame" style="display:none;"></iframe>
+<form name="f" action="/ajoutcat" class="form-horizontal" method="POST" target="frame" >
     {% block javascripts %}
     <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
   {% endblock %}
@@ -119,7 +119,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <input type="submit" id="btnAjt"  value="Ajouter" class="btn btn-success btn-block" /><br/>
+                        <input type="submit" id="btnAjt"  value="Ajouter" class="btn btn-success btn-block" data-dismiss="modal" /><br/>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
