@@ -237,7 +237,65 @@ class DefaultController extends Controller
 
     }
 
-    /*  ----------Commande--------------------------  */
+    /*  ----------Livreur--------------------------  */
+    public function ajoutlivreurAction(){
+
+        if($_POST){
+            $em=$this->getDoctrine()->getManager();
+            $livreur= new livreur();
+            $livreur->setNom($_POST['nom']);
+            $livreur->setVehicule($_POST['vehicule']);
+            $livreur->setNumtel($_POST['numtel']);
+
+            $em->persist($livreur);
+            $em->flush();
+            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur') ;
+            $liv=$em->findAll();
+            if($liv){
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array('liv'=> $liv));
+            }else{
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array("error"=>"Pas de livreur!"));
+            }
+        }
+
+        else {
+            $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur');
+            $liv = $em->findAll();
+
+            if ($liv) {
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig', array('liv' => $liv));
+            } else {
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig', array("error" => "Pas de livreur!"));
+            }
+        }
+
+    }
+
+
+
+    public function modifierlivreurAction($id)
+    {
+        if ($_POST) {
+
+            $em = $this->getDoctrine()->getManager();
+            $livreur = $em->getRepository('sebcomBundle\Entity\sebcom\livreur')->find($id);
+            $livreur->setNom($_POST['nom']);
+            $livreur->setVehicule($_POST['vehicule']);
+            $livreur->setNumtel($_POST['numtel']);
+            $em->flush();
+            return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig');
+        }
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur');
+        $liv=$ems->findByid($id);
+        $livreur=$ems->findAll();
+        $livname=$liv[0]->getName();
+        $livvehicule=$liv[0]->getVehicule();
+        $livtel=$liv[0]->getLivtel();
+        return $this->render('sebcomBundle:Default:modifierliv.html.twig', array('liv' => $livreur,'id'=>$id,'livname'=>$livname,'livvehicule'=>$livvehicule,'livtel'=>$livtel));
+
+
+    }
+
 
 
 
