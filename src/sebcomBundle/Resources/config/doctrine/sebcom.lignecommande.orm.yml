@@ -1,0 +1,18 @@
+sebcomBundle\Entity\sebcom\lignecommande:
+    type: entity
+    table: null
+    repositoryClass: sebcomBundle\Repository\sebcom\lignecommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idcommande:
+            type: integer
+        idproduit:
+            type: integer
+        quantite:
+            type: integer
+    lifecycleCallbacks: {  }

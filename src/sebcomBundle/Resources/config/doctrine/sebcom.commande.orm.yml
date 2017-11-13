@@ -1,0 +1,20 @@
+sebcomBundle\Entity\sebcom\commande:
+    type: entity
+    table: null
+    repositoryClass: sebcomBundle\Repository\sebcom\commandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: date
+        prixttc:
+            type: float
+        idlivreur:
+            type: integer
+        idclient:
+            type: integer
+    lifecycleCallbacks: {  }
