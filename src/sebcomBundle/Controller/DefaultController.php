@@ -273,6 +273,31 @@ class DefaultController extends Controller
 
 
 
+    public function modifierlivreurAction($id)
+    {
+        if ($_POST) {
+
+            $em = $this->getDoctrine()->getManager();
+            $livreur = $em->getRepository('sebcomBundle\Entity\sebcom\livreur')->find($id);
+            $livreur->setNom($_POST['nom']);
+            $livreur->setVehicule($_POST['vehicule']);
+            $livreur->setNumtel($_POST['numtel']);
+            $em->flush();
+            return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig');
+        }
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur');
+        $liv=$ems->findByid($id);
+        $livreur=$ems->findAll();
+        $livname=$liv[0]->getName();
+        $livvehicule=$liv[0]->getVehicule();
+        $livtel=$liv[0]->getLivtel();
+        return $this->render('sebcomBundle:Default:modifierliv.html.twig', array('liv' => $livreur,'id'=>$id,'livname'=>$livname,'livvehicule'=>$livvehicule,'livtel'=>$livtel));
+
+
+    }
+
+
+
 
 
 
