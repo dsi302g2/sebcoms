@@ -1,0 +1,21 @@
+sebcomBundle\Entity\sebcom\livreur:
+    type: entity
+    table: null
+    repositoryClass: sebcomBundle\Repository\sebcom\livreurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        vehicule:
+            type: string
+            length: 255
+        numtel:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
