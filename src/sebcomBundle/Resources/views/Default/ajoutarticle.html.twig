@@ -28,7 +28,11 @@
                 <thead>
                 <tr>
                     <th>Nom Article</th>
-                    <th>Actions</th>
+                    <th>Catégorie</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -36,10 +40,13 @@
                 {% for c in art %}
                 <tr>
                     {% if art is defined %}
-                        <th>{{ c.nom }}</th>
-                    {% endif %}
-                <th><a href="{{ path('article_modifier',{'id':c.id}) }}">Modifier      </a><a href="{{ path('article_delete',{'id':c.id}) }}">Supprimer</a></th>
+                        <td>{{ c.nom }}</td>
+                        <td>{{ c.categorie }}</td>
+                        <td>{{ c.description }}</td>
+                        <td>{{ c.prix }}</td>
+                        <td>{{ c.quantite }}</td>
 
+                    {% endif %}
                         </tr>
                 {% endfor %}
                 {% endif %}

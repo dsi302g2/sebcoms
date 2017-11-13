@@ -8,6 +8,10 @@
         $('#home').click(function(){
             $("#content").empty();
         });
+        $('#login').click(function(){
+            window.location.href='/login';
+        //    $("this").load($(this).attr('href'));
+        });
         $('a').click(function(e){
             e.preventDefault();
             $("#content").load($(this).attr('href'));

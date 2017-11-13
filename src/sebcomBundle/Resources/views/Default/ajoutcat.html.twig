@@ -22,18 +22,22 @@
             <thead style="background-color:snow">
             <tr>
                 <th>Nom Catégorie</th>
-                <th>Actions</th>
+                <th>Parent</th>
             </tr>
             </thead>
             <tbody>
+
+
+
+
 
             {% if cat is defined %}
                 {% for c in cat %}
                     <tr>
                         {% if cat is defined %}
                             <th>{{ c.nom }}</th>
+                            <th>{{ c.parentid }}</th>
                         {% endif %}
-                        <th><a href="{{ path('categorie_modifier',{'id':c.id}) }}">Modifier      </a><a href="{{ path('categorie_delete',{'id':c.id}) }}">Supprimer</a></th>
                     </tr>
                 {% endfor %}
             {% endif %}

@@ -29,7 +29,8 @@
                 <thead>
                 <tr>
                     <th>Nom Livreur</th>
-                    <th>Actions</th>
+                    <th>Véhicule</th>
+                    <th>Numéro Tel</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,9 +39,9 @@
                         <tr>
                             {% if liv is defined %}
                                 <th>{{ c.nom }}</th>
+                                <th>{{ c.vehicule }}</th>
+                                <th>{{ c.numtel }}</th>
                             {% endif %}
-                            <th><a href="">Modifier      </a><a href="">Supprimer</a></th>
-
                         </tr>
                     {% endfor %}
                 {% endif %}
