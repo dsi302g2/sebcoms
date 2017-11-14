@@ -314,7 +314,7 @@ class DefaultController extends Controller
         $em->flush();
         $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur') ;
         $liv=$ems->findAll();
-        return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('liv'=> $liv));
+        return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array('liv'=> $liv));
 
 
     }
