@@ -15,7 +15,7 @@
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
         <script type="text/javascript">
-
+            var rowId;
             $(document).ready(function(){
 
                 $('#tab').on('click', '.clickable-row', function(event) {
@@ -30,7 +30,7 @@
                         $(this).addClass('bg-primary').siblings().removeClass('bg-primary');
                         document.getElementById("btnModif").disabled = false;
                         document.getElementById("btnSupp").disabled = false;
-
+                        rowId=$(this).data('value');
 
 
                     }
@@ -39,7 +39,7 @@
             function del()
             {
 
-                var rowId=$(this).data('value');
+
 
                 {#var url='{{ path("livreur_delete", {'id':'rowVal' }) }}';#}
 
