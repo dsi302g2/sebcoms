@@ -15,6 +15,9 @@
         <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
         <script type="text/javascript">
             var rowId;
+            var test=false;
+
+
             $(document).ready(function(){
 
                 $('#tab').on('click', '.clickable-row', function(event) {
@@ -30,10 +33,54 @@
                         document.getElementById("btnModif").disabled = false;
                         document.getElementById("btnSupp").disabled = false;
                         rowId=$(this).data('value');
-
                     }
+
+
                 });
+
+
+                $("#btnModif").click(function(){
+                    $("#tit").text("Modifier Article");
+                    $("#btnAjt").text("Modifier");
+
+                    var rowValues=[];
+
+                    $('.bg-primary').children().each(function() {
+
+                        var val = $(this).html();
+                        rowValues.push(val);
+
+
+                    });
+
+                    $('#titreArt').val(rowValues[0]);
+                    $('#sel1').val(rowValues[1]);
+                    $('#descArt').val(rowValues[2]);
+                    $('#prixArt').val(rowValues[3]);
+                    $('#qteArt').val(rowValues[4]);
+
+                    test=true;
+
+                });
+
+                $("#btnAdd").click(function(){
+                    $("#tit").text("Ajout Article");
+                    $("#btnAjt").text("Ajouter");
+
+                    $('#titreArt').val("");
+                    $('#sel1').val(0);
+                    $('#descArt').val("");
+                    $('#prixArt').val("");
+                    $('#qteArt').val("");
+
+                    test=false;
+                });
+
+
+
+
             });
+
             function del()
             {
 
@@ -133,7 +180,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Ajout Article</h4>
+                        <h4 class="modal-title" id="tit"></h4>
                     </div>
                     <div class="modal-body">
 

@@ -16,6 +16,9 @@
         <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
         <script type="text/javascript">
             var rowId;
+            var test=false;
+
+
             $(document).ready(function(){
 
                 $('#tab').on('click', '.clickable-row', function(event) {
@@ -31,11 +34,51 @@
                         document.getElementById("btnModif").disabled = false;
                         document.getElementById("btnSupp").disabled = false;
                         rowId=$(this).data('value');
-
-
                     }
+
+
                 });
+
+
+                $("#btnModif").click(function(){
+                    $("#tit").text("Modifier Livreur");
+                    $("#btnAjt").text("Modifier");
+
+                    var rowValues=[];
+
+                    $('.bg-primary').children().each(function() {
+
+                        var val = $(this).html();
+                        rowValues.push(val);
+
+
+                    });
+
+
+                    $('#nomPreLiv').val(rowValues[0]);
+                    $('#vehLiv').val(rowValues[1]);
+                    $('#numTelLiv').val(rowValues[2]);
+
+                    test=true;
+
+                });
+
+                $("#btnAdd").click(function(){
+                    $("#tit").text("Ajout Livreur");
+                    $("#btnAjt").text("Ajouter");
+
+                    $('#nomPreLiv').val("");
+                    $('#vehLiv').val("");
+                    $('#numTelLiv').val("");
+
+                    test=false;
+                });
+
+
+
+
             });
+
             function del()
             {
 
@@ -135,7 +178,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Ajout Livreur</h4>
+                        <h4 class="modal-title" id="tit"></h4>
                     </div>
                     <div class="modal-body">
 

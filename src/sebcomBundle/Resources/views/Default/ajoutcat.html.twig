@@ -11,6 +11,9 @@
     <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
         <script type="text/javascript">
             var rowId;
+            var test=false;
+
+
             $(document).ready(function(){
 
                 $('#tab').on('click', '.clickable-row', function(event) {
@@ -27,11 +30,51 @@
                         document.getElementById("btnSupp").disabled = false;
                         rowId=$(this).data('value');
                     }
-                });
-            });
-        function del()
-{
 
+
+                });
+
+
+                $("#btnModif").click(function(){
+                    $("#tit").text("Modifier Catégorie");
+                    $("#btnAjt").text("Modifier");
+
+                    var rowValues=[];
+
+                    $('.bg-primary').children().each(function() {
+
+                        var val = $(this).html();
+                        rowValues.push(val);
+
+
+                    });
+
+                    $('#nomCat').val(rowValues[0]);
+                    $('#sel1').val(rowValues[1]);
+
+
+                    test=true;
+
+                });
+
+                $("#btnAdd").click(function(){
+                    $("#tit").text("Ajout Catégorie");
+                    $("#btnAjt").text("Ajouter");
+
+                    $('#nomCat').val("");
+                    $('#sel1').val("");
+                    test=false;
+                });
+
+
+
+
+            });
+
+
+
+        function act()
+{
 
 
    var url='{{ path("categorie_delete", {'id':'rowVal' }) }}';
@@ -39,6 +82,21 @@
     url = url.replace("rowVal", rowId);
 
     document.getElementById("btnConfirm").setAttribute("href",url);
+
+}
+        function act2()
+{
+
+        if(test)
+        {
+            var url='{{ path("categorie_modifier", {'id':'rowVal' }) }}';
+
+            url = url.replace("rowVal", rowId);
+
+            document.getElementById("btnAjt").setAttribute("href",url);
+        }
+
+
 }
 
         </script>
@@ -65,8 +123,8 @@
                 {% for c in cat %}
                     {% if cat is defined %}
                     <tr class="clickable-row" id="row" data-value="{{ c.id }}">
-                            <th>{{ c.nom }}</th>
-                            <th>{{ c.parentid }}</th>
+                            <th >{{ c.nom }}</th>
+                            <th >{{ c.parentid }}</th>
                     </tr>
                     {% endif %}
                 {% endfor %}
@@ -95,7 +153,7 @@
                     <div style="width: 30%; display: flex;margin-left: 35%">
 
 
-                        <a id="btnConfirm" onclick="del()" class="btn btn-danger btn-block btn-md" style="margin: 1%" >Supprimer</a>
+                        <a id="btnConfirm" onclick="act()" class="btn btn-danger btn-block btn-md" style="margin: 1%" >Supprimer</a>
                     <input type="button" id="btnCancel"  value="Annuler" class="btn btn-default btn-block btn-md" data-dismiss="modal" style="margin: 1%" />
 
                     </div>
@@ -118,7 +176,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Ajout Catégorie</h4>
+                    <h4 class="modal-title" id="tit" ></h4>
                 </div>
                 <div class="modal-body">
 
@@ -148,7 +206,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <input type="submit" id="btnAjt"  value="Ajouter" class="btn btn-success btn-block" /><br/>
+                        <a id="btnAjt" onclick="act2()"  value="Ajouter" class="btn btn-success btn-block" >Ajouter</a><br/>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
