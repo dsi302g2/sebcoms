@@ -1,22 +1,38 @@
 {% extends 'navbar.html.twig' %}
 {% block body %}
 
-    <div id="content"></div>
+  <!--  <div id="content"></div>-->
 
 <script type="text/javascript">
     $(document).ready(function(){
 
+        $('#tab').on('click', '.clickable-row', function(event) {
+            if($(this).hasClass('active')){
+                $(this).removeClass('active');
+            } else {
+                $(this).addClass('active').siblings().removeClass('active');
+            }
+        });
+
+
+
+        //------------------
+
         $('#home').click(function(){
             $("#content").empty();
         });
+
+
 
         $('#login').click(function(){
             window.location.href='/login';
         //    $("this").load($(this).attr('href'));
         });
         $('a').click(function(e){
-            e.preventDefault();
-            $("#content").load($(this).attr('href'));
+           // window.location.href='/ajoutcat';
+            $("this").load($(this).attr('href'));
+//            e.preventDefault();
+//            $("#content").load($(this).attr('href'));
         });
     });
 
