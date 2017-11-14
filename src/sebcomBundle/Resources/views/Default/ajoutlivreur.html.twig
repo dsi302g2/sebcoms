@@ -41,11 +41,11 @@
 
 
 
-                {#var url='{{ path("livreur_delete", {'id':'rowVal' }) }}';#}
+                var url='{{ path("livreur_delete", {'id':'rowVal' }) }}';
 
-                {#url = url.replace("rowVal", rowId);#}
+                url = url.replace("rowVal", rowId);
 
-                {#document.getElementById("btnConfirm").setAttribute("href",url);#}
+                document.getElementById("btnConfirm").setAttribute("href",url);
             }
 
         </script>

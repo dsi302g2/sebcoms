@@ -299,4 +299,26 @@ class DefaultController extends Controller
 
 
 
+    /**
+     * @Route("/delete/{id}", name="livreur_delete")
+     *
+     * @return Response
+     */
+    public function deletelivreurAction(livreur $livreur){
+
+
+
+
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($livreur);
+        $em->flush();
+        $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur') ;
+        $liv=$ems->findAll();
+        return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('liv'=> $liv));
+
+
+    }
+
+
+
 }

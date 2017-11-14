@@ -18,5 +18,7 @@ article_delete:
 article_modifier:
     path:     /modifierarticle/{id}
     defaults: { _controller: sebcomBundle:Default:modifierarticle }
-
+livreur_delete:
+    path:     /ajoutlivreur/{id}
+    defaults: { _controller: sebcomBundle:Default:deletelivreur }
 
