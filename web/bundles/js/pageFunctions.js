@@ -49,27 +49,6 @@ $(document).ready(function(){
 
 
 
-    $("#btnModif").click(function(){
-        $("#tit").text("Modifier Catégorie");
-        $("#btnAjt").text("Modifier");
-
-        var rowValues=[];
-
-        $('.bg-primary').children().each(function() {
-
-            var val = $(this).html();
-            rowValues.push(val);
-
-
-        });
-
-        $('#nomCat').val(rowValues[0]);
-        $('#sel1').val(rowValues[1]);
-
-
-        test=true;
-
-    });
 
     $("#btnAdd").click(function(){
         $("#tit").text("Ajout Catégorie");
@@ -77,7 +56,7 @@ $(document).ready(function(){
 
         $('#nomCat').val("");
         $('#sel1').val("");
-        test=false;
+
     });
 
 

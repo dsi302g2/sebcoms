@@ -16,6 +16,41 @@
         <script type="text/javascript" src="{{ asset('bundles/js/pageFunctions.js')}}"></script>
         <script type="text/javascript">
 
+
+            $(document).ready(function() {
+                var test=false;
+                $("#btnModif").click(function(){
+                    $("#tit").text("Modifier Catégorie");
+                    $("#btnAjt").text("Modifier");
+                    test=true;
+                    var rowValues=[];
+
+                    $('.bg-primary').children().each(function() {
+
+                        var val = $(this).html();
+                        rowValues.push(val);
+
+
+                    });
+
+                    $('#titreArt').val(rowValues[0]);
+                    $('#sel1').val(rowValues[1]);
+                    $('#descArt').val(rowValues[2]);
+                    $('#prixArt').val(rowValues[3]);
+                    $('#qteArt').val(rowValues[4]);
+
+
+                });
+                $("#btnAdd").click(function() {
+                    test=false;
+                });
+
+
+
+
+            });
+
+
             function del()
             {
 

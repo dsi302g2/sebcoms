@@ -17,43 +17,6 @@
         <script type="text/javascript" src="{{ asset('bundles/js/pageFunctions.js')}}"></script>
         <script type="text/javascript">
 
-
-
-
-            $(document).ready(function() {
-                var test=false;
-                $("#btnModif").click(function(){
-                    $("#tit").text("Modifier Catégorie");
-                    $("#btnAjt").text("Modifier");
-                    test=true;
-                    var rowValues=[];
-
-                    $('.bg-primary').children().each(function() {
-
-                        var val = $(this).html();
-                        rowValues.push(val);
-
-
-                    });
-
-                    $('#nomPreLiv').val(rowValues[0]);
-                    $('#vehLiv').val(rowValues[1]);
-                    $('#numTelLiv').val(rowValues[2]);
-
-
-
-
-                });
-                $("#btnAdd").click(function() {
-                    test=false;
-                });
-
-
-
-
-            });
-
-
             function del()
             {
 
@@ -69,38 +32,36 @@
     {% endblock %}
 
 
-    <form name="f" action="/ajoutlivreur" class="form-horizontal" method="POST" >
+    <form name="f" action="/gestioncommande" class="form-horizontal" method="POST" >
         <div class="container" style="margin-top: 5%">
 
 
 
             <input type="button" id="btnAdd" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModal" value="Ajouter" />
-            <input type="button" id="btnModif" disabled="false" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" value="Modifier" />
-            <input type="button" id="btnSupp" disabled="false" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModalSupp" value="Supprimer" />
+            <input type="button" id="btnModif" disabled="false" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" value="Confirmer" />
+            <input type="button" id="btnSupp" disabled="false" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModalSupp" value="Annuler" />
 
             <input type="text" id="rech" placeholder="Search.." style="height: 40px"/><br/><br/>
 
             <table class="table table-hover" id="tab" style="background-color: white">
                 <thead>
                 <tr>
-                    <th>Nom Livreur</th>
-                    <th>Véhicule</th>
-                    <th>Numéro Tel</th>
+                    <th>Client</th>
+                    <th>Adresse</th>
+                    <th>Articles</th>
+                    <th>Date</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% if liv is defined %}
-                    {% for c in liv %}
-                        {% if liv is defined %}
-                        <tr class="clickable-row" id="row" data-value="{{ c.id }}">
 
-                                <th>{{ c.nom }}</th>
-                                <th>{{ c.vehicule }}</th>
-                                <th>{{ c.numtel }}</th>
-                            {% endif %}
+                            <tr class="clickable-row" id="row" data-value="">
+
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
                         </tr>
-                    {% endfor %}
-                {% endif %}
+
                 {% if error is defined %}
                     <th>{{ error }}</th>
                 {% endif %}
@@ -158,20 +119,20 @@
 
 
 
-                                <p>Nom/Prénom </p>
+                        <p>Nom/Prénom </p>
 
-                                <input type="text" onkeyup=""  class="form-control" id="nomPreLiv" name="nom" /><br/>
+                        <input type="text" onkeyup=""  class="form-control" id="nomPreLiv" name="nom" /><br/>
 
 
-                                <p>Véhicule</p>
+                        <p>Véhicule</p>
 
-                                <input type="text" onkeyup=""  class="form-control" id="vehLiv" name="vehicule" /><br/>
+                        <input type="text" onkeyup=""  class="form-control" id="vehLiv" name="vehicule" /><br/>
 
-                                <p>Numéro Tel</p>
+                        <p>Numéro Tel</p>
 
-                                <input type="text" onkeyup=""  class="form-control" id="numTelLiv" name="numtel" /><br/>
+                        <input type="text" onkeyup=""  class="form-control" id="numTelLiv" name="numtel" /><br/>
 
-                       </div>
+                    </div>
 
 
                     <div class="modal-footer">
@@ -181,7 +142,7 @@
                     </div>
                 </div>
 
-        </div>
+            </div>
         </div>
 
         <!-------------------------------------------------------------------------->
