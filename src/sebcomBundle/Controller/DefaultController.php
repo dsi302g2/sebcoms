@@ -43,7 +43,7 @@ class DefaultController extends Controller
                     return $this->redirect('/menu');
                     die();
                 }else{
-                    return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>"Mot De passe ou login Incorrect !"));
+                    return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>" login Incorrect !"));
                 }
         }else{
         return $this->render('sebcomBundle:Default:login.html.twig');
@@ -100,7 +100,6 @@ class DefaultController extends Controller
 
 
 
-
         $em= $this->getDoctrine()->getManager();
         $em->remove($categorie);
         $em->flush();
@@ -116,27 +115,26 @@ class DefaultController extends Controller
      *
      * @return Response
      */
-    public function modifiercatAction($id)
+    public function modifiercatAction(Categorie $cate)
     {
-        if ($_POST) {
 
             $em = $this->getDoctrine()->getManager();
-            $Categorie = $em->getRepository('sebcomBundle\Entity\sebcom\Categorie')->find($id);
-            $Categorie->setNom($_POST['nom']);
-            if ($_POST['parent'] == 0) {
+            $Categorie = $em->getRepository('sebcomBundle\Entity\sebcom\Categorie')->find($cate->getId());
+            $Categorie->setNom($cate->getNom());
+            if ($cate->getParentid() == 0) {
                 $Categorie->setParentid(0);
             } else {
-                $Categorie->setParentid($_POST['parent']);
+                $Categorie->setParentid($cate->getParentid());
             }
             $em->flush();
-            return $this->render('sebcomBundle:Default:ajoutcat.html.twig');
-        }
+
+
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
         $cat = $ems->findAll();
-        $categorie=$ems->findByid($id);
+        $categorie=$ems->findByid($cate->getId());
         $catname=$categorie[0]->getNom();
         $catparentid=$categorie[0]->getParentid();
-        return $this->render('sebcomBundle:Default:ajoutcat.html.twig', array('cat' => $cat,'id'=>$id,'catname'=>$catname,'catparentid'=>$catparentid));
+        return $this->render('sebcomBundle:Default:ajoutcat.html.twig', array('cat' => $cat,'id'=>$cate->getId(),'catname'=>$catname,'catparentid'=>$catparentid));
 
 
     }

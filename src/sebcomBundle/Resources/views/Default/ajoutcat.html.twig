@@ -5,72 +5,11 @@
 {% endblock %}
 {% block body %}
 
-
 <form name="f" action="/ajoutcat" class="form-horizontal"  method="POST" >
     {% block javascripts %}
     <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/js/pageFunctions.js')}}"></script>
         <script type="text/javascript">
-            var rowId;
-            var test=false;
-
-
-            $(document).ready(function(){
-
-                $('#tab').on('click', '.clickable-row', function(event) {
-                    if($(this).hasClass('bg-primary'))
-                    {
-                        $(this).removeClass('bg-primary');
-                        document.getElementById("btnModif").disabled = true;
-                        document.getElementById("btnSupp").disabled = true;
-                    }
-                    else
-                    {
-                        $(this).addClass('bg-primary').siblings().removeClass('bg-primary');
-                        document.getElementById("btnModif").disabled = false;
-                        document.getElementById("btnSupp").disabled = false;
-                        rowId=$(this).data('value');
-                    }
-
-
-                });
-
-
-                $("#btnModif").click(function(){
-                    $("#tit").text("Modifier Catégorie");
-                    $("#btnAjt").text("Modifier");
-
-                    var rowValues=[];
-
-                    $('.bg-primary').children().each(function() {
-
-                        var val = $(this).html();
-                        rowValues.push(val);
-
-
-                    });
-
-                    $('#nomCat').val(rowValues[0]);
-                    $('#sel1').val(rowValues[1]);
-
-
-                    test=true;
-
-                });
-
-                $("#btnAdd").click(function(){
-                    $("#tit").text("Ajout Catégorie");
-                    $("#btnAjt").text("Ajouter");
-
-                    $('#nomCat').val("");
-                    $('#sel1').val("");
-                    test=false;
-                });
-
-
-
-
-            });
-
 
 
         function act()
@@ -108,7 +47,7 @@
         <input type="button" id="btnModif" disabled="false" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" value="Modifier" />
         <input type="button" id="btnSupp" disabled="false" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModalSupp" value="Supprimer" />
 
-        <input type="text" id="rech" style="height: 40px" placeholder="Search.." /><br/>
+        <input type="text" id="rech" style="height: 40px" placeholder="Search.." /><br/><br/>
         <table class="table table-hover" id="tab" style="background-color:#f2f2f2 ;">
             <thead style="background-color:snow">
             <tr>
@@ -169,6 +108,11 @@
 
                 <!---------------------------------MODAL D AJOUT--------------------------------------------------------->
     <!-- Modal -->
+
+
+
+
+
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -214,7 +158,8 @@
             </div>
         </div>
     </div>
-    <br/>
+
+
     <!-------------------------------------------------------------------------->
 </form>
 {% endblock %}
