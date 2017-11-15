@@ -56,14 +56,13 @@
         function act2()
 {
 
-        if(test)
-        {
+
             var url='{{ path("categorie_modifier", {'id':'rowVal' }) }}';
 
             url = url.replace("rowVal", rowId);
 
             document.getElementById("btnAjt").setAttribute("href",url);
-        }
+
 
 
 }

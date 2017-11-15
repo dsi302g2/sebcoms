@@ -115,26 +115,27 @@ class DefaultController extends Controller
      *
      * @return Response
      */
-    public function modifiercatAction(Categorie $cate)
+    public function modifiercatAction($id)
     {
+        if ($_POST) {
 
             $em = $this->getDoctrine()->getManager();
-            $Categorie = $em->getRepository('sebcomBundle\Entity\sebcom\Categorie')->find($cate->getId());
-            $Categorie->setNom($cate->getNom());
-            if ($cate->getParentid() == 0) {
+            $Categorie = $em->getRepository('sebcomBundle\Entity\sebcom\Categorie')->find($id);
+            $Categorie->setNom($_POST['nom']);
+            if ($_POST['parent'] == 0) {
                 $Categorie->setParentid(0);
             } else {
-                $Categorie->setParentid($cate->getParentid());
+                $Categorie->setParentid($_POST['parent']);
             }
             $em->flush();
-
-
+            return $this->render('sebcomBundle:Default:ajoutcat.html.twig');
+        }
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
         $cat = $ems->findAll();
-        $categorie=$ems->findByid($cate->getId());
+        $categorie=$ems->findByid($id);
         $catname=$categorie[0]->getNom();
         $catparentid=$categorie[0]->getParentid();
-        return $this->render('sebcomBundle:Default:ajoutcat.html.twig', array('cat' => $cat,'id'=>$cate->getId(),'catname'=>$catname,'catparentid'=>$catparentid));
+        return $this->render('sebcomBundle:Default:modifiercat.html.twig', array('cat' => $cat,'id'=>$id,'catname'=>$catname,'catparentid'=>$catparentid));
 
 
     }
