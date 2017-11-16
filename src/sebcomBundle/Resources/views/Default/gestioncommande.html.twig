@@ -5,6 +5,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutArticle.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
+        
     {% endblock %}
 
 
@@ -54,13 +55,23 @@
                 </thead>
                 <tbody>
 
-                            <tr class="clickable-row" id="row" data-value="">
+                {% if com is defined %}
+                    {% for c in com %}
+                        {% if com is defined %}
+                            <tr class="clickable-row" id="row" data-value="{{ c.id }}">
+                                <th >{{ c.idclient }}</th>
+                                <th >{{ c.prixttc }}</th>
+                                <th >{{ c.idlivreur }}</th>
+                                <th >{{ c.date|date('Y-m-d') }}</th>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if error is defined %}
+                    <th>{{ error }}</th>
+                {% endif %}
 
-                            <th></th>
-                            <th></th>
-                            <th></th>
-
-                        </tr>
+                </tr>
 
                 {% if error is defined %}
                     <th>{{ error }}</th>

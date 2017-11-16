@@ -329,7 +329,7 @@ class DefaultController extends Controller
             $com = $em->findAll();
 
             if ($com) {
-                return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array('liv' => $com));
+                return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array('com' => $com));
             } else {
                 return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array("error" => "Pas de commande!"));
             }
