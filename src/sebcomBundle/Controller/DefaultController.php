@@ -321,4 +321,22 @@ class DefaultController extends Controller
 
 
 
+    /*  ----------Commande--------------------------  */
+
+    public function gestioncommandeAction(){
+
+        $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\commande');
+            $com = $em->findAll();
+
+            if ($com) {
+                return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array('liv' => $com));
+            } else {
+                return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array("error" => "Pas de commande!"));
+            }
+        }
+
+
+
+
+
 }

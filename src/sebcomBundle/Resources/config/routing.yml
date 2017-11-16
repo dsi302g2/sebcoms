@@ -25,5 +25,9 @@ sebcom_modifierarticle:
 sebcom_ajoutlivreur:
     path: /ajoutlivreur
     defaults: { _controller: sebcomBundle:Default:ajoutlivreur}
+sebcom_gestioncommande:
+    path: /gestioncommande
+    defaults: { _controller: sebcomBundle:Default:gestioncommande}
+
 
 
