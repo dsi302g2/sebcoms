@@ -118,7 +118,8 @@ class DefaultController extends Controller
     public function modifiercatAction($id)
     {
         if ($_POST) {
-
+            $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
+            $cat = $ems->findAll();
             $em = $this->getDoctrine()->getManager();
             $Categorie = $em->getRepository('sebcomBundle\Entity\sebcom\Categorie')->find($id);
             $Categorie->setNom($_POST['nom']);
@@ -128,7 +129,7 @@ class DefaultController extends Controller
                 $Categorie->setParentid($_POST['parent']);
             }
             $em->flush();
-            return $this->render('sebcomBundle:Default:ajoutcat.html.twig');
+            return $this->render('sebcomBundle:Default:ajoutcat.html.twig', array('cat' => $cat));
         }
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
         $cat = $ems->findAll();

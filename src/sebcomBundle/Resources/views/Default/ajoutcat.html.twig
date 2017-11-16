@@ -59,9 +59,18 @@
 
             document.getElementById("mbtnAjt").setAttribute("href",url);
 
+            /*** action ***/
+            var act='/modifiercat/rowVal';
+
+            act=act.replace("rowVal", rowId);
+
+            document.getElementById("f2").setAttribute("action",act);
+
 
 
 }
+
+
 
         </script>
   {% endblock %}
@@ -185,7 +194,7 @@
 
 </form>
     <!----------------------------Modal Modifier---------------------------------------------->
-    <form name="f2"  method="POST" action="/modifierarticle">
+    <form name="f2" id="f2"  method="POST" action="/modifiercat/1">
         <div id="myModalm" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -223,7 +232,7 @@
                         </div>
                         <div class="modal-footer">
 
-                            <a  id="mbtnAjt" onclick="act2()" value="Modifier" class="btn btn-success btn-block" >Modifier</a><br/>
+                            <button type="submit"  id="mbtnAjt" onclick="act2()" value="Modifier" class="btn btn-success btn-block" >Modifier</button><br/>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
