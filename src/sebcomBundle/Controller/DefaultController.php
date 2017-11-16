@@ -135,7 +135,7 @@ class DefaultController extends Controller
         $categorie=$ems->findByid($id);
         $catname=$categorie[0]->getNom();
         $catparentid=$categorie[0]->getParentid();
-        return $this->render('sebcomBundle:Default:modifiercat.html.twig', array('cat' => $cat,'id'=>$id,'catname'=>$catname,'catparentid'=>$catparentid));
+        return $this->render('sebcomBundle:Default:ajoutcat.html.twig', array('cat' => $cat,'id'=>$id,'catname'=>$catname,'catparentid'=>$catparentid));
 
 
     }

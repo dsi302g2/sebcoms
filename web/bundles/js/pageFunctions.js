@@ -50,14 +50,6 @@ $(document).ready(function(){
 
 
 
-    $("#btnAdd").click(function(){
-        $("#tit").text("Ajout Catégorie");
-        $("#btnAjt").text("Ajouter");
-
-        $('#nomCat').val("");
-        $('#sel1').val("");
-
-    });
 
 
 
