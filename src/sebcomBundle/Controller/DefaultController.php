@@ -340,9 +340,11 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\commande');
             $com = $em->findAll();
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\compte');
+        $clt = $ems->findAll();
 
             if ($com) {
-                return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array('com' => $com));
+                return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array('com' => $com,'clt' => $clt));
             } else {
                 return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array("error" => "Pas de commande!"));
             }
@@ -356,6 +358,7 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\promotion');
         $pro = $em->findAll();
+
 
         if ($pro) {
             return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro));
