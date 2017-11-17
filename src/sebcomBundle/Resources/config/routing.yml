@@ -31,6 +31,9 @@ sebcom_modifierlivreur:
 sebcom_gestioncommande:
     path: /gestioncommande
     defaults: { _controller: sebcomBundle:Default:gestioncommande}
+sebcom_promotion:
+    path: /promotion
+    defaults: { _controller: sebcomBundle:Default:promotion}
 
 
 
