@@ -23,9 +23,7 @@
             $(document).ready(function() {
                 var test=false;
                 $("#btnModif").click(function(){
-                    $("#tit").text("Modifier Catégorie");
-                    $("#btnAjt").text("Modifier");
-                    test=true;
+
                     var rowValues=[];
 
                     $('.bg-primary').children().each(function() {
@@ -36,22 +34,38 @@
 
                     });
 
-                    $('#nomPreLiv').val(rowValues[0]);
-                    $('#vehLiv').val(rowValues[1]);
-                    $('#numTelLiv').val(rowValues[2]);
+                    $('#mnomPreLiv').val(rowValues[0]);
+                    $('#mvehLiv').val(rowValues[1]);
+                    $('#mnumTelLiv').val(rowValues[2]);
 
 
 
 
-                });
-                $("#btnAdd").click(function() {
-                    test=false;
                 });
 
 
 
 
             });
+            function act()
+            {
+
+
+                var url='{{ path("livreur_modifier", {'id':'rowVal' }) }}';
+
+                url = url.replace("rowVal", rowId);
+
+                document.getElementById("mbtnAjt").setAttribute("href",url);
+
+                /*** action ***/
+                var act='/modifierlivreur/rowVal';
+
+                act=act.replace("rowVal", rowId);
+
+                document.getElementById("f2").setAttribute("action",act);
+
+            }
+
 
 
             function del()
@@ -75,7 +89,7 @@
 
 
             <input type="button" id="btnAdd" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModal" value="Ajouter" />
-            <input type="button" id="btnModif" disabled="false" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" value="Modifier" />
+            <input type="button" id="btnModif" disabled="false" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModalm" value="Modifier" />
             <input type="button" id="btnSupp" disabled="false" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModalSupp" value="Supprimer" />
 
             <input type="text" id="rech" placeholder="Search.." style="height: 40px"/><br/><br/>
@@ -160,16 +174,16 @@
 
                                 <p>Nom/Prénom </p>
 
-                                <input type="text" onkeyup=""  class="form-control" id="nomPreLiv" name="nom" /><br/>
+                                <input type="text" onkeyup=""  class="form-control" id="nomPreLiv" name="nom" required /><br/>
 
 
                                 <p>Véhicule</p>
 
-                                <input type="text" onkeyup=""  class="form-control" id="vehLiv" name="vehicule" /><br/>
+                                <input type="text" onkeyup=""  class="form-control" id="vehLiv" name="vehicule" required/><br/>
 
                                 <p>Numéro Tel</p>
 
-                                <input type="text" onkeyup=""  class="form-control" id="numTelLiv" name="numtel" /><br/>
+                                <input type="text" onkeyup=""  class="form-control" id="numTelLiv" name="numtel" required/><br/>
 
                        </div>
 
@@ -185,6 +199,48 @@
         </div>
 
         <!-------------------------------------------------------------------------->
+    </form>
+    <form method="POST"id="f2" name="f2">
+        <!---------------------------------MODAL Modif--------------------------------------------------------->
+        <!-- Modal -->
+        <div id="myModalm" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="tit">Modifier Livreur</h4>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                        <p>Nom/Prénom </p>
+
+                        <input type="text" onkeyup=""  class="form-control" id="mnomPreLiv" name="nom" /><br/>
+
+
+                        <p>Véhicule</p>
+
+                        <input type="text" onkeyup=""  class="form-control" id="mvehLiv" name="vehicule" /><br/>
+
+                        <p>Numéro Tel</p>
+
+                        <input type="text" onkeyup=""  class="form-control" id="mnumTelLiv" name="numtel" /><br/>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+
+                        <input type="submit" id="mbtnAjt" onclick="act()"  value="Modifier" class="btn btn-success btn-block" /><br/>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </form>
 {% endblock %}
 

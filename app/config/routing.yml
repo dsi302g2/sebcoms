@@ -21,4 +21,6 @@ article_modifier:
 livreur_delete:
     path:     /ajoutlivreur/{id}
     defaults: { _controller: sebcomBundle:Default:deletelivreur }
-
+livreur_modifier:
+    path:     /modifierlivreur/{id}
+    defaults: { _controller: sebcomBundle:Default:modifierlivreur }

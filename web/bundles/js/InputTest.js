@@ -1,5 +1,6 @@
 var regex = new RegExp(/([^A-Za-z0-9\-_.])/);
 
+
 function inputValid() {
 
     var ch=document.getElementById("usrId").value;
@@ -16,6 +17,21 @@ function inputValid() {
     }
 
 }
+
+
+
+$(document).on('keyup', 'input', function() {
+    var ch=$(this).val();
+
+    if(regex.test(ch) || ch=="")
+    {
+
+        $(this).css('border-color', 'red');
+    }
+    else
+        $(this).css('border-color', 'green');
+});
+
 
 function inputValidV2() {
 
