@@ -1,0 +1,23 @@
+sebcomBundle\Entity\sebcom\promotion:
+    type: entity
+    table: null
+    repositoryClass: sebcomBundle\Repository\sebcom\promotionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        datedebut:
+            type: date
+        datefin:
+            type: date
+        taux:
+            type: integer
+        idarticle:
+            type: integer
+    lifecycleCallbacks: {  }

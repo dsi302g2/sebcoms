@@ -350,6 +350,20 @@ class DefaultController extends Controller
 
 
 
+    /*  ----------Promotion--------------------------  */
+
+    public function promotionAction(){
+
+        $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\promotion');
+        $pro = $em->findAll();
+
+        if ($pro) {
+            return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro));
+        } else {
+            return $this->render('sebcomBundle:Default:promotion.html.twig', array("error" => "Pas de Promotion!"));
+        }
+    }
+
 
 
 }
