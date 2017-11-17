@@ -5,6 +5,8 @@ var test=false;
 
 $(document).ready(function(){
 
+
+
     $('#tab').on('click', '.clickable-row', function(event) {
         if($(this).hasClass('bg-primary'))
         {

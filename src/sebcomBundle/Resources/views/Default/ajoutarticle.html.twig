@@ -20,9 +20,7 @@
             $(document).ready(function() {
                 var test=false;
                 $("#btnModif").click(function(){
-                    $("#tit").text("Modifier Catégorie");
-                    $("#btnAjt").text("Modifier");
-                    test=true;
+
                     var rowValues=[];
 
                     $('.bg-primary').children().each(function() {
@@ -33,16 +31,13 @@
 
                     });
 
-                    $('#titreArt').val(rowValues[0]);
-                    $('#sel1').val(rowValues[1]);
-                    $('#descArt').val(rowValues[2]);
-                    $('#prixArt').val(rowValues[3]);
-                    $('#qteArt').val(rowValues[4]);
+                    $('#mtitreArt').val(rowValues[0]);
+                    $('#msel1').val(rowValues[1]);
+                    $('#mdescArt').val(rowValues[2]);
+                    $('#mprixArt').val(rowValues[3]);
+                    $('#mqteArt').val(rowValues[4]);
 
 
-                });
-                $("#btnAdd").click(function() {
-                    test=false;
                 });
 
 
@@ -60,7 +55,23 @@
 
                 document.getElementById("btnConfirm").setAttribute("href",url);
             }
+        function act()
+        {
+            var url='{{ path("article_modifier", {'id':'rowVal' }) }}';
 
+            url = url.replace("rowVal", rowId);
+
+            document.getElementById("mbtnAjt").setAttribute("href",url);
+
+            /*** action ***/
+            var act='/modifierarticle/rowVal';
+
+            act=act.replace("rowVal", rowId);
+
+            document.getElementById("f2").setAttribute("action",act);
+
+
+        }
         </script>
     {% endblock %}
 
@@ -70,7 +81,7 @@
 
 
             <input type="button" id="btnAdd" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModal" value="Ajouter" />
-            <input type="button" id="btnModif" disabled="false" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" value="Modifier" />
+            <input type="button" id="btnModif" disabled="false" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModalm" value="Modifier" />
             <input type="button" id="btnSupp" disabled="false" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModalSupp" value="Supprimer" />
 
             <input type="text" id="rech" placeholder="Search.." style="height: 40px"/><br/><br/>
@@ -167,14 +178,17 @@
                                         <option value="0">
                                             None
                                         </option>
-                                        {% if cat is defined %}
-                                            {% for c in cat %}
+                                        {% if art is defined %}
+                                            {% for c in art %}
                                                 <option value="{{ c.id }}">
-                                                    {% if cat is defined %}
+                                                    {% if art is defined %}
                                                         <th>{{ c.nom }}</th>
                                                     {% endif %}
                                                 </option>
                                             {% endfor %}
+                                        {% endif %}
+                                        {% if error is defined %}
+                                            <th>{{ error }}</th>
                                         {% endif %}
                                         <!-- other options mel base de donnée : code symfony -->
                                     </select>
@@ -216,8 +230,85 @@
                 </div>
             </div>
         </div>
-        <br/>
         <!-------------------------------------------------------------------------->
+    </form>
+    <!----------------------------Modal Modifier---------------------------------------------->
+    <form name="f2" id="f2"  method="POST" action="">
+        <div id="myModalm" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="tit">Modifier Article</h4>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <p>Titre </p>
+
+                        <input type="text" class="form-control" value="tedt" id="mtitreArt" name="nom" />
+
+                        <p>Catégorie </p>
+                        <div  class="form-group" style="width: 100%; margin-left: 0%">
+
+                            <select class="form-control" id="msel1" name="categorie">
+                                <option value="0">
+                                    None
+                                </option>
+                                {% if art is defined %}
+                                    {% for c in art %}
+                                        <option value="{{ c.id }}">
+                                            {% if art is defined %}
+                                                <th>{{ c.nom }}</th>
+                                            {% endif %}
+                                        </option>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if error is defined %}
+                                    <th>{{ error }}</th>
+                                {% endif %}
+                                <!-- other options mel base de donnée : code symfony -->
+                            </select>
+
+                        </div><br/>
+
+                        <p>Description</p>
+                        <textarea class="form-control" rows="5" id="mdescArt" name="description"></textarea><br/>
+
+                        <p>Prix</p>
+
+                        <input type="text" onkeyup="" placeholder="..DT" class="form-control" id="mprixArt" name="prix" /><br/>
+                        <p>Images</p><br/>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgArt" name="image">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <img id='img-upload'/>
+                        </div>
+                        <p>Quantité</p>
+
+                        <input type="number" onkeyup="" style="width:10%;" class="form-control" id="mqteArt" name="quantite" value="1" min="1"/>
+                        <br/>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <input type="submit" id="mbtnAjt" onclick="act()"  value="Modifier" class="btn btn-success btn-block"  /><br/>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </form>
 {% endblock %}
 

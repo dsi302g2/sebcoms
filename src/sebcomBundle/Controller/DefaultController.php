@@ -211,8 +211,9 @@ class DefaultController extends Controller
     public function modifierarticleAction($id)
     {
         if ($_POST) {
-
+            $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
             $em = $this->getDoctrine()->getManager();
+            $art = $ems->findAll();
             $article = $em->getRepository('sebcomBundle\Entity\sebcom\article')->find($id);
             $article->setNom($_POST['nom']);
             $article->setCategorie($_POST['categorie']);
@@ -221,7 +222,7 @@ class DefaultController extends Controller
             $article->setImage($_POST['image']);
             $article->setQuantite($_POST['quantite']);
             $em->flush();
-            return $this->render('sebcomBundle:Default:ajoutarticle.html.twig');
+            return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('art'=>$art));
         }
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
         $em=$this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
@@ -233,7 +234,7 @@ class DefaultController extends Controller
         $artprix=$article[0]->getPrix();
         $artimage=$article[0]->getImage();
         $artquantite=$article[0]->getQuantite();
-        return $this->render('sebcomBundle:Default:modifierarticle.html.twig', array('cat' => $cat,'id'=>$id,'artname'=>$artname,'artcategorie'=>$artcategorie,'artdescription'=>$artdescription,'artprix'=>$artprix,'artimage'=>$artimage,'artquantite'=>$artquantite));
+        return $this->render('sebcomBundle:Default:ajoutarticle.html.twig', array('cat' => $cat,'id'=>$id,'artname'=>$artname,'artcategorie'=>$artcategorie,'artdescription'=>$artdescription,'artprix'=>$artprix,'artimage'=>$artimage,'artquantite'=>$artquantite));
 
 
     }
