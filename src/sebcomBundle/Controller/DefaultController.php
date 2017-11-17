@@ -97,15 +97,22 @@ class DefaultController extends Controller
      * @return Response
      */
     public function deletecatAction(Categorie $categorie){
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
+        $cat = $ems->findAll();
+        for ($i = 0; $i <= sizeof($cat)-1; $i++) {
 
+            if ($cat[$i]->getParentid() == $categorie->getId()) {
+            $cat[$i]->setParentid(0);
 
-
+            }
+        }
         $em= $this->getDoctrine()->getManager();
         $em->remove($categorie);
         $em->flush();
         $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
         $cat=$ems->findAll();
         return $this->render('sebcomBundle:Default:ajoutcat.html.twig',array('cat'=> $cat));
+
 
 
     }
