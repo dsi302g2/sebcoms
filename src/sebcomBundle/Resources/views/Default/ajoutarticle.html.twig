@@ -59,7 +59,9 @@
                     $('.image-preview-filename').val("");
                     $('.image-preview-clear').hide();
                     $('.image-preview-input input:file').val("");
-                    $(".image-preview-input-title").text("Browse");
+                    $("#txtbtnimg").text("Browse...");
+
+
                 });
                 // Create the preview image
                 $(".image-preview-input input:file").change(function (){
@@ -73,7 +75,7 @@
                     var reader = new FileReader();
                     // Set preview image into the popover data-content
                     reader.onload = function (e) {
-                        $(".image-preview-input-title").text("Change   ");
+                        $("#txtbtnimg").text("Change   ");
                         $(".image-preview-clear").show();
                         $(".image-preview-filename").val(file.name);
                         //img.attr('src', e.target.result);
@@ -249,8 +251,10 @@
                                   <div class="image-preview-input" style="display: flex;">
 
 
-                                    <span class="btn btn-default btn-file  image-preview-input-title" >
-                                        Browse… <input type="file"  id="imgArt"  name="image" />
+                                    <span class="btn btn-default btn-file image-preview-input-title"  >
+
+                                       <p id="txtbtnimg" style="height: 10px" >Browse...</p>
+                                        <input type="file"   id="imgArt"  name="image" />
                                     </span>
 
                                       <button type="button" class="btn btn-default image-preview-clear" style="display:none;">

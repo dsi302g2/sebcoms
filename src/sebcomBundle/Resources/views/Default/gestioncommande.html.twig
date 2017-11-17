@@ -59,15 +59,19 @@
                 </thead>
                 <tbody>
 
-                {% if com is defined %}
+                {% if com is defined and clt is defined %}
                     {% for c in com %}
                         {% if com is defined %}
                             <tr class="clickable-row" id="row" data-value="{{ c.id }}">
-                                <th >{{ c.idclient }}</th>
-                                <th >{{ c.prixttc }}</th>
+                            {% for a in clt %}
+                                {% if c.idclient == a.id %}
+                                <th >{{ a.nom }}</th>
+                                <th >{{ a.adresse }}</th>
                                 <th >{{ c.idlivreur }}</th>
                                 <th >{{ c.date|date('Y-m-d') }}</th>
                             </tr>
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
                     {% endfor %}
                 {% endif %}
