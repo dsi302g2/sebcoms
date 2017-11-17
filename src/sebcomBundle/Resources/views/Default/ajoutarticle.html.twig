@@ -92,7 +92,7 @@
             <input type="button" id="btnSupp" disabled="false" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModalSupp" value="Supprimer" />
 
             <input type="text" id="rech" placeholder="Search.." style="height: 40px"/><br/><br/>
-
+            <div class="panel panel-default">
             <table class="table table-hover" id="tab" style="background-color: white">
                 <thead>
                 <tr>
@@ -127,7 +127,7 @@
 
                 </tbody>
             </table>
-
+            </div>
         </div>
 
 <!--------------------MODAL SUPPRIMER-------------------------------------------->
@@ -209,7 +209,7 @@
 
                                 <input type="text"  placeholder="..DT" class="form-control" id="prixArt" name="prix" required/><br/>
                                 <p>Images</p><br/>
-
+                        <!-------------------------------------------------------------------->
                                 <div class="form-group">
                                     <div class="input-group">
                                 <span class="input-group-btn">
@@ -221,6 +221,7 @@
                                     </div>
                                     <img id='img-upload'/>
                                 </div>
+                        <!-------------------------------------------------------------------->
                                 <p>Quantité</p>
 
                                 <input type="number" onkeyup="" style="width:10%;" class="form-control" id="qteArt" name="quantite" value="1" min="1"/>
