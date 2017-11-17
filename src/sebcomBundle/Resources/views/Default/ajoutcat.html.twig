@@ -182,16 +182,23 @@
                             <option value="0">
                                 None
                             </option>
+
                             {% if cat is defined %}
                                 {% for c in cat %}
-                                    <option value="{{ c.id }}">
-                                        {% if cat is defined %}
-                                            <th>{{ c.nom }}</th>
-                                        {% endif %}
-                                    </option>
+                                    {% if cat is defined %}
+                                        <option  value="{{ c.id }}">
+                                            {{ c.nom }}
+
+                                        </option>
+                                    {% endif %}
                                 {% endfor %}
                             {% endif %}
-                            <!-- other options mel base de donnée : code symfony -->
+                            {% if error is defined %}
+                                {{ error }}
+                            {% endif %}
+
+
+
                         </select>
 
                     </div>
@@ -235,16 +242,17 @@
                                 </option>
                                 {% if cat is defined %}
                                     {% for c in cat %}
+                                        {% if cat is defined %}
+                                            <option  value="{{ c.id }}">
+                                                {{ c.nom }}
 
-                                            <option value="{{ c.id }}">
-                                                {% if cat is defined %}
-                                                    <th>{{ c.nom }}</th>
-                                                {% endif %}
                                             </option>
                                         {% endif %}
                                     {% endfor %}
                                 {% endif %}
-                                <!-- other options mel base de donnée : code symfony -->
+                                {% if error is defined %}
+                                    {{ error }}
+                                {% endif %}
                             </select>
 
                         </div>

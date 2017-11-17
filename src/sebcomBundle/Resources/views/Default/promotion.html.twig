@@ -15,11 +15,14 @@
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
         <script type="text/javascript" src="{{ asset('bundles/js/pageFunctions.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/bootstrap/locales/bootstrap-datepicker.fr.min.js')}}"></script>
+
         <script type="text/javascript">
 
             var regex = new RegExp(/([^A-Za-z0-9\-_.])/);
 
             $(document).ready(function() {
+
 
 
 
@@ -46,7 +49,14 @@
 
 
             });
-
+        $(function () {
+            $('#sandbox-container div').datepicker({
+                todayBtn: "linked",
+                language: "fr",
+                daysOfWeekHighlighted: "0",
+                todayHighlight: true
+            });
+        })
 
 
             function act()
@@ -177,8 +187,11 @@
 
                             <label for="titreProm">Titre Promotion :</label>
                         <input type="text" onkeyup="" class="form-control" id="titreProm" name="code" required/></br>
+
                             <label for="dateDeb">Date Début :</label>
-                        <input type="date" id="dateDeb"/>
+
+                            <input type="date" id="dateFin"/></br>
+
                             <label for="dateFin">Date Fin :</label>
                         <input type="date" id="dateFin"/></br>
                             <label for="taux">Taux de réduction :</label>
