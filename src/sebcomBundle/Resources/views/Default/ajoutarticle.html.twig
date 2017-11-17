@@ -25,7 +25,8 @@
 
 
             $(document).ready(function() {
-                var test=false;
+
+
                 $("#btnModif").click(function(){
 
                     var rowValues=[];
@@ -48,8 +49,39 @@
                 });
 
 
+            });
 
+            $(function() {
 
+                // Clear event
+                $('.image-preview-clear').click(function(){
+
+                    $('.image-preview-filename').val("");
+                    $('.image-preview-clear').hide();
+                    $('.image-preview-input input:file').val("");
+                    $(".image-preview-input-title").text("Browse");
+                });
+                // Create the preview image
+                $(".image-preview-input input:file").change(function (){
+                    var img = $('<img/>', {
+                        id: 'dynamic',
+                        width:250,
+                        height:200
+                    });
+
+                    var file = this.files[0];
+                    var reader = new FileReader();
+                    // Set preview image into the popover data-content
+                    reader.onload = function (e) {
+                        $(".image-preview-input-title").text("Change   ");
+                        $(".image-preview-clear").show();
+                        $(".image-preview-filename").val(file.name);
+                        //img.attr('src', e.target.result);
+
+                    }
+
+                    reader.readAsDataURL(file);
+                });
             });
 
 
@@ -210,17 +242,29 @@
                                 <input type="text"  placeholder="..DT" class="form-control" id="prixArt" name="prix" required/><br/>
                                 <p>Images</p><br/>
                         <!-------------------------------------------------------------------->
-                                <div class="form-group">
+
+                        <div class="form-group" style="margin: auto">
                                     <div class="input-group">
                                 <span class="input-group-btn">
-                                    <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgArt" name="image">
+                                  <div class="image-preview-input" style="display: flex;">
+
+
+                                    <span class="btn btn-default btn-file  image-preview-input-title" >
+                                        Browse… <input type="file"  id="imgArt"  name="image" />
                                     </span>
+
+                                      <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                          <span class="glyphicon glyphicon-remove"></span> Clear
+                                     </button>
+                                      <input type="text"  class="form-control image-preview-filename" readonly>
+
+                                </div>
+
                                 </span>
-                                        <input type="text" class="form-control" readonly>
+
                                     </div>
                                     <img id='img-upload'/>
-                                </div>
+                        </div>
                         <!-------------------------------------------------------------------->
                                 <p>Quantité</p>
 
@@ -288,19 +332,32 @@
                         <p>Prix</p>
 
                         <input type="text"  placeholder="..DT" class="form-control" id="mprixArt" name="prix" required/><br/>
-                        <p>Images</p><br/>
+                        <!-------------------------------------------------------------------->
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin: auto">
                             <div class="input-group">
                                 <span class="input-group-btn">
-                                    <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgArt" name="image">
+                                  <div class="image-preview-input" style="display: flex;">
+
+
+                                    <span class="btn btn-default btn-file  image-preview-input-title" >
+                                        Browse… <input type="file"  id="imgArt"  name="image" />
                                     </span>
+
+                                      <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                          <span class="glyphicon glyphicon-remove"></span> Clear
+                                     </button>
+                                      <input type="text"  class="form-control image-preview-filename" readonly>
+
+                                </div>
+
                                 </span>
-                                <input type="text" class="form-control" readonly>
+
                             </div>
                             <img id='img-upload'/>
                         </div>
+                        <!-------------------------------------------------------------------->
+
                         <p>Quantité</p>
 
                         <input type="number" onkeyup="" style="width:10%;" class="form-control" id="mqteArt" name="quantite" value="1" min="1"/>
