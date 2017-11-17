@@ -4,6 +4,13 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutArticle.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
+        <style type="text/css">
+
+            .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+
+                background-color: lightgray;
+            }
+        </style>
     {% endblock %}
 
 
@@ -170,7 +177,7 @@
 
                                 <p>Titre </p>
 
-                                <input type="text" onkeyup="" class="form-control" id="titreArt" name="nom" />
+                                <input type="text" onkeyup="" class="form-control" id="titreArt" name="nom" required/>
                                 <p>Catégorie </p>
                                 <div  class="form-group" style="width: 100%; margin-left: 0%">
 
@@ -200,7 +207,7 @@
 
                                 <p>Prix</p>
 
-                                <input type="text" onkeyup="" placeholder="..DT" class="form-control" id="prixArt" name="prix" /><br/>
+                                <input type="text"  placeholder="..DT" class="form-control" id="prixArt" name="prix" required/><br/>
                                 <p>Images</p><br/>
 
                                 <div class="form-group">
@@ -248,7 +255,7 @@
 
                         <p>Titre </p>
 
-                        <input type="text" class="form-control" value="tedt" id="mtitreArt" name="nom" />
+                        <input type="text" class="form-control" value="tedt" id="mtitreArt" name="nom" required/>
 
                         <p>Catégorie </p>
                         <div  class="form-group" style="width: 100%; margin-left: 0%">
@@ -279,7 +286,7 @@
 
                         <p>Prix</p>
 
-                        <input type="text" onkeyup="" placeholder="..DT" class="form-control" id="mprixArt" name="prix" /><br/>
+                        <input type="text"  placeholder="..DT" class="form-control" id="mprixArt" name="prix" required/><br/>
                         <p>Images</p><br/>
 
                         <div class="form-group">

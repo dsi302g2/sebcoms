@@ -37,7 +37,7 @@ body{
     height: 100%;
     background-size:cover;
     background: url('../images/backgroundLogin2.jpg') no-repeat center;
-    opacity: 1;
+    opacity: 0.6;
     -webkit-filter: blur(5px);
     -moz-filter: blur(5px);
     -o-filter: blur(5px);
@@ -89,3 +89,8 @@ body{
     background-color: red;
     opacity: 0.2;
 }
+.form-control::-webkit-input-placeholder { color: white; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: white; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: white; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: white; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: white; }  /* Microsoft Edge */

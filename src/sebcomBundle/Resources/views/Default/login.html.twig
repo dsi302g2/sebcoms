@@ -6,6 +6,12 @@
             background-image:url("{{ asset('bundles/images/backgroundLogin2.jpg')}}");
             background-size: cover;
         }
+        .form-control::-webkit-input-placeholder { color: white;opacity: 0.6 }  /* WebKit, Blink, Edge */
+        .form-control:-moz-placeholder { color: white; opacity: 0.6}  /* Mozilla Firefox 4 to 18 */
+        .form-control::-moz-placeholder { color: white; opacity: 0.6}  /* Mozilla Firefox 19+ */
+        .form-control:-ms-input-placeholder { color: white;opacity: 0.6 }  /* Internet Explorer 10-11 */
+        .form-control::-ms-input-placeholder { color: white; opacity: 0.6}  /* Microsoft Edge */
+
     </style>
 {% endblock %}
 {% block title %}Login{% endblock %}
@@ -18,7 +24,7 @@
             <div class="box">
                 <div id="noblur">
                     <h1> Login </h1>
-                    <input type="text" name="Pseudo" onkeyup="inputValid()" id="usrId" class="form-control" placeholder="Pseudo" />
+                    <input type="text" name="Pseudo" onkeyup="inputValid()" id="usrId" class="form-control"  placeholder="Pseudo" />
                     <input type="password" name="Password" id="pwdId" class="form-control" placeholder="Password"  />
                     {% if error is defined %}
 

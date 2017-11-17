@@ -1,7 +1,13 @@
 {% extends 'navbar.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
+    <style type="text/css">
 
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+
+            background-color: lightgray;
+        }
+    </style>
 {% endblock %}
 {% block body %}
 
@@ -89,7 +95,7 @@
 
         <input type="text" id="rech" style="height: 40px" placeholder="Search.." /><br/><br/>
         <table class="table table-hover" id="tab" style="background-color:#f2f2f2 ;">
-            <thead style="background-color:snow">
+            <thead >
             <tr>
                 <th>Nom Catégorie</th>
                 <th>Parent</th>
@@ -102,8 +108,8 @@
                 {% for c in cat %}
                     {% if cat is defined %}
                     <tr class="clickable-row" id="row" data-value="{{ c.id }}">
-                            <th >{{ c.nom }}</th>
-                            <th >{{ c.parentid }}</th>
+                            <td >{{ c.nom }}</td>
+                            <td >{{ c.parentid }}</td>
                     </tr>
                     {% endif %}
                 {% endfor %}
@@ -162,7 +168,7 @@
                 <div class="modal-body">
 
                     <p>Nom </p>
-                    <input type="text" onkeyup="" class="form-control" id="nomCat" name="nom" />
+                    <input type="text" onkeyup="" class="form-control" id="nomCat" name="nom" required/>
 
                     <p>Parent </p>
 
@@ -213,7 +219,7 @@
                     <div class="modal-body">
 
                         <p>Nom </p>
-                        <input type="text" onkeyup="inputValidV2()" class="form-control" id="mnomCat" name="nom" />
+                        <input type="text" onkeyup="inputValidV2()" class="form-control" id="mnomCat" name="nom" required/>
 
                         <p>Parent </p>
 

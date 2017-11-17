@@ -5,7 +5,13 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutArticle.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
+        <style type="text/css">
 
+            .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+
+                background-color: lightgray;
+            }
+        </style>
     {% endblock %}
 
 
@@ -37,8 +43,6 @@
         <div class="container" style="margin-top: 5%">
 
 
-
-            <input type="button" id="btnAdd" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModal" value="Ajouter" />
             <input type="button" id="btnModif" disabled="false" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" value="Confirmer" />
             <input type="button" id="btnSupp" disabled="false" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModalSupp" value="Annuler" />
 
@@ -73,9 +77,7 @@
 
                 </tr>
 
-                {% if error is defined %}
-                    <th>{{ error }}</th>
-                {% endif %}
+
 
 
                 </tbody>

@@ -5,6 +5,13 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutArticle.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
+        <style type="text/css">
+
+            .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+
+                background-color: lightgray;
+            }
+        </style>
     {% endblock %}
 
 
@@ -218,16 +225,16 @@
 
                         <p>Nom/Prénom </p>
 
-                        <input type="text" onkeyup=""  class="form-control" id="mnomPreLiv" name="nom" /><br/>
+                        <input type="text" onkeyup=""  class="form-control" id="mnomPreLiv" name="nom" required/><br/>
 
 
                         <p>Véhicule</p>
 
-                        <input type="text" onkeyup=""  class="form-control" id="mvehLiv" name="vehicule" /><br/>
+                        <input type="text" onkeyup=""  class="form-control" id="mvehLiv" name="vehicule" required/><br/>
 
                         <p>Numéro Tel</p>
 
-                        <input type="text" onkeyup=""  class="form-control" id="mnumTelLiv" name="numtel" /><br/>
+                        <input type="text" onkeyup=""  class="form-control" id="mnumTelLiv" name="numtel" required/><br/>
 
                     </div>
 
