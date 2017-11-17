@@ -173,35 +173,17 @@
 
                         <form>
                             <label for="CodeProm">Code Promotion :</label>
-                        <input type="text" onkeyup="" class="form-control" id="CodeProm" name="code" required/>
+                        <input type="text" onkeyup="" class="form-control" id="CodeProm" name="code" required/></br>
 
                             <label for="titreProm">Titre Promotion :</label>
-                        <input type="text" onkeyup="" class="form-control" id="titreProm" name="code" required/>
+                        <input type="text" onkeyup="" class="form-control" id="titreProm" name="code" required/></br>
                             <label for="dateDeb">Date Début :</label>
                         <input type="date" id="dateDeb"/>
                             <label for="dateFin">Date Fin :</label>
-                        <input type="date" id="dateFin"/>
-                            <label for="taux">Taux de réduction</label>
-                        <input type="text" onkeyup="" class="form-control" id="taux" name="taux" required/>
-                            <div  class="form-group">
+                        <input type="date" id="dateFin"/></br>
+                            <label for="taux">Taux de réduction :</label>
+                            <input type="text" onkeyup="" class="form-control" id="taux" name="taux" placeholder="%" required/></br>
 
-                            <select class="form-control" id="sel1" name="parent">
-                                <option value="0">
-                                    None
-                                </option>
-                                {% if cat is defined %}
-                                    {% for c in cat %}
-                                        <option value="{{ c.id }}">
-                                            {% if cat is defined %}
-                                                <th>{{ c.nom }}</th>
-                                            {% endif %}
-                                        </option>
-                                    {% endfor %}
-                                {% endif %}
-                                <!-- other options mel base de donnée : code symfony -->
-                            </select>
-
-                        </div>
                         <div class="modal-footer">
 
                             <input type="submit" id="btnAjt" value="Ajouter" class="btn btn-success btn-block" /><br/>
