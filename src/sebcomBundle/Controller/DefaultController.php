@@ -164,12 +164,15 @@ class DefaultController extends Controller
                 $article->setImage($_POST['image']);
                 $article->setQuantite($_POST['quantite']);
 
+                $emss = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie');
+                $cat = $emss->findAll();
+
                 $em->persist($article);
                 $em->flush();
                 $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
                 $art=$em->findAll();
                 if($art){
-                    return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('art'=> $art));
+                    return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('art'=> $art,'cat' => $cat));
                 }else{
                     return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array("error"=>"Pas de categories!"));
                 }
@@ -181,7 +184,7 @@ class DefaultController extends Controller
                 $cat = $ems->findAll();
                 $art = $em->findAll();
 
-                if ($art) {
+                if ($cat) {
                     return $this->render('sebcomBundle:Default:ajoutarticle.html.twig', array('art' => $art, 'cat' => $cat));
                 } else {
                     return $this->render('sebcomBundle:Default:ajoutarticle.html.twig', array("error" => "Pas d'article!"));
@@ -365,17 +368,19 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $promotion = new promotion();
             $promotion->setTitre($_POST['titre']);
-            $promotion->setDatedebut($_POST['datedebut']);
-            $promotion->setDatefin($_POST['datefin']);
+            $promotion->setDatedebut(new \DateTime($_POST['datedebut']));
+            $promotion->setDatefin(new \DateTime($_POST['datefin']));
             $promotion->setTaux($_POST['taux']);
             $promotion->setIdarticle($_POST['idarticle']);
+            $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
+            $art = $ems->findAll();
 
             $em->persist($promotion);
             $em->flush();
             $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\promotion');
             $pro = $em->findAll();
             if ($pro) {
-                return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro));
+                return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro,'art' => $art));
             } else {
                 return $this->render('sebcomBundle:Default:promotion.html.twig', array("error" => "Pas de Promotion!"));
             }
@@ -391,11 +396,74 @@ class DefaultController extends Controller
 
             if ($pro) {
                 return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro,'art' => $art));
-            }else {
+            }
+            else {
                 return $this->render('sebcomBundle:Default:promotion.html.twig', array("error" => "Pas de Promotion!"));
             }
         }
 
     }
+
+    /**
+     * @Route("/delete/{id}", name="promotion_delete")
+     *
+     * @return Response
+     */
+    public function deletepromotionAction(promotion $promotion){
+
+
+
+
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($promotion);
+        $em->flush();
+        $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\promotion') ;
+        $pro=$ems->findAll();
+        $emss = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
+        $art = $emss->findAll();
+        return $this->render('sebcomBundle:Default:promotion.html.twig',array('pro'=> $pro , 'art'=>$art));
+
+
+    }
+
+
+    /**
+     * @Route("/modifier/{id}", name="promotion_modifier")
+     *
+     * @return Response
+     */
+
+    public function modifierpromotionAction($id)
+    {
+        if ($_POST) {
+            $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\promotion');
+            $pro=$ems->findAll();
+            $em = $this->getDoctrine()->getManager();
+            $promotion = $em->getRepository('sebcomBundle\Entity\sebcom\promotion')->find($id);
+            $promotion->setTitre($_POST['titre']);
+            $promotion->setDatedebut(new \DateTime($_POST['datedebut']));
+            $promotion->setDatefin(new \DateTime($_POST['datefin']));
+            $promotion->setTaux($_POST['taux']);
+            $promotion->setIdarticle($_POST['idarticle']);
+            $em->flush();
+
+            $emss = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
+            $art = $emss->findAll();
+            return $this->render('sebcomBundle:Default:promotion.html.twig',array('pro'=>$pro,'art' => $art));
+        }
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur');
+        $liv=$ems->findByid($id);
+        $livreur=$ems->findAll();
+        $livname=$liv[0]->getName();
+        $livvehicule=$liv[0]->getVehicule();
+        $livtel=$liv[0]->getLivtel();
+        return $this->render('sebcomBundle:Default:promotion.html.twig', array('liv' => $livreur,'id'=>$id,'livname'=>$livname,'livvehicule'=>$livvehicule,'livtel'=>$livtel));
+
+    }
+
+
+
+
+
 
 }

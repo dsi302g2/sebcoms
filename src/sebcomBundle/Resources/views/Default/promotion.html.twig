@@ -63,7 +63,7 @@
             {
 
 
-                var url='{{ path("categorie_delete", {'id':'rowVal' }) }}';
+                var url='{{ path("promotion_delete", {'id':'rowVal' }) }}';
 
                 url = url.replace("rowVal", rowId);
 
@@ -75,14 +75,14 @@
             {
 
 
-                var url='{{ path("categorie_modifier", {'id':'rowVal' }) }}';
+                var url='{{ path("promotion_modifier", {'id':'rowVal' }) }}';
 
                 url = url.replace("rowVal", rowId);
 
                 document.getElementById("mbtnAjt").setAttribute("href",url);
 
                 /*** action ***/
-                var act='/modifiercat/rowVal';
+                var act='/modifierpromotion/rowVal';
 
                 act=act.replace("rowVal", rowId);
 
@@ -249,21 +249,38 @@
                     <div class="modal-body">
 
                         <form>
-                            <label for="CodeProm">Code Promotion :</label>
-                            <input type="text" onkeyup="" class="form-control" id="CodeProm" name="code" required/></br>
-
                             <label for="titreProm">Titre Promotion :</label>
-                            <input type="text" onkeyup="" class="form-control" id="titreProm" name="code" required/></br>
+                            <input type="text" onkeyup="" class="form-control" id="titreProm" name="titre" required/></br>
+                            <label for="titreProm">Article :</label>
+
+                            <div  class="form-group" style="width: 100%; margin-left: 0%">
+
+                                <select class="form-control" id="sel1" name="idarticle">
+
+                                    {% if art is defined %}
+                                        {% for c in art %}
+                                            <option value="{{ c.id }}">
+                                                {{ c.nom }}
+                                            </option>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if error is defined %}
+                                        <th>{{ error }}</th>
+                                    {% endif %}
+                                    <!-- other options mel base de donnée : code symfony -->
+                                </select>
+
+                            </div><br/>
                             <label for="dateDeb">Date Début :</label>
-                            <input type="date" id="dateDeb"/>
+                            <input type="date" id="dateDeb" name="datedebut"/>
                             <label for="dateFin">Date Fin :</label>
-                            <input type="date" id="dateFin"/></br>
+                            <input type="date" id="dateFin" name="datefin"/></br>
                             <label for="taux">Taux de réduction :</label>
                             <input type="text" onkeyup="" class="form-control" id="taux" name="taux" placeholder="%" required/></br>
 
                             <div class="modal-footer">
 
-                                <input type="submit" id="btnAjt" value="Ajouter" class="btn btn-success btn-block" /><br/>
+                                <input type="submit" id="mbtnAjt" value="Modifier" onclick="act2()" class="btn btn-success btn-block" /><br/>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </form>

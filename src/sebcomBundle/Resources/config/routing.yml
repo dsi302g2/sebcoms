@@ -34,6 +34,8 @@ sebcom_gestioncommande:
 sebcom_promotion:
     path: /promotion
     defaults: { _controller: sebcomBundle:Default:promotion}
-
+sebcom_modifierpromotion:
+    path: /modifierpromotion/:id
+    defaults: { _controller: sebcomBundle:Default:modifierpromotion}
 
 

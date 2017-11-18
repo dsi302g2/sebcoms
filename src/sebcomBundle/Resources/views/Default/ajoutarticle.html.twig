@@ -219,15 +219,12 @@
                                         <option value="0">
                                             None
                                         </option>
-                                        {% if art is defined %}
-                                            {% for c in art %}
-                                                <option value="{{ c.id }}">
-                                                    {% for a in art %}
-                                                        {% if a.id==c.categorie %}
-                                                            {{ a.nom }}
-                                                        {% endif %}
-                                                    {% endfor %}
-
+                                        {% if cat is defined %}
+                                            {% for c in cat %}
+                                                <option value="{{ c.nom }}">
+                                                    {% if cat is defined %}
+                                                        <th>{{ c.nom }}</th>
+                                                    {% endif %}
                                                 </option>
                                             {% endfor %}
                                         {% endif %}
@@ -315,10 +312,10 @@
                                 <option value="0">
                                     None
                                 </option>
-                                {% if art is defined %}
-                                    {% for c in art %}
-                                        <option value="{{ c.id }}">
-                                            {% if art is defined %}
+                                {% if cat is defined %}
+                                    {% for c in cat %}
+                                        <option value="{{ c.nom }}">
+                                            {% if cat is defined %}
                                                 <th>{{ c.nom }}</th>
                                             {% endif %}
                                         </option>

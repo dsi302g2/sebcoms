@@ -24,3 +24,9 @@ livreur_delete:
 livreur_modifier:
     path:     /modifierlivreur/{id}
     defaults: { _controller: sebcomBundle:Default:modifierlivreur }
+promotion_delete:
+    path:     /promotion/{id}
+    defaults: { _controller: sebcomBundle:Default:deletepromotion }
+promotion_modifier:
+    path:     /modifierpromotion/{id}
+    defaults: { _controller: sebcomBundle:Default:modifierpromotion }
