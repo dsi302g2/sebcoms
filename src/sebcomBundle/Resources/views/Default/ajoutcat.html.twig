@@ -105,15 +105,30 @@
             {% if cat is defined %}
                 {% for c in cat %}
                     {% if cat is defined %}
+                        {% if c.parentid==0 %}
                     <tr class="clickable-row" id="row" data-value="{{ c.id }}">
-                            <td >{{ c.nom }}</td>
+                            <th >{{ c.nom }}</th>
                         {% for a in cat %}
                             {% if a.id==c.parentid %}
-                            <td>{{ a.nom }}</td>
+                            <th>{{ a.nom }}</th>
+
                             {% endif %}
                         {% endfor %}
                     </tr>
+                            {% for b in cat %}
+                                {% if c.id==b.parentid %}
+                                    <tr class="clickable-row" id="row" data-value="{{ b.id }}">
+                                        <td >{{ b.nom }}</td>
+                                        {% for a in cat %}
+                                            {% if a.id==b.parentid %}
+                                                <td>{{ a.nom }}</td>
 
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             {% endif %}
