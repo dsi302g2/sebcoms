@@ -24,6 +24,8 @@
         <script type="text/javascript" src="{{ asset('bundles/js/pageFunctions.js')}}"></script>
         <script type="text/javascript">
 
+
+
             function del()
             {
 
@@ -65,10 +67,10 @@
                             <tr class="clickable-row" id="row" data-value="{{ c.id }}">
                             {% for a in clt %}
                                 {% if c.idclient == a.id %}
-                                <th >{{ a.nom }}</th>
-                                <th >{{ a.adresse }}</th>
-                                <th >{{ c.idlivreur }}</th>
-                                <th >{{ c.date|date('Y-m-d') }}</th>
+                                <td >{{ a.nom }}</td>
+                                <td >{{ a.adresse }}</td>
+                                <td >{{ c.idlivreur }}</td>
+                                <td >{{ c.date|date('Y-m-d') }}</td>
                             </tr>
                                 {% endif %}
                             {% endfor %}
@@ -101,7 +103,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Voulez vous vraiment Supprimer Ce Livreur ?</h4>
+                        <h4 class="modal-title">Voulez vous vraiment Annuler cette Commande ?</h4>
                     </div>
                     <div class="modal-body">
                         <div style="width: 30%; display: flex;margin-left: 35%">
@@ -130,34 +132,42 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="tit"></h4>
+                        <h4 class="modal-title">Affecter Livreur</h4>
                     </div>
                     <div class="modal-body">
+                        <div style="width: 30%; display: flex;margin-left: 35%">
+                            <div  class="form-group" style="margin: auto">
+
+                                <select class="form-control"  id="sell" name="parent">
+                                    {% if liv is defined %}
+                                        {% for c in liv %}
+                                            {% if liv is defined %}
+                                                <option  value="{{ c.id }}" >
+                                                    {{ c.nom }}
+
+                                                </option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if error is defined %}
+                                        {{ error }}
+                                    {% endif %}
 
 
 
-                        <p>Nom/Prénom </p>
+                                </select>
 
-                        <input type="text" onkeyup=""  class="form-control" id="nomPreLiv" name="nom" /><br/>
+                            </div>
 
 
-                        <p>Véhicule</p>
 
-                        <input type="text" onkeyup=""  class="form-control" id="vehLiv" name="vehicule" /><br/>
-
-                        <p>Numéro Tel</p>
-
-                        <input type="text" onkeyup=""  class="form-control" id="numTelLiv" name="numtel" /><br/>
-
+                        </div>
                     </div>
-
-
                     <div class="modal-footer">
 
-                        <input type="submit" id="btnAjt"  value="Ajouter" class="btn btn-success btn-block" /><br/>
+                        <input type="submit" id="btnAjt"   value="Confirmer" class="btn btn-success btn-block"  /><br/>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+                    </div>  </div>
 
             </div>
         </div>

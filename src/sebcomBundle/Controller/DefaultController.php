@@ -342,9 +342,11 @@ class DefaultController extends Controller
             $com = $em->findAll();
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\compte');
         $clt = $ems->findAll();
+        $emss = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur');
+        $liv = $emss->findAll();
 
             if ($com) {
-                return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array('com' => $com,'clt' => $clt));
+                return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array('com' => $com,'clt' => $clt,'liv' =>$liv));
             } else {
                 return $this->render('sebcomBundle:Default:gestioncommande.html.twig', array("error" => "Pas de commande!"));
             }

@@ -1,4 +1,4 @@
-var regex = new RegExp(/([^A-Za-z0-9\-_.])/);
+var regex = new RegExp(/([^A-Za-z0-9\-_. ])/);
 
 
 function inputValid() {

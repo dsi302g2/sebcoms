@@ -222,9 +222,12 @@
                                         {% if art is defined %}
                                             {% for c in art %}
                                                 <option value="{{ c.id }}">
-                                                    {% if art is defined %}
-                                                        <th>{{ c.nom }}</th>
-                                                    {% endif %}
+                                                    {% for a in art %}
+                                                        {% if a.id==c.categorie %}
+                                                            {{ a.nom }}
+                                                        {% endif %}
+                                                    {% endfor %}
+
                                                 </option>
                                             {% endfor %}
                                         {% endif %}

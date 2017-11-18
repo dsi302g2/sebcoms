@@ -1,6 +1,6 @@
 
 var rowId;
-var test=false;
+
 
 
 $(document).ready(function(){
