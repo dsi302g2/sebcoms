@@ -1,13 +1,7 @@
 {% extends 'navbar.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
-    <style type="text/css">
 
-        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-
-            background-color: lightgray;
-        }
-    </style>
 {% endblock %}
 {% block body %}
 
@@ -19,7 +13,7 @@
 
         <script type="text/javascript">
 
-            var regex = new RegExp(/([^A-Za-z0-9\-_.])/);
+
 
             $(document).ready(function() {
 
@@ -108,11 +102,11 @@
 
             <input type="text" id="rech" style="height: 40px" placeholder="Search.." /><br/><br/>
             <div class="panel panel-default">
-                <table class="table table-hover" id="tab" style="background-color:#f2f2f2 ;">
+                <table class="table table-hover" id="tab" style="background-color:white ;">
                     <thead >
                     <tr>
-                        <th>Nom Promotion</th>
-                        <th>Parent</th>
+                        <th onclick="sortTable(0)">Nom Promotion <span id="sp0" class="glyphicon glyphicon-sort-by-attributes"></th>
+                        <th onclick="sortTable(1)">Parent <span id="sp1" class="glyphicon glyphicon-sort-by-attributes"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -211,14 +205,18 @@
 
                             </div><br/>
 
-                            <label for="dateDeb">Date Début :</label>
-
-                            <input type="date" id="dateFin" name="datedebut"/></br>
-
-                            <label for="dateFin">Date Fin :</label>
-                        <input type="date" id="dateFin" name="datefin"/></br>
-                            <label for="taux">Taux de réduction :</label>
-                            <input type="text" onkeyup="" class="form-control" id="taux" name="taux" placeholder="%" required/></br>
+                            <div class="form-group row">
+                                <label class="col-xs-3 col-form-label">Date Début</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="date" required  id="dateDeb" name="db">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label  class="col-xs-3 col-form-label">Date Fin</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="date" required  id="dateDeb" name="db">
+                                </div>
+                            </div>
 
                         <div class="modal-footer">
 
@@ -271,10 +269,18 @@
                                 </select>
 
                             </div><br/>
-                            <label for="dateDeb">Date Début :</label>
-                            <input type="date" id="dateDeb" name="datedebut"/>
-                            <label for="dateFin">Date Fin :</label>
-                            <input type="date" id="dateFin" name="datefin"/></br>
+                            <div class="form-group row">
+                                <label for="prenom" class="col-xs-2 col-form-label">Date Début</label>
+                                <div class="col-xs-10">
+                                    <input class="form-control" type="date" required  id="dateDeb" name="db">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="prenom" class="col-xs-2 col-form-label">Date Fin</label>
+                                <div class="col-xs-10">
+                                    <input class="form-control" type="date" required  id="dateFin" name="db">
+                                </div>
+                            </div>
                             <label for="taux">Taux de réduction :</label>
                             <input type="text" onkeyup="" class="form-control" id="taux" name="taux" placeholder="%" required/></br>
 
