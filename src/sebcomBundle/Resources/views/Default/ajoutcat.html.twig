@@ -113,10 +113,10 @@
                     {% if cat is defined %}
                         {% if c.parentid==0 %}
                     <tr class="clickable-row" id="row" data-value="{{ c.id }}">
-                            <th >{{ c.nom }}</th>
+                            <th ><i>{{ c.nom }}</i></th>
                         {% for a in cat %}
                             {% if a.id==c.parentid %}
-                            <th>{{ a.nom }}</th>
+                            <th><i>{{ a.nom }}</i></th>
 
                             {% endif %}
                         {% endfor %}
@@ -124,7 +124,7 @@
                             {% for b in cat %}
                                 {% if c.id==b.parentid %}
                                     <tr class="clickable-row" id="row" data-value="{{ b.id }}">
-                                        <td >{{ b.nom }}</td>
+                                        <td > _________{{b.nom }}</td>
                                         {% for a in cat %}
                                             {% if a.id==b.parentid %}
                                                 <td>{{ a.nom }}</td>
