@@ -5,13 +5,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutArticle.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
-        <style type="text/css">
 
-            .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-
-                background-color: lightgray;
-            }
-        </style>
     {% endblock %}
 
 
@@ -20,6 +14,7 @@
 {% block body %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     {% block javascripts %}
+
         <script type="text/javascript" src="{{ asset('bundles/js/InputTest.js')}}"></script>
         <script type="text/javascript" src="{{ asset('bundles/js/pageFunctions.js')}}"></script>
         <script type="text/javascript">
@@ -28,7 +23,7 @@
 
 
             $(document).ready(function() {
-                var test=false;
+
                 $("#btnModif").click(function(){
 
                     var rowValues=[];
@@ -102,11 +97,12 @@
             <input type="text" id="rech" placeholder="Search.." style="height: 40px"/><br/><br/>
             <div class="panel panel-default">
             <table class="table table-hover" id="tab" style="background-color: white">
+
                 <thead>
                 <tr>
-                    <th>Nom Livreur</th>
-                    <th>Véhicule</th>
-                    <th>Numéro Tel</th>
+                    <th onclick="sortTable(0)">Nom Livreur <span id="sp0" class="glyphicon glyphicon-sort-by-attributes"></span></th>
+                    <th onclick="sortTable(1)">Véhicule <span id="sp1"  class="glyphicon glyphicon-sort-by-attributes"></span></th>
+                    <th onclick="sortTable(2)">Numéro Tel <span id="sp2" class="glyphicon glyphicon-sort-by-attributes"></span></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -115,9 +111,9 @@
                         {% if liv is defined %}
                         <tr class="clickable-row" id="row" data-value="{{ c.id }}">
 
-                                <th>{{ c.nom }}</th>
-                                <th>{{ c.vehicule }}</th>
-                                <th>{{ c.numtel }}</th>
+                                <td>{{ c.nom }}</td>
+                                <td>{{ c.vehicule }}</td>
+                                <td>{{ c.numtel }}</td>
                             {% endif %}
                         </tr>
                     {% endfor %}

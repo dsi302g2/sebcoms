@@ -3,17 +3,37 @@
 <head>
     <meta charset="UTF-8" />
 
+
     <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap-datepicker3.min.css') }}">
 
-    <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
 
-    <script src=" {{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
+
+
+    <script type="text/javascript" src="{{ asset('bundles/js/tableSort.js')}}"></script>
+
+    <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" >
+
+    </script>
+    <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" >
+
+    </script>
+
 
     {% block stylesheets %}{% endblock %}
-    <meta charset="UTF-8">
+
     <title>Admin</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <style type="text/css">
+
+        .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+
+            background-color: lightgray;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body style="background-image: url({{ asset('bundles/images/backgroundLogin3.jpg') }}); background-size: cover;">
 <script type="text/javascript">
@@ -63,7 +83,7 @@
                 {% if name is defined %}
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ name }}</a></li>
                 {% endif %}
-                <li><a id="login" href="/login" ><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+                <li><a id="login" href="/login" onclick="lien('home')" ><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
             </ul>
         </div>
 

@@ -4,13 +4,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutArticle.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/Style/StyleFileAjoutCat.css') }}">
-        <style type="text/css">
 
-            .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-
-                background-color: lightgray;
-            }
-        </style>
     {% endblock %}
 
 
@@ -130,11 +124,11 @@
             <table class="table table-hover" id="tab" style="background-color: white">
                 <thead>
                 <tr>
-                    <th>Nom Article</th>
-                    <th>Catégorie</th>
-                    <th>Description</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
+                    <th onclick="sortTable(0)">Nom Article <span id="sp0" class="glyphicon glyphicon-sort-by-attributes"></th>
+                    <th onclick="sortTable(1)">Catégorie <span id="sp1" class="glyphicon glyphicon-sort-by-attributes"></th>
+                    <th onclick="sortTable(2)">Description <span id="sp2" class="glyphicon glyphicon-sort-by-attributes"></th>
+                    <th onclick="sortTable(3)">Prix <span id="sp3" class="glyphicon glyphicon-sort-by-attributes"></th>
+                    <th onclick="sortTable(4)">Quantité <span id="sp4" class="glyphicon glyphicon-sort-by-attributes"></th>
 
                 </tr>
                 </thead>

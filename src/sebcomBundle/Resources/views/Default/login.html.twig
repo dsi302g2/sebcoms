@@ -14,10 +14,22 @@
 
     </style>
 {% endblock %}
+
 {% block title %}Login{% endblock %}
 {% block body %}
+    <script type="text/javascript">
 
 
+        $(document).ready(function() {
+
+            localStorage.setItem('linkId','home');
+
+        });
+
+
+
+
+    </script>
 
     <form name="f" action="/login" class="form-horizontal" method="POST">
         <div class="inner-container">
@@ -35,7 +47,7 @@
 
 
                     {% endif %}
-                    <input type="submit" id="btnCnx" style="border:0;" class="btn btn-success" /><br/>
+                    <input type="submit" id="btnCnx"  style="border:0;" class="btn btn-success" /><br/>
 
                 </div>
             </div>
