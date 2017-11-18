@@ -96,7 +96,6 @@
             <thead >
             <tr>
                 <th>Nom Catégorie</th>
-                <th>Parent</th>
             </tr>
             </thead>
             <tbody>
@@ -118,13 +117,8 @@
                             {% for b in cat %}
                                 {% if c.id==b.parentid %}
                                     <tr class="clickable-row" id="row" data-value="{{ b.id }}">
-                                        <td > _________{{b.nom }}</td>
-                                        {% for a in cat %}
-                                            {% if a.id==b.parentid %}
-                                                <td>{{ a.nom }}</td>
+                                        <td > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{b.nom }}</td>
 
-                                            {% endif %}
-                                        {% endfor %}
                                     </tr>
                                 {% endif %}
                             {% endfor %}
@@ -201,10 +195,12 @@
                             {% if cat is defined %}
                                 {% for c in cat %}
                                     {% if cat is defined %}
+                                        {% if c.parentid==0 %}
                                         <option  value="{{ c.id }}">
                                             {{ c.nom }}
 
                                         </option>
+                                            {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}
