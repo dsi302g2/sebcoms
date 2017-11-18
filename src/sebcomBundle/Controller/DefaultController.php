@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use sebcomBundle\Entity\sebcom\compte;
 use sebcomBundle\Entity\sebcom\Categorie;
 use sebcomBundle\Entity\sebcom\livreur;
+use sebcomBundle\Entity\sebcom\promotion;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -356,19 +357,45 @@ class DefaultController extends Controller
 
     /*  ----------Promotion--------------------------  */
 
-    public function promotionAction(){
-
-        $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\promotion');
-        $pro = $em->findAll();
+    public function promotionAction()
+    {
 
 
-        if ($pro) {
-            return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro));
+        if ($_POST) {
+            $em = $this->getDoctrine()->getManager();
+            $promotion = new promotion();
+            $promotion->setTitre($_POST['titre']);
+            $promotion->setDatedebut($_POST['datedebut']);
+            $promotion->setDatefin($_POST['datefin']);
+            $promotion->setTaux($_POST['taux']);
+            $promotion->setIdarticle($_POST['idarticle']);
+
+            $em->persist($promotion);
+            $em->flush();
+            $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\promotion');
+            $pro = $em->findAll();
+            if ($pro) {
+                return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro));
+            } else {
+                return $this->render('sebcomBundle:Default:promotion.html.twig', array("error" => "Pas de Promotion!"));
+            }
         } else {
-            return $this->render('sebcomBundle:Default:promotion.html.twig', array("error" => "Pas de Promotion!"));
+
+            $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\promotion');
+            $pro = $em->findAll();
+
+            $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
+            $art = $ems->findAll();
+
+
+
+            if ($pro) {
+                return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro,'art' => $art));
+            }else {
+                return $this->render('sebcomBundle:Default:promotion.html.twig', array("error" => "Pas de Promotion!"));
+            }
         }
+
     }
-
-
 
 }
