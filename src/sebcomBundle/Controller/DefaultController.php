@@ -400,6 +400,9 @@ class DefaultController extends Controller
             else {
                 return $this->render('sebcomBundle:Default:promotion.html.twig', array("error" => "Pas de Promotion!"));
             }
+            if ($art) {
+                return $this->render('sebcomBundle:Default:promotion.html.twig', array('pro' => $pro,'art' => $art));
+            }
         }
 
     }
