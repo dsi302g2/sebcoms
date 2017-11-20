@@ -31,7 +31,13 @@
 
                     });
 
-                    $('#mnomCat').val(rowValues[0]);
+                    var nom=rowValues[0].toString();
+
+                   if(nom.indexOf("&")>=0)
+                  nom=nom.substr( nom.lastIndexOf(';')+1);
+
+
+                    $('#mnomCat').val(nom);
                     $('#msel1').val(rowValues[1]);
 
 
@@ -117,7 +123,7 @@
                             {% for b in cat %}
                                 {% if c.id==b.parentid %}
                                     <tr class="clickable-row" id="row" data-value="{{ b.id }}">
-                                        <td > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{b.nom }}</td>
+                                        <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{b.nom }}</td>
 
                                     </tr>
                                 {% endif %}
@@ -254,10 +260,12 @@
                                 {% if cat is defined %}
                                     {% for c in cat %}
                                         {% if cat is defined %}
-                                            <option  value="{{ c.id }}">
-                                                {{ c.nom }}
+                                            {% if c.parentid==0 %}
+                                                <option  value="{{ c.id }}">
+                                                    {{ c.nom }}
 
-                                            </option>
+                                                </option>
+                                            {% endif %}
                                         {% endif %}
                                     {% endfor %}
                                 {% endif %}
