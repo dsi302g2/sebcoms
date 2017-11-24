@@ -39,3 +39,6 @@ sebcom_modifierpromotion:
     defaults: { _controller: sebcomBundle:Default:modifierpromotion}
 
 
+sebcom_client:
+    path: /client
+    defaults: { _controller: sebcomBundle:Default:client}

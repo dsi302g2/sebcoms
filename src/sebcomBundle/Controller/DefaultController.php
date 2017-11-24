@@ -464,6 +464,13 @@ class DefaultController extends Controller
 
     }
 
+    /*  ----------Client--------------------------  */
+    public function clientAction()
+    {
+        return $this->render('sebcomBundle:Default:homeclient.html.twig');
+    }
+
+
 
 
 
