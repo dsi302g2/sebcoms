@@ -464,7 +464,7 @@ class DefaultController extends Controller
 
     }
 
-    /*  ----------Client--------------------------  */
+
     public function clientAction()
     {
         if ($_POST) {
@@ -485,13 +485,18 @@ class DefaultController extends Controller
 
 
     }
+    /**
+     * @Route("/signup", name="client_ajouter")
+     *
+     * @return Response
+     */
 
     /*  ----------Sign Up Client--------------------------  */
     public function ajoutclientAction(){
 
         if($_POST){
             $em=$this->getDoctrine()->getManager();
-            $client= new livreur();
+            $client= new client();
             $client->setNom($_POST['nom']);
             $client->setPrenom($_POST['prenom']);
             $client->setLogin($_POST['login']);
@@ -501,24 +506,11 @@ class DefaultController extends Controller
             $client->setEmail($_POST['email']);
             $em->persist($client);
             $em->flush();
-            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client') ;
-            $liv=$em->findAll();
-            if($cli){
-                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array('liv'=> $liv));
-            }else{
-                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array("error"=>"Pas de livreur!"));
-            }
+            return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " SignUp With Success!"));
+
         }
-
-        else {
-            $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur');
-            $liv = $em->findAll();
-
-            if ($liv) {
-                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig', array('liv' => $liv));
-            } else {
-                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig', array("error" => "Pas de livreur!"));
-            }
+        else{
+            return $this->render('sebcomBundle:Default:homeclient.html.twig');
         }
 
     }
