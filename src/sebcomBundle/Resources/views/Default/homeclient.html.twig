@@ -2,17 +2,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Header.css">
-    <link rel="stylesheet" href="assets/css/Material-Card.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
+    <link rel="stylesheet" href= "{{ asset ('bundles/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset(' bundles/bootstrap/fonts/Cookie-Regular.ttf') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/fonts/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/Style/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/Style/Pretty-Header.css') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/Style/Material-Card.css') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/Style/Pretty-Footer.css') }}">
 {% endblock %}
 {% block javascript %}
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
+
+    <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
     <script type="text/javascript">
         $(document).ready(function () {
             alert("start");
@@ -65,7 +66,7 @@
                     <p><a class="btn btn-default" role="button" href="#">Learn more</a></p></center>
             </div>
         </div>
-        <div class="item active"><img src="assets/img/b1.jpg" alt="Slide Image" width="1920px" height="1080px"></div>
+        <div class="item active"><img src="bundles/images/b1.jpg" alt="Slide Image" width="1920px" height="1080px"></div>
         <div class="item"><img src="http://placeholdit.imgix.net/~text?txtsize=42&amp;txt=Carousel+Image&amp;w=1400&amp;h=600" alt="Slide Image"></div>
         <div class="item"><img src="http://placeholdit.imgix.net/~text?txtsize=42&amp;txt=Carousel+Image&amp;w=1400&amp;h=600" alt="Slide Image"></div>
 
