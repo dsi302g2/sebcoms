@@ -510,7 +510,7 @@ class DefaultController extends Controller
             $client->setEmail($_POST['email']);
             $em->persist($client);
             $em->flush();
-            return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " SignUp With Success!"));
+            return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " Signup avec succée! vous pouvez connectez maintenant"));
 
         }
         else{
