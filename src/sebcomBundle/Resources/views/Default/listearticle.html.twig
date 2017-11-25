@@ -20,11 +20,22 @@
 
     <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
     <script type="text/javascript">
+    $(document).ready(function () {
+
+
+
+        var $table = $("#tab");
+        for (var i=0;i<$table.length/3;i++) {
+            var $row = $table.find("tbody").append("<tr />").children("tr:eq(" + i + ")");
+            for (var k = 0; k < 3; k++) {
+                $row.append("<td>{{ art[i*3+ k].nom }}<td />");
+            }
+        }
+    });
 
 
 
 
-        
     </script>
 
 
@@ -108,6 +119,16 @@
             </div>
         </div>
     </div>
+</div>
+<div>
+
+    <table class="table" id="tab">
+        <tbody>
+
+        </tbody>
+
+    </table>
+
 </div>
 {% block footer %}
 <footer>
