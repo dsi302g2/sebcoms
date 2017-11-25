@@ -33,4 +33,3 @@ promotion_modifier:
 client_ajouter:
     path:     /signup
     defaults: { _controller: sebcomBundle:Default:ajoutclient }
-  

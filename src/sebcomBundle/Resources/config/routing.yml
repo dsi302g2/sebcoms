@@ -43,3 +43,6 @@ sebcom_client:
 sebcom_ajoutclient:
         path: /signup
         defaults: { _controller: sebcomBundle:Default:ajoutclient}
+sebcom_article:
+    path: /articles
+    defaults: { _controller: sebcomBundle:Default:listearticle}
