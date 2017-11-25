@@ -19,6 +19,20 @@
 
 
     <script type="text/javascript">
+        $(window).on('load',function(){
+
+
+            var test=localStorage.getItem("erreur");
+
+            if(test)
+            {
+                $('#mConnect').modal('show');
+                localStorage.removeItem("erreur");
+            }
+
+
+        });
+
         $(document).ready(function () {
 
             $("#btnSi").click(function () {
@@ -54,6 +68,15 @@
 
 
         });
+
+        function fn()
+        {
+            var url='{{ path("client_ajouter")}}';
+            document.getElementById("signup").setAttribute("href",url);
+
+
+
+        }
     </script>
 {% endblock %}
 
@@ -127,27 +150,30 @@
                 <div class="row">
                     <div>
                         <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-
+                            <div style="vertical-align: middle">
                             <input type="button" class="btn btn-info btn-lg" id="btnSi" value="Sign in" />
                             <input type="button" class="btn btn-default btn-lg" id="btnSu" value="Sign up" />
-
+                            </div>
 
                             <div id="divSi">
                                 <h3 >Sign in</h3>
                                 <form action="/home" method="POST">
-                                    <input class="form-control" name="login" placeholder="Email Address" type="text" required=""></br>
+
+                                    <input class="form-control" name="login" placeholder="Username" type="text" required=""></br>
                                     <input class="form-control" name="pass" placeholder="Password" type="password" required=""></br>
                                     {% if error is defined %}
-
-                                        <div class="alert alert-danger" style="width: 350px;margin-left:25px"role="alert">
+                                        <script type="text/javascript">
+                                            localStorage.setItem("erreur","true");
+                                        </script>
+                                        <label class="alert alert-danger" role="alert">
                                             <strong>Erreur !</strong> {{ error }}
-                                        </div>
-
-
-
+                                        </label>
+                                        <br/>
                                     {% endif %}
-                                    <div class="sign-up">
+                                    <div class="modal-footer">
+                                    <div class="sign-up" style="float: left">
                                         <input class="btn btn-primary btn-md" type="submit" value="Sign in">
+                                    </div>
                                     </div>
                                 </form>
                             </div>
@@ -155,17 +181,17 @@
 
                         <div id="divSu" style="display:none">
                             <h3>Sign up</h3>
-                            <form action="#" method="post">
-                            <input class="form-control" placeholder="First Name" name="Name" type="text" required=""></br>
-                            <input class="form-control" placeholder="Last Name" name="Lname" type="text" required=""></br>
-                                <input class="form-control" placeholder="Username" name="Username" type="text" required=""></br>
-                                <input class="form-control" placeholder="Email Address" name="Email" type="email" required=""></br>
-                                <input class="form-control" placeholder="Address" name="Address" type="text" required=""></br>
-                                <input class="form-control" placeholder="Phone Number" name="PhoneNumber" type="text" required=""></br>
-                            <input class="form-control" placeholder="Password" name="Password" type="password" required=""></br>
+                            <form action="/signup" method="post">
+                            <input class="form-control" placeholder="First Name" name="nom" type="text" required=""></br>
+                            <input class="form-control" placeholder="Last Name" name="prenom" type="text" required=""></br>
+                                <input class="form-control" placeholder="Username" name="login" type="text" required=""></br>
+                                <input class="form-control" placeholder="Email Address" name="email" type="email" required=""></br>
+                                <input class="form-control" placeholder="Address" name="adresse" type="text" required=""></br>
+                                <input class="form-control" placeholder="Phone Number" name="tel" type="text" required=""></br>
+                            <input class="form-control" placeholder="Password" name="pass" type="password" required=""></br>
                             <input class="form-control" placeholder="Confirm Password" name="CPassword" type="password" required=""></br>
                             <div>
-                                <input class="btn btn-primary" type="submit" value="Create Account">
+                                <input class="btn btn-primary" onclick="fn()" id="signup" type="submit" value="Create Account">
                             </div>
                             </form>
                         </div>
