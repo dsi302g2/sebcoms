@@ -30,3 +30,6 @@ promotion_delete:
 promotion_modifier:
     path:     /modifierpromotion/{id}
     defaults: { _controller: sebcomBundle:Default:modifierpromotion }
+client_ajouter:
+    path:     /signup
+    defaults: { _controller: sebcomBundle:Default:ajoutclient }

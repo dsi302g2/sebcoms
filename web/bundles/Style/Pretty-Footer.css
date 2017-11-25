@@ -1,3 +1,12 @@
+/* latin */
+@font-face {
+  font-family: 'Cookie';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cookie-Regular'), url('../bootstrap/fonts/Cookie-Regular.ttf') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
 footer{
   background-color:#292c2f;
   box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -17,6 +26,7 @@ footer{
   margin-bottom:20px;
   color:#fff;
 }
+
 
 .footer-navigation h3 a{
   text-decoration:none;
