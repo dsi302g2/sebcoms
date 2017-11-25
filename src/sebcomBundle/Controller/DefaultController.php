@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use sebcomBundle\Entity\sebcom\compte;
 use sebcomBundle\Entity\sebcom\Categorie;
 use sebcomBundle\Entity\sebcom\livreur;
+use sebcomBundle\Entity\sebcom\client;
 use sebcomBundle\Entity\sebcom\promotion;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;

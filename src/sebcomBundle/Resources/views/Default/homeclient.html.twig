@@ -68,6 +68,15 @@
 
 
         });
+
+        function fn()
+        {
+            var url='{{ path("client_ajouter")}}';
+            document.getElementById("signup").setAttribute("href",url);
+
+
+
+        }
     </script>
 {% endblock %}
 
@@ -171,17 +180,17 @@
 
                         <div id="divSu" style="display:none">
                             <h3>Sign up</h3>
-                            <form action="#" method="post">
-                            <input class="form-control" placeholder="First Name" name="Name" type="text" required=""></br>
-                            <input class="form-control" placeholder="Last Name" name="Lname" type="text" required=""></br>
-                                <input class="form-control" placeholder="Username" name="Username" type="text" required=""></br>
-                                <input class="form-control" placeholder="Email Address" name="Email" type="email" required=""></br>
-                                <input class="form-control" placeholder="Address" name="Address" type="text" required=""></br>
-                                <input class="form-control" placeholder="Phone Number" name="PhoneNumber" type="text" required=""></br>
-                            <input class="form-control" placeholder="Password" name="Password" type="password" required=""></br>
+                            <form action="/signup" method="post">
+                            <input class="form-control" placeholder="First Name" name="nom" type="text" required=""></br>
+                            <input class="form-control" placeholder="Last Name" name="prenom" type="text" required=""></br>
+                                <input class="form-control" placeholder="Username" name="login" type="text" required=""></br>
+                                <input class="form-control" placeholder="Email Address" name="email" type="email" required=""></br>
+                                <input class="form-control" placeholder="Address" name="adresse" type="text" required=""></br>
+                                <input class="form-control" placeholder="Phone Number" name="tel" type="text" required=""></br>
+                            <input class="form-control" placeholder="Password" name="pass" type="password" required=""></br>
                             <input class="form-control" placeholder="Confirm Password" name="CPassword" type="password" required=""></br>
                             <div>
-                                <input class="btn btn-primary" type="submit" value="Create Account">
+                                <input class="btn btn-primary" onclick="fn()" id="signup" type="submit" value="Create Account">
                             </div>
                             </form>
                         </div>
