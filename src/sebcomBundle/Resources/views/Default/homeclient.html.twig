@@ -133,9 +133,18 @@
 
                             <div id="divSi">
                                 <h3 >Sign in</h3>
-                                <form action="#" method="post">
-                                    <input class="form-control" name="Email" placeholder="Email Address" type="text" required=""></br>
-                                    <input class="form-control" name="Password" placeholder="Password" type="password" required=""></br>
+                                <form action="/home" method="POST">
+                                    <input class="form-control" name="login" placeholder="Email Address" type="text" required=""></br>
+                                    <input class="form-control" name="pass" placeholder="Password" type="password" required=""></br>
+                                    {% if error is defined %}
+
+                                        <div class="alert alert-danger" style="width: 350px;margin-left:25px"role="alert">
+                                            <strong>Erreur !</strong> {{ error }}
+                                        </div>
+
+
+
+                                    {% endif %}
                                     <div class="sign-up">
                                         <input class="btn btn-primary btn-md" type="submit" value="Sign in">
                                     </div>
