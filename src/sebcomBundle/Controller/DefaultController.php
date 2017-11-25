@@ -526,7 +526,7 @@ class DefaultController extends Controller
         $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
         $art=$em->findAll();
         if($art){
-            return $this->render('sebcomBundle:Default:homeclient.html.twig',array('art'=> $art));
+            return $this->render('sebcomBundle:Default:listearticle.html.twig',array('art'=> $art));
         }
 
     }
