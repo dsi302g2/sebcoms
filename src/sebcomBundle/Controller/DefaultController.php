@@ -484,9 +484,7 @@ class DefaultController extends Controller
         else{
             $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
             $art=$em->findAll();
-            if($art){
-                return $this->render('sebcomBundle:Default:homeclient.html.twig',array('art'=> $art));
-            }
+            return $this->render('sebcomBundle:Default:homeclient.html.twig');
         }
 
 
@@ -525,8 +523,11 @@ class DefaultController extends Controller
     /************listearticle**********/
     public function listearticleAction()
     {
-        return $this->render('sebcomBundle:Default:listearticle.html.twig');
-
+        $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+        $art=$em->findAll();
+        if($art){
+            return $this->render('sebcomBundle:Default:homeclient.html.twig',array('art'=> $art));
+        }
 
     }
 
