@@ -41,6 +41,6 @@ sebcom_client:
     path: /home
     defaults: { _controller: sebcomBundle:Default:client}
 
-    sebcom_ajoutclient:
+sebcom_ajoutclient:
         path: /signup
         defaults: { _controller: sebcomBundle:Default:ajoutclient}
