@@ -481,8 +481,12 @@ class DefaultController extends Controller
                 return $this->render('sebcomBundle:Default:homeclient.html.twig', array("error" => " login Incorrect !"));
             }
         }
-        else {
-            return $this->render('sebcomBundle:Default:homeclient.html.twig');
+        else{
+            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+            $art=$em->findAll();
+            if($art){
+                return $this->render('sebcomBundle:Default:homeclient.html.twig',array('art'=> $art));
+            }
         }
 
 
