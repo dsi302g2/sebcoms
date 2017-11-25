@@ -22,13 +22,30 @@
     <script type="text/javascript">
     $(document).ready(function () {
 
+        alert("test");
+
+        var col=3;
+        var $table = document.getElementById("tab");
+
+        var tabArt=[];
+             {% for c in art %}
+                  {% if art is defined %}
+        var article={
+            nom:{{ c.nom }},
+            prix:{{ c.prix }}
+        }
+        tabArt.push(article);
+
+              {% endif %}
+              {% endfor %}
 
 
-        var $table = $("#tab");
-        for (var i=0;i<$table.length/3;i++) {
+        alert(tabArt);
+
+        for (var i=0;i<tabArt.length/col;i++) {
             var $row = $table.find("tbody").append("<tr />").children("tr:eq(" + i + ")");
             for (var k = 0; k < 3; k++) {
-                $row.append("<td>{{ art[i*3+ k].nom }}<td />");
+                $row.append("<td>tabArt[i*col+ k].nom <td />");
             }
         }
     });
@@ -124,6 +141,7 @@
 
     <table class="table" id="tab">
         <tbody>
+
 
         </tbody>
 
