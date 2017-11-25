@@ -522,6 +522,34 @@ class DefaultController extends Controller
     }
 
 
+    /************listearticle**********/
+    public function listearticleAction()
+    {
+        if ($_POST) {
+            $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client');
+            $client = $em->findOneBy(array('login' => $_POST['login'], 'pass' => $_POST['pass']));
+            if ($client) {
+                $session = new session();
+                $session->set('name', $client->getLogin());
+                $session->get('name');
+                return $this->redirect('/home');
+                die();
+            } else {
+                return $this->render('sebcomBundle:Default:homeclient.html.twig', array("error" => " login Incorrect !"));
+            }
+        }
+        else{
+            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+            $art=$em->findAll();
+            if($art){
+                return $this->render('sebcomBundle:Default:homeclient.html.twig',array('art'=> $art));
+            }
+        }
+
+
+    }
+
+
 
 
 }
