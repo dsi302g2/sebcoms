@@ -16,18 +16,18 @@
     <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            alert("start");
+
             $("#btnSi").click(function () {
-                //  $("#divSi").show()
-                //$("#divSu").hide()
-                alert("3asba");
+                $("#divSi").show()
+                $("#divSu").hide()
+
 
             });
 
             $("#btnSu").click(function () {
-                //$("#divSi").hide()
-                //$("#divSu").show()
-                alert("HNYhny");
+                $("#divSi").hide()
+                $("#divSu").show()
+
 
             });
 
@@ -94,7 +94,7 @@
                     ×</button>
                 <h4 id="myModalLabel">Don't Wait, Login now!</h4>
             </div>
-            <div class="modal-body modal-body-sub">
+            <div class="modal-body modal-body-sub" style="margin:1%;">
                 <div class="row">
                     <div>
                         <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
@@ -117,7 +117,7 @@
 
                         <div id="divSu" style="display:none">
                             <h2>Sign up</h2>
-                            <br action="#" method="post">
+                            <form action="#" method="post">
                             <input class="form-control" placeholder="Name" name="Name" type="text" required=""></br>
                             <input class="form-control" placeholder="Email Address" name="Email" type="email" required=""></br>
                             <input class="form-control" placeholder="Password" name="Password" type="password" required=""></br>
