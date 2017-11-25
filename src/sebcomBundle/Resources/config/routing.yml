@@ -40,5 +40,5 @@ sebcom_modifierpromotion:
 
 
 sebcom_client:
-    path: /client
+    path: /home
     defaults: { _controller: sebcomBundle:Default:client}
