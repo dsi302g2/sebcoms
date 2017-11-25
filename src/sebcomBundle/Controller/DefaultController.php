@@ -467,11 +467,61 @@ class DefaultController extends Controller
     /*  ----------Client--------------------------  */
     public function clientAction()
     {
-        return $this->render('sebcomBundle:Default:homeclient.html.twig');
+        if ($_POST) {
+            $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client');
+            $user = $em->findOneBy(array('login' => $_POST['Pseudo'], 'pass' => $_POST['Password']));
+            if ($user) {
+                $session = new session();
+                $session->set('name', $user->getLogin());
+                $session->get('name');
+                return $this->redirect('/home');
+                die();
+            } else {
+                return $this->render('sebcomBundle:Default:homeclient.html.twig', array("error" => " login Incorrect !"));
+            }
+        } else {
+            return $this->render('sebcomBundle:Default:homeclient.html.twig');
+        }
+
+
     }
 
+    /*  ----------Sign Up Client--------------------------  */
+    public function ajoutclientAction(){
 
+        if($_POST){
+            $em=$this->getDoctrine()->getManager();
+            $client= new livreur();
+            $client->setNom($_POST['nom']);
+            $client->setPrenom($_POST['prenom']);
+            $client->setLogin($_POST['login']);
+            $client->setPass($_POST['pass']);
+            $client->setAdresse($_POST['adresse']);
+            $client->setTel($_POST['tel']);
+            $client->setEmail($_POST['email']);
+            $em->persist($client);
+            $em->flush();
+            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client') ;
+            $liv=$em->findAll();
+            if($cli){
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array('liv'=> $liv));
+            }else{
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig',array("error"=>"Pas de livreur!"));
+            }
+        }
 
+        else {
+            $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\livreur');
+            $liv = $em->findAll();
+
+            if ($liv) {
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig', array('liv' => $liv));
+            } else {
+                return $this->render('sebcomBundle:Default:ajoutlivreur.html.twig', array("error" => "Pas de livreur!"));
+            }
+        }
+
+    }
 
 
 
