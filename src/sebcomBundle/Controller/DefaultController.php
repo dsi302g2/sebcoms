@@ -469,17 +469,18 @@ class DefaultController extends Controller
     {
         if ($_POST) {
             $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client');
-            $user = $em->findOneBy(array('login' => $_POST['Pseudo'], 'pass' => $_POST['Password']));
-            if ($user) {
+            $client = $em->findOneBy(array('login' => $_POST['login'], 'pass' => $_POST['pass']));
+            if ($client) {
                 $session = new session();
-                $session->set('name', $user->getLogin());
+                $session->set('name', $client->getLogin());
                 $session->get('name');
                 return $this->redirect('/home');
                 die();
             } else {
                 return $this->render('sebcomBundle:Default:homeclient.html.twig', array("error" => " login Incorrect !"));
             }
-        } else {
+        }
+        else {
             return $this->render('sebcomBundle:Default:homeclient.html.twig');
         }
 
