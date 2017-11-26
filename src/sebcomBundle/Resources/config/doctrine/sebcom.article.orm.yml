@@ -21,7 +21,8 @@ sebcomBundle\Entity\sebcom\article:
         prix:
             type: float
         image:
-            type: blob
+            type: string
+            length: 255
         quantite:
             type: integer
     lifecycleCallbacks: {  }
