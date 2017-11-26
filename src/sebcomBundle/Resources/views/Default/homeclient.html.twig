@@ -205,10 +205,27 @@
                                     <script type="text/javascript">
                                         localStorage.setItem("erreur","true");
                                     </script>
-                                    <label class="alert alert-danger" role="alert">
+                                    <label class="alert alert-success" role="alert">
                                         <strong>Success !</strong> {{ msg }}
                                     </label>
                                     <br/>
+                                    <script type="text/javascript">
+
+                                        $(window).on('load',function(){
+
+
+
+                                                var def='btn btn-default btn-lg';
+                                                var inf='btn btn-info btn-lg';
+                                                document.getElementById("btnSi").setAttribute("class",def);
+                                                document.getElementById("btnSu").setAttribute("class",inf);
+                                                document.getElementById("divSu").setAttribute("style",'');
+                                                document.getElementById("divSi").setAttribute("style",'display: none;');
+
+
+
+                                        });
+                                    </script>
                                 {% endif %}
                                 <div>
                                 <input class="btn btn-primary" onclick="fn()" id="signup" type="submit" value="Create Account">
