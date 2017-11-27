@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="{{ asset ('bundles/Style/Pretty-Header.css') }}">
     <link rel="stylesheet" href="{{ asset ('bundles/Style/Pretty-Footer.css') }}">
     <link rel="stylesheet" href="{{ asset ('bundles/Style/Stylelstarticle.css') }}">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css"></script>
+        <link rel="icon" href="{{ asset('bundles/images/Slogo.png') }}">
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     {% endblock %}
 {% block javascript %}
@@ -76,6 +78,20 @@
         </div>
     </div>
 </nav>
+<div class="dropdown btn btn-default" style="z-index: 21;position:fixed;right:100px" >
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
+
+    <ul class="dropdown-menu dropdown-menu-right">
+        <div class="container" style="width:500px">
+            <form>
+                <label>Article : </label><input value="1" type="number" class="input input-sm " min="1" max="10"  id="quantity" /><br>
+                <label id="prixTot">Prix Total :</label> <label class="label label-warning"> 10</label><br>
+                <input type="submit" value="Valider" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
+
+            </form>
+        </div>
+    </ul>
+</div>
 <div>
     <div class="row bare_rech" style="display: flex; margin: 3%">
         <div class="col-md-3"><h2 class="text-center"><strong class="label label-default">Mots clés:</strong></h2></div>
@@ -149,8 +165,13 @@
             <h4>A propos de la sociète</h4>
             <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
             </p>
+<<<<<<< HEAD
             <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-twitter" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-linkedin" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-github" style="margin-top:7px"></i></a></div>
         </div>
+=======
+            <div class="social-links social-icons"><a href="https://www.facebook.com/electrobennour/" target = "_blank"><i class="fa fa-facebook" style="margin-top:7px"></i></a><a href="https://twitter.com/"target = "_blank"><i class="fa fa-twitter" style="margin-top:7px"></i></a><a href="https://www.linkedin.com" target = "_blank"><i class="fa fa-linkedin" style="margin-top:7px"></i></a><a href="https://www.github.com" target = "_blank"><i class="fa fa-github" style="margin-top:7px"></i></a></div>
+    </div>
+>>>>>>> 8bef293055f0ec96eb8cd0fc4c733702e966ef0b
     </div>
 </footer>
 {% endblock %}
