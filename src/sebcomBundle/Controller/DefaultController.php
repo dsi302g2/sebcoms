@@ -532,6 +532,16 @@ class DefaultController extends Controller
 
     }
 
+
+    public function contactAction()
+    {
+
+            return $this->render('sebcomBundle:Default:contact.html.twig');
+
+
+    }
+
+
     /**
      * @Route("/modifier/{id}", name="client_modifier")
      *
