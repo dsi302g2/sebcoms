@@ -49,3 +49,6 @@ sebcom_article:
 sebcom_contact:
     path: /contact
     defaults: { _controller: sebcomBundle:Default:contact}
+sebcom_modifierclient:
+    path: /modifierclient/:id
+    defaults: { _controller: sebcomBundle:Default:modifierclient}
