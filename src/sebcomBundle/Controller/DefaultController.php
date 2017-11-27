@@ -557,10 +557,9 @@ class DefaultController extends Controller
 
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array('adresse'=>$artadresse,'tel'=>$arttel,'pass'=>$artpass));
 
+    }
+
     
 
-
-
-    }
 
 }
