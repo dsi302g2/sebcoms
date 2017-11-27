@@ -111,6 +111,7 @@
 {% endblock %}
     {% block body %}
 <body>
+<form name="f" action="#" method="POST">
 <img src="bundles/images/sebcomLogo.png" style="display:block;margin:auto;margin-top: 1%">
 <nav class="navbar navbar-default custom-header" style="height:13%;margin-top: 1%" >
     <div class="container-fluid">
@@ -134,6 +135,7 @@
 
     <ul class="dropdown-menu dropdown-menu-right"  id="btnCart"   style="background-color: #292c2f;">
       <li>
+          <form name="fc" action="#" method="POST">
           <div class="container" id="divCart" style="width:500px;color:white">
 
 
@@ -143,6 +145,7 @@
 
 
         </div>
+          </form>
       </li>
     </ul>
 </div>
@@ -223,5 +226,6 @@
 {% endblock %}
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</form>
 </body>
 {% endblock %}
