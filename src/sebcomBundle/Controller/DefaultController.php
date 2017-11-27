@@ -531,7 +531,11 @@ class DefaultController extends Controller
 
     }
 
-
+    /**
+     * @Route("/modifier/{id}", name="client_modifier")
+     *
+     * @return Response
+     */
     public function modifierclientAction($id)
     {
         if ($_POST) {
