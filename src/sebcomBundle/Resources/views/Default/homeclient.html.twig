@@ -215,6 +215,8 @@
     <div class="modal-dialog">
 
         <!-- Modal content-->
+        {% if key is defined %}
+        <form name="f" action="/modifierclient/{{ key.id }}"  method="POST">
 
         <div class="modal-content">
             <div class="modal-header">
@@ -223,9 +225,12 @@
                 <h4 id="myModalLabel">Modifier Profile</h4>
             </div>
             <div class="modal-body modal-body-sub">
-                <input type="text" class="form-control" placeholder="Adresse" /><br/>
-                <input type="text" class="form-control" placeholder="Numero Tel" /><br/>
-                <input type="text" class="form-control" placeholder="Password" required/>
+                <h5 id="myModalLabel">Adresse</h5>
+                <input type="text" class="form-control" placeholder="Adresse" name="adr" value="{{ key.adresse }}" /><br/>
+                <h5 id="myModalLabel">Numero Du Telephone</h5>
+                <input type="text" class="form-control" placeholder="Numero Tel" name="ntel" value="{{ key.tel }}"/><br/>
+                <h5 id="myModalLabel">Mot De Passe</h5>
+                <input type="text" class="form-control" placeholder="Password" name="pwd" value="{{ key.pass }}" required/>
 
 
             </div>
@@ -237,6 +242,8 @@
             </div>
 
         </div>
+        </form>
+        {% endif %}
 
     </div>
 </div>
