@@ -69,10 +69,11 @@
             timer: 900
         });
 
-
-       // $('#btnCart').toggle('dropdown');
+        if($( "#btnCart" ).is( ":hidden" ))
+        $('#btnCart').toggle('dropdown');
 
     }
+
 
     function tot() {
 
@@ -129,9 +130,9 @@
 </nav>
 <!---------------------------cart-------------------------------->
 <div class="dropdown" style="z-index: 21;position:fixed;right:100px" >
-    <a href="#" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" id="btnCart"  ><span class="glyphicon glyphicon-shopping-cart"></span></a>
+    <a href="#" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
 
-    <ul class="dropdown-menu dropdown-menu-right"  style="background-color: #292c2f;">
+    <ul class="dropdown-menu dropdown-menu-right"  id="btnCart"   style="background-color: #292c2f;">
       <li>
           <div class="container" id="divCart" style="width:500px;color:white">
 
