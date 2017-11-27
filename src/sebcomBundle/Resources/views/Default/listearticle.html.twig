@@ -52,6 +52,10 @@
         }
     });
 
+    function ajtP(id) {
+        alert(id);
+        alert("test");
+    }
 
 
 
@@ -114,15 +118,15 @@
             {% for c in art %}
         <div class="col-md-4">
             <div class="row">
-                <div class="col-md-12"><img src="bundles/images/{{ c.image }}" height="150" width="110"></div>
+                <div class="col-md-12" ><img src="bundles/images/{{ c.image }}" height="150" width="110"></div>
             </div>
             <div class="row">
-                <div class="col-md-12 prod"><strong>{{ c.nom }}</strong></div>
+                <div class="col-md-12 prod" id="{{ c.id }}"><strong>{{ c.nom }}</strong></div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" id="{{ c.id }}">
                     <strong>{{ c.prix }} DT</strong>
-                    <button class="panierstyle"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></button>
+                    <button class="panierstyle"  id="{{ c.id }}" onclick="ajtP(this.id)"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"  id="{{ c.id }}" onclick=ajtP(this.id)></i></button>
                 </div>
             </div>
         </div>
