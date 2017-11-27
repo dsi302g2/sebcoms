@@ -15,4 +15,6 @@ sebcomBundle\Entity\sebcom\lignecommande:
             type: integer
         quantite:
             type: integer
+        prixtot:
+            type: float
     lifecycleCallbacks: {  }
