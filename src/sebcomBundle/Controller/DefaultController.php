@@ -552,13 +552,13 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $art = $ems->findAll();
             $client = $em->getRepository('sebcomBundle\Entity\sebcom\client')->find($id);
-            $client->setAdresse($_POST['adresse']);
-            $client->setTel($_POST['tel']);
-            $client->setPass($_POST['pass']);
+            $client->setAdresse($_POST['adr']);
+            $client->setTel($_POST['ntel']);
+            $client->setPass($_POST['pwd']);
             $em->flush();
             return $this->render('sebcomBundle:Default:homeclient.html.twig',array('art'=>$art));
         }
-        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client');
         $client=$ems->findByid($id);
         $artadresse=$client[0]->getAdresse();
         $arttel=$client[0]->getTel();
