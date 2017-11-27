@@ -568,25 +568,28 @@ class DefaultController extends Controller
 
     }
     /************Panier**********/
-
+    /**
+     * @Route("/commander/{id}", name="commande_confirmer")
+     *
+     * @return Response
+     */
     /***********confirmer commande***************/
-    public function commanderAction($art,$id){
-        $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client');
-        $cli=$em->findByid($id);
+    public function commanderAction(){
+
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
         $art = $ems->findAll();
         $emss=$this->getDoctrine()->getManager();
         $commande= new commande();
-        $commande->setDate("2017-11-08");
+        $commande->setDate(new \DateTime('now'));
         $commande->setEtat("En Attente");
         $commande->setTotal(0);
         $commande->setPrixliv(0);
-        $commande->setDateliv("2017-11-08");
+        $commande->setDateliv(new \DateTime('2000-00-00'));
         $commande->setIdliv(0);
-        $commande->setIdclient(0);
+        $commande->setIdclient(1);
         $emss->persist($commande);
         $emss->flush();
-        return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " Votre commande est bien enregistrer!"));
+        return $this->render('sebcomBundle:Default:listearticle.html.twig', array("msg" => " Votre commande est bien enregistrer!"));
 
     }
     /**

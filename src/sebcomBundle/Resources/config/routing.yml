@@ -52,3 +52,6 @@ sebcom_contact:
 sebcom_modifierclient:
     path: /modifierclient/:id
     defaults: { _controller: sebcomBundle:Default:modifier}
+sebcom_commander:
+    path: /commander
+    defaults: { _controller: sebcomBundle:Default:commander}
