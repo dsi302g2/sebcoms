@@ -558,11 +558,8 @@ class DefaultController extends Controller
 
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array('adresse'=>$artadresse,'tel'=>$arttel,'pass'=>$artpass));
 
-<<<<<<< HEAD
     }
-=======
     /************Panier**********/
->>>>>>> 8bef293055f0ec96eb8cd0fc4c733702e966ef0b
 
     /***********confirmer commande***************/
     public function commanderAction($art,$id){
@@ -584,10 +581,7 @@ class DefaultController extends Controller
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " Votre commande est bien enregistrer!"));
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 8bef293055f0ec96eb8cd0fc4c733702e966ef0b
 
 
     }
