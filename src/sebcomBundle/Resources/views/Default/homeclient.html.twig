@@ -27,11 +27,15 @@
 
 
             var test=localStorage.getItem("erreur");
-            var ctd=localStorage.getItem("ctd");
-            var rst=localStorage.getItem("reset");
+
 
             {% if key is defined %}
-            alert("connected");
+            affDd();
+            {% else %}
+            document.getElementById("usr").setAttribute("data-toggle","modal");
+            document.getElementById("usr").setAttribute("data-target","#mConnect");
+            document.getElementById("usr").removeClass("dropdown-toggle");
+
             {% endif %}
 
 
@@ -40,19 +44,6 @@
                 $('#mConnect').modal('show');
                 localStorage.clear();
                 localStorage.setItem("erreur","false");
-            }
-
-            if(ctd=="true")
-            {
-                affDd();
-            }
-           else
-            {
-
-                document.getElementById("usr").setAttribute("data-toggle","modal");
-                document.getElementById("usr").setAttribute("data-target","#mConnect");
-                document.getElementById("usr").removeClass("dropdown-toggle");
-
             }
 
 
@@ -111,22 +102,6 @@
 
 
 
-        function resetP()
-        {
-
-            localStorage.clear();
-            localStorage.setItem("ctd","false");
-
-        }
-
-        function fnctd()
-        {
-
-            localStorage.clear();
-            localStorage.setItem("ctd","true");
-
-        }
-
 
     </script>
 {% endblock %}
@@ -176,50 +151,8 @@
         </div>
     </div>
 </nav>
-    <div class="dropdown btn btn-default btn-lg" style="z-index: 21;position:fixed;right:100px" >
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
 
-        <ul class="dropdown-menu dropdown-menu-right">
-            <div class="container" style="width:500px">
-            <form>
-           <label>Article : </label><input value="1" type="number" class="input input-sm " min="1" max="10"  id="quantity" /><br>
-                <label id="prixTot">Prix Total :</label> <label class="label label-warning"> 10</label><br>
-            <input type="submit" value="Valider" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
-
-            </form>
-            </div>
-        </ul>
-    </div>
-
-
-    <!---------------------------cart-------------------------------->
-    <div class="dropdown btn btn-default btn-lg" style="z-index: 21;position:fixed;right:100px" >
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
-
-
-        <ul class="dropdown-menu dropdown-menu-right">
-            <div class="container" style="width:500px">
-            <form>
-           <label>Article : </label><input value="1" type="number" class="input input-sm " min="1" max="10"  id="quantity" /><br>
-                <label id="prixTot">Prix Total :</label> <label class="label label-warning"> 10</label><br>
-            <input type="submit" value="Valider" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
-
-            </form>
-            </div>
-        </ul>
-    </div>
 <!----------------------------------------------------------------------------->
-        <ul class="dropdown-menu dropdown-menu-right">
-            <div class="container" style="width:500px">
-            <form>
-           <label>Article : </label><input value="1" type="number" class="input input-sm " min="1" max="10"  id="quantity" /><br>
-                <label id="prixTot">Prix Total :</label> <label class="label label-warning"> 0</label><br/>
-            <input type="submit" value="Valider" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
-
-            </form>
-            </div>
-        </ul>
-    </div>
 
 
 <div id="mProfile" class="modal fade" role="dialog">
@@ -241,7 +174,7 @@
                 <h5 id="myModalLabel">Numero Du Telephone</h5>
                 <input type="text" class="form-control" placeholder="Numero Tel" name="ntel" value="{{ key.tel }}"/><br/>
                 <h5 id="myModalLabel">Mot De Passe</h5>
-                <input type="text" class="form-control" placeholder="Password" name="pwd" value="{{ key.pass }}" required/>
+                <input type="password" class="form-control" placeholder="Password" name="pwd" value="{{ key.pass }}" required/>
 
 
             </div>
