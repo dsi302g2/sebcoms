@@ -13,10 +13,16 @@
     <link rel="stylesheet" href="{{ asset ('bundles/Style/Stylelstarticle.css') }}">
         <link rel="icon" href="{{ asset('bundles/images/Slogo.png') }}">
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+
+        <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/Sweetalert2/sweetalert2.min.css')}}">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     {% endblock %}
 {% block javascript %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <script src="{{ asset ('bundles/bootstrap/Sweetalert2/sweetalert2.all.min.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css"></script>
 
     <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
 
@@ -56,7 +62,12 @@
 
         tot();
 
-            alert("Produit ajouter au Panier !");
+        swal({
+            type: 'success',
+            title: 'Produit ajouter au Panier!',
+            showConfirmButton: false,
+            timer: 900
+        });
 
 
        // $('#btnCart').toggle('dropdown');
