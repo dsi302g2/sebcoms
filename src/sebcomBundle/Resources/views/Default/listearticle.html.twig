@@ -24,40 +24,74 @@
     <script type="text/javascript">
     $(document).ready(function () {
 
-        alert("test");
 
-        var col=3;
-        var $table = document.getElementById("tab");
-
-        var tabArt=[];
-             {% for c in art %}
-                  {% if art is defined %}
-        var article={
-            nom:{{ c.nom }},
-            prix:{{ c.prix }}
-        }
-        tabArt.push(article);
-
-              {% endif %}
-              {% endfor %}
-
-
-        alert(tabArt);
-
-        for (var i=0;i<tabArt.length/col;i++) {
-            var $row = $table.find("tbody").append("<tr />").children("tr:eq(" + i + ")");
-            for (var k = 0; k < 3; k++) {
-                $row.append("<td>tabArt[i*col+ k].nom <td />");
-            }
-        }
     });
 
+
+
     function ajtP(id) {
-        alert(id);
-        alert("test");
+
+        var i=0;
+        var tabArt=[];
+
+
+        $("[id]").each(function(){
+
+
+            if($(this).attr("id")==id && i!=2){
+              var x= $(this).text();
+
+             tabArt.push(x);
+
+                i++;
+            }
+
+        });
+
+
+                 var nomArt=tabArt[0];
+                 var prixArt=tabArt[1];
+
+            $("#divCart").prepend(" <label>Article : "+nomArt+" | Prix : </label> <label id='artP'>"+prixArt+"</label> <input style='color:black;float: right' value='1' type='number' class='input input-sm' min='1' max='10' onkeyup='tot()' id='qteJ' onchange='tot()'/> <br/><br/>")
+
+        tot();
+
+            alert("Produit ajouter au Panier !");
+
+
+       // $('#btnCart').toggle('dropdown');
+
     }
 
+    function tot() {
 
+        var ptot=0;
+        var tabP=[];
+        var tabQte=[];
+
+        $("[id]").each(function(){
+
+            if($(this).attr("id")=="artP" ){
+                var x= $(this).text();
+                x=x.substring(0, x.length-3);
+
+               tabP.push(x);
+
+
+            }
+            if($(this).attr("id")=="qteJ" ){
+                var x=$(this).val();
+                tabQte.push(x);
+            }
+
+
+        });
+
+        for(var i=0;i<tabP.length;i++)
+        ptot+=tabP[i]*tabQte[i];
+
+        $('#prixTot').text(ptot);
+    }
 
     </script>
 
@@ -82,20 +116,25 @@
         </div>
     </div>
 </nav>
-<div class="dropdown btn btn-default" style="z-index: 21;position:fixed;right:100px" >
-    <a href="#" data-toggle="dropdown" class="dropdown-toggle" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
+<!---------------------------cart-------------------------------->
+<div class="dropdown" style="z-index: 21;position:fixed;right:100px" >
+    <a href="#" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" id="btnCart"  ><span class="glyphicon glyphicon-shopping-cart"></span></a>
 
-    <ul class="dropdown-menu dropdown-menu-right">
-        <div class="container" style="width:500px">
-            <form>
-                <label>Article : </label><input value="1" type="number" class="input input-sm " min="1" max="10"  id="quantity" /><br>
-                <label id="prixTot">Prix Total :</label> <label class="label label-warning"> 10</label><br>
+    <ul class="dropdown-menu dropdown-menu-right"  style="background-color: #292c2f;">
+      <li>
+          <div class="container" id="divCart" style="width:500px;color:white">
+
+
+
+                <label>Prix Total :</label> <label id="prixTot" class="label label-warning"> 10</label><br>
                 <input type="submit" value="Valider" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
 
-            </form>
+
         </div>
+      </li>
     </ul>
 </div>
+<!----------------------------------------------------------------------------->
 <div>
     <div class="row bare_rech" style="display: flex; margin: 3%">
         <div class="col-md-3"><h2 class="text-center"><strong class="label label-default">Mots clés:</strong></h2></div>
@@ -117,16 +156,17 @@
 
             {% for c in art %}
         <div class="col-md-4">
+            {#<div class="row">#}
+                {#<div class="col-md-12" ><img src="bundles/images/{{ c.image }}" height="150" width="110"></div>#}
+            {#</div>#}
             <div class="row">
-                <div class="col-md-12" ><img src="bundles/images/{{ c.image }}" height="150" width="110"></div>
+                <div class="col-md-12 prod" style="font-weight: bold"><p id="{{ c.id }}">{{ c.nom }}</p></div>
             </div>
             <div class="row">
-                <div class="col-md-12 prod" id="{{ c.id }}"><strong>{{ c.nom }}</strong></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12" id="{{ c.id }}">
-                    <strong>{{ c.prix }} DT</strong>
-                    <button class="panierstyle"  id="{{ c.id }}" onclick="ajtP(this.id)"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"  id="{{ c.id }}" onclick=ajtP(this.id)></i></button>
+                <div class="col-md-12" style="font-weight: bold" >
+                    <p id="{{ c.id }}">{{ c.prix }} DT</p>
+                    <a class="btn btn-default" style="width: 40px;height: 40px" id="{{ c.id }}" onclick="ajtP(this.id)"  href="#">
+                        <span class="fa fa-shopping-cart fa-2x" style="margin-left: -5px"></span></a>
                 </div>
             </div>
         </div>
@@ -136,13 +176,7 @@
 </div>
 <div>
 
-    <table class="table" id="tab">
-        <tbody>
 
-
-        </tbody>
-
-    </table>
 
 </div>
 {% block footer %}

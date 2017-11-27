@@ -17,6 +17,8 @@
     <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
 
     <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
+    <script src="{{ asset('bundles/js/InputTest.js') }}" ></script>
+
 
 
     <script type="text/javascript">
@@ -25,29 +27,25 @@
 
 
             var test=localStorage.getItem("erreur");
-
             var ctd=localStorage.getItem("ctd");
-            var rst=localStorage.getItem("reset");
 
 
             if(test=="true")
             {
                 $('#mConnect').modal('show');
+                localStorage.clear();
                 localStorage.setItem("erreur","false");
             }
 
-            if(ctd=="true" && rst!="true" )
+            if(ctd=="true")
             {
                 affDd();
             }
            else
             {
-                localStorage.removeItem("reset");
-                localStorage.clear();
 
                 document.getElementById("usr").setAttribute("data-toggle","modal");
                 document.getElementById("usr").setAttribute("data-target","#mConnect");
-
                 document.getElementById("usr").removeClass("dropdown-toggle");
 
             }
@@ -111,10 +109,20 @@
         function resetP()
         {
 
-            localStorage.setItem("reset","true");
-
+            localStorage.clear();
+            localStorage.setItem("ctd","false");
 
         }
+
+        function fnctd()
+        {
+
+            localStorage.clear();
+            localStorage.setItem("ctd","true");
+
+        }
+
+
     </script>
 {% endblock %}
 
@@ -296,16 +304,14 @@
                                     <input class="form-control" name="pass" placeholder="Password" type="password" required=""></br>
                                     {% if error is defined %}
                                         <script type="text/javascript">
+                                            localStorage.clear();
                                             localStorage.setItem("erreur","true");
+                                            localStorage.setItem("ctd","false");
                                         </script>
                                         <label class="alert alert-danger" role="alert">
                                             <strong>Erreur !</strong> {{ error }}
                                         </label>
                                         <br/>
-                                        {% else %}
-                                        <script type="text/javascript">
-                                            localStorage.setItem("ctd","true");
-                                        </script>
                                          {% endif %}
                                     {% if msg is defined %}
 
@@ -317,7 +323,7 @@
                                     {% endif %}
                                     <div class="modal-footer">
                                     <div class="sign-up" style="float: left">
-                                        <input class="btn btn-primary btn-md" type="submit" value="Sign in">
+                                        <input class="btn btn-primary btn-md" onclick="fnctd()" type="submit" value="Sign in">
                                     </div>
 
                                     </div>
