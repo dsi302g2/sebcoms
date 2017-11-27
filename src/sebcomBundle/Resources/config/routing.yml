@@ -46,3 +46,6 @@ sebcom_ajoutclient:
 sebcom_article:
     path: /articles
     defaults: { _controller: sebcomBundle:Default:listearticle}
+sebcom_contact:
+    path: /contact
+    defaults: { _controller: sebcomBundle:Default:contact}
