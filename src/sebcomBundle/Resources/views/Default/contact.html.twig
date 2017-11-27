@@ -1,0 +1,100 @@
+{% block stylesheets %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href= "{{ asset ('bundles/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/fonts/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/Style/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/Style/Pretty-Header.css') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/Style/Material-Card.css') }}">
+    <link rel="stylesheet" href="{{ asset ('bundles/Style/Pretty-Footer.css') }}">
+
+{% endblock %}
+{% block javascript %}
+
+<script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
+
+<script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
+
+<body>
+<img src="bundles/images/sebcomLogo.png" style="display:block;margin:auto;margin-top: 1%">
+<nav class="navbar navbar-default custom-header" style="height:13%;margin-top: 1%" >
+    <div class="container-fluid">
+        <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">Seb<span>Com </span> </a>
+            <button data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav links" >
+                <li role="presentation"><a href="/home">Home </a></li>
+                <li role="presentation">
+                <li role="presentation" style="margin-top:7%">
+                    <div class="dropdown" >
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Services <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/articles">Article</a></li>
+                            <li><a href="#">Another action</a></li>
+                        </ul>
+                    </div></li>
+                </li>
+                <li role="presentation"><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right"><a class="btn btn-danger" style="width: 40px;height: 40px" data-toggle="modal" data-target="#mConnect" href="#">
+                    <span class="fa fa-user fa-2x" style="margin-left: -4px"></span></a></ul>
+        </div>
+    </div>
+</nav>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.153119678171!2d10.194216014924875!3d36.86275357993569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb34399c524b%3A0x1313ee2aab8e0fa0!2sSEBCOM+I+(Ste+Electro+Bennour+Du+Commerce)!5e0!3m2!1sfr!2stn!4v1511796929732" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<div class="container">
+<form class="bootstrap-form-with-validation">
+    <h2 class="text-left">Contact us</h2>
+    <div class="form-group">
+        <label class="control-label" for="text-input">Full Name :</label>
+        <input class="form-control" type="text" name="text-input" id="text-input">
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="email-input">Email :</label>
+        <input class="form-control" type="email" name="email-input" id="email-input">
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="textarea-input">Description :</label>
+        <textarea class="form-control" name="textarea-input" id="textarea-input"></textarea>
+    </div>
+    <div class="form-group"></div>
+    <div class="form-group"></div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Send </button>
+    </div>
+</form>
+</div>
+    {% block footer %}
+        <footer>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footer-navigation">
+                    <h3><a href="#">Seb<span>Com </span></a></h3>
+                    <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Services</a><strong> · </strong><a href="#">Contact</a></p>
+                    <p class="company-name">Sebcom © 2017 </p>
+                </div>
+                <div class="col-md-4 col-sm-6 footer-contacts">
+                    <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                        <p><span class="new-line-span">Rue du metal</span> Charguia, Ariana</p>
+                    </div>
+                    <div><i class="fa fa-phone footer-contacts-icon"></i>
+                        <p class="footer-center-info email text-left"> +216 21 847 072</p>
+                    </div>
+                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                        <p> <a href="#" target="_blank">karim.tebini@company.com</a></p>
+                    </div>
+                </div>
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-md-4 footer-about">
+                    <h4>A propos de la sociète</h4>
+                    <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    </p>
+                    <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-twitter" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-linkedin" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-github" style="margin-top:7px"></i></a></div>
+                </div>
+            </div>
+        </footer>
+</body>
+{% endblock %}
+{% endblock %}

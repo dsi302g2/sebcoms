@@ -3,7 +3,7 @@
     {% block stylesheets %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untitled</title>
+    <title>Article</title>
     <link rel="stylesheet" href= "{{ asset ('bundles/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/fonts/font-awesome.min.css') }}">
@@ -76,6 +76,20 @@
         </div>
     </div>
 </nav>
+<div class="dropdown btn btn-default" style="z-index: 21;position:fixed;right:100px" >
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
+
+    <ul class="dropdown-menu dropdown-menu-right">
+        <div class="container" style="width:500px">
+            <form>
+                <label>Article : </label><input value="1" type="number" class="input input-sm " min="1" max="10"  id="quantity" /><br>
+                <label id="prixTot">Prix Total :</label> <label class="label label-warning"> 10</label><br>
+                <input type="submit" value="Valider" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
+
+            </form>
+        </div>
+    </ul>
+</div>
 <div>
     <div class="row bare_rech" style="display: flex; margin: 3%">
         <div class="col-md-3"><h2 class="text-center"><strong class="label label-default">Mots clés:</strong></h2></div>
@@ -134,23 +148,23 @@
             <p class="company-name">Sebcom © 2017 </p>
         </div>
         <div class="col-md-4 col-sm-6 footer-contacts">
-            <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                <p><span class="new-line-span">Rue du metal</span> Charguia, Ariana</p>
+            <div ><span class="fa fa-map-marker footer-contacts-icon"  > </span>
+                <p><span class="new-line-span">Metal street</span> Charguia, Ariana</p>
             </div>
             <div><i class="fa fa-phone footer-contacts-icon"></i>
                 <p class="footer-center-info email text-left"> +216 21 847 072</p>
             </div>
             <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                <p> <a href="#" target="_blank">karim.tebini@company.com</a></p>
+                <p> <a href="#" target="_blank">Equipe2ScrumSebcom@company.com</a></p>
             </div>
         </div>
         <div class="clearfix visible-sm-block"></div>
         <div class="col-md-4 footer-about">
-            <h4>A propos de la sociète</h4>
+            <h4>About the company</h4>
             <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
             </p>
-            <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-twitter" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-linkedin" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-github" style="margin-top:7px"></i></a></div>
-        </div>
+            <div class="social-links social-icons"><a href="https://www.facebook.com/electrobennour/" target = "_blank"><i class="fa fa-facebook" style="margin-top:7px"></i></a><a href="https://twitter.com/"target = "_blank"><i class="fa fa-twitter" style="margin-top:7px"></i></a><a href="https://www.linkedin.com" target = "_blank"><i class="fa fa-linkedin" style="margin-top:7px"></i></a><a href="https://www.github.com" target = "_blank"><i class="fa fa-github" style="margin-top:7px"></i></a></div>
+    </div>
     </div>
 </footer>
 {% endblock %}
