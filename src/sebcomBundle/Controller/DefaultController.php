@@ -532,6 +532,14 @@ class DefaultController extends Controller
     }
 
 
+    /************Contact**********/
+    public function contactAction()
+    {
+        return $this->render('sebcomBundle:Default:contact.html.twig');
+
+    }
+
+
 
 
 }
