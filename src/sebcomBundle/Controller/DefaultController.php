@@ -476,15 +476,13 @@ class DefaultController extends Controller
                 $session = new session();
                 $session->set('name', $client->getLogin());
                 $session->get('name');
-                return $this->redirect('/home');
+                return $this->render('sebcomBundle:Default:homeclient.html.twig', array("key" =>$client));
                 die();
             } else {
                 return $this->render('sebcomBundle:Default:homeclient.html.twig', array("error" => " login Incorrect !"));
             }
         }
         else{
-            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
-            $art=$em->findAll();
             return $this->render('sebcomBundle:Default:homeclient.html.twig');
         }
 
@@ -590,11 +588,22 @@ class DefaultController extends Controller
         $emss->flush();
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " Votre commande est bien enregistrer!"));
 
+    }
+    /**
+     * @Route("/delete/{id}", name="commande_delete")
+     *
+     * @return Response
+     */
+    public function deletecommandeAction(commande $commande){
 
-
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($commande);
+        $em->flush();
+        $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\commande') ;
+        $cmd=$ems->findAll();
+        return $this->render('sebcomBundle:Default:gestioncommande.html.twig',array('commande'=> $cmd));
 
 
     }
-
 
 }
