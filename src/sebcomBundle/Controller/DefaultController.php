@@ -601,7 +601,7 @@ class DefaultController extends Controller
         $em->flush();
         $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\commande') ;
         $cmd=$ems->findAll();
-        return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('commande'=> $cmd));
+        return $this->render('sebcomBundle:Default:gestioncommande.html.twig',array('commande'=> $cmd));
 
 
     }
