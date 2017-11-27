@@ -1,7 +1,7 @@
 {% block stylesheets %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>Contact</title>
     <link rel="stylesheet" href= "{{ asset ('bundles/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/fonts/font-awesome.min.css') }}">
@@ -44,4 +44,58 @@
         </div>
     </div>
 </nav>
+<iframe allowfullscreen="" frameborder="0" width="100%" height="400" src="https://www.google.com/maps/embed/v1/place?q=Paris%2C+France&amp;zoom=11"></iframe>
+
+<div class="container">
+<form class="bootstrap-form-with-validation">
+    <h2 class="text-left">Contact us</h2>
+    <div class="form-group">
+        <label class="control-label" for="text-input">Full Name :</label>
+        <input class="form-control" type="text" name="text-input" id="text-input">
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="email-input">Email :</label>
+        <input class="form-control" type="email" name="email-input" id="email-input">
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="textarea-input">Description :</label>
+        <textarea class="form-control" name="textarea-input" id="textarea-input"></textarea>
+    </div>
+    <div class="form-group"></div>
+    <div class="form-group"></div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Send </button>
+    </div>
+</form>
+</div>
+    {% block footer %}
+        <footer>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footer-navigation">
+                    <h3><a href="#">Seb<span>Com </span></a></h3>
+                    <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Services</a><strong> · </strong><a href="#">Contact</a></p>
+                    <p class="company-name">Sebcom © 2017 </p>
+                </div>
+                <div class="col-md-4 col-sm-6 footer-contacts">
+                    <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                        <p><span class="new-line-span">Rue du metal</span> Charguia, Ariana</p>
+                    </div>
+                    <div><i class="fa fa-phone footer-contacts-icon"></i>
+                        <p class="footer-center-info email text-left"> +216 21 847 072</p>
+                    </div>
+                    <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                        <p> <a href="#" target="_blank">karim.tebini@company.com</a></p>
+                    </div>
+                </div>
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-md-4 footer-about">
+                    <h4>A propos de la sociète</h4>
+                    <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    </p>
+                    <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-twitter" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-linkedin" style="margin-top:7px"></i></a><a href="#"><i class="fa fa-github" style="margin-top:7px"></i></a></div>
+                </div>
+            </div>
+        </footer>
 </body>
+{% endblock %}
+{% endblock %}
