@@ -588,10 +588,6 @@ class DefaultController extends Controller
         $emss->flush();
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " Votre commande est bien enregistrer!"));
 
-
-
-
-
     }
 
 
