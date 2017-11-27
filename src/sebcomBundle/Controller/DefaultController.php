@@ -476,15 +476,13 @@ class DefaultController extends Controller
                 $session = new session();
                 $session->set('name', $client->getLogin());
                 $session->get('name');
-                return $this->redirect('/home');
+                return $this->render('sebcomBundle:Default:homeclient.html.twig', array("key" =>$client));
                 die();
             } else {
                 return $this->render('sebcomBundle:Default:homeclient.html.twig', array("error" => " login Incorrect !"));
             }
         }
         else{
-            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
-            $art=$em->findAll();
             return $this->render('sebcomBundle:Default:homeclient.html.twig');
         }
 
