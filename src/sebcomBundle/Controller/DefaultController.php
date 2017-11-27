@@ -532,7 +532,6 @@ class DefaultController extends Controller
     }
 
 
-<<<<<<< HEAD
     public function modifierclientAction($id)
     {
         if ($_POST) {
@@ -551,16 +550,6 @@ class DefaultController extends Controller
         $artadresse=$client[0]->getAdresse();
         $arttel=$client[0]->getTel();
         $artpass=$client[0]->getPass();
-=======
-    /************Contact**********/
-    public function contactAction()
-    {
-        return $this->render('sebcomBundle:Default:contact.html.twig');
-
-    }
-
-
->>>>>>> 8923e0e2eff77ba14667ba847228c9db044e606c
 
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array('adresse'=>$artadresse,'tel'=>$arttel,'pass'=>$artpass));
 
