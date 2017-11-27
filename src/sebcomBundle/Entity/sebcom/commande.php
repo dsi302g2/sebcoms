@@ -18,14 +18,29 @@ class commande
     private $date;
 
     /**
+     * @var string
+     */
+    private $etat;
+
+    /**
      * @var float
      */
-    private $prixttc;
+    private $total;
+
+    /**
+     * @var float
+     */
+    private $prixliv;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateliv;
 
     /**
      * @var int
      */
-    private $idlivreur;
+    private $idliv;
 
     /**
      * @var int
@@ -68,51 +83,123 @@ class commande
     }
 
     /**
-     * Set prixttc
+     * Set etat
      *
-     * @param float $prixttc
+     * @param string $etat
      *
      * @return commande
      */
-    public function setPrixttc($prixttc)
+    public function setEtat($etat)
     {
-        $this->prixttc = $prixttc;
+        $this->etat = $etat;
 
         return $this;
     }
 
     /**
-     * Get prixttc
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set total
+     *
+     * @param float $total
+     *
+     * @return commande
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
      *
      * @return float
      */
-    public function getPrixttc()
+    public function getTotal()
     {
-        return $this->prixttc;
+        return $this->total;
     }
 
     /**
-     * Set idlivreur
+     * Set prixliv
      *
-     * @param integer $idlivreur
+     * @param float $prixliv
      *
      * @return commande
      */
-    public function setIdlivreur($idlivreur)
+    public function setPrixliv($prixliv)
     {
-        $this->idlivreur = $idlivreur;
+        $this->prixliv = $prixliv;
 
         return $this;
     }
 
     /**
-     * Get idlivreur
+     * Get prixliv
+     *
+     * @return float
+     */
+    public function getPrixliv()
+    {
+        return $this->prixliv;
+    }
+
+    /**
+     * Set dateliv
+     *
+     * @param \DateTime $dateliv
+     *
+     * @return commande
+     */
+    public function setDateliv($dateliv)
+    {
+        $this->dateliv = $dateliv;
+
+        return $this;
+    }
+
+    /**
+     * Get dateliv
+     *
+     * @return \DateTime
+     */
+    public function getDateliv()
+    {
+        return $this->dateliv;
+    }
+
+    /**
+     * Set idliv
+     *
+     * @param integer $idliv
+     *
+     * @return commande
+     */
+    public function setIdliv($idliv)
+    {
+        $this->idliv = $idliv;
+
+        return $this;
+    }
+
+    /**
+     * Get idliv
      *
      * @return int
      */
-    public function getIdlivreur()
+    public function getIdliv()
     {
-        return $this->idlivreur;
+        return $this->idliv;
     }
 
     /**

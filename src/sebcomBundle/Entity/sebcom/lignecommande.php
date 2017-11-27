@@ -27,6 +27,11 @@ class lignecommande
      */
     private $quantite;
 
+    /**
+     * @var float
+     */
+    private $prixtot;
+
 
     /**
      * Get id
@@ -108,6 +113,30 @@ class lignecommande
     public function getQuantite()
     {
         return $this->quantite;
+    }
+
+    /**
+     * Set prixtot
+     *
+     * @param float $prixtot
+     *
+     * @return lignecommande
+     */
+    public function setPrixtot($prixtot)
+    {
+        $this->prixtot = $prixtot;
+
+        return $this;
+    }
+
+    /**
+     * Get prixtot
+     *
+     * @return float
+     */
+    public function getPrixtot()
+    {
+        return $this->prixtot;
     }
 }
 

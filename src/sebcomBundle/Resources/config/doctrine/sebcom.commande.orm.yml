@@ -11,9 +11,16 @@ sebcomBundle\Entity\sebcom\commande:
     fields:
         date:
             type: date
-        prixttc:
+        etat:
+            type: string
+            length: 255
+        total:
             type: float
-        idlivreur:
+        prixliv:
+            type: float
+        dateliv:
+            type: date
+        idliv:
             type: integer
         idclient:
             type: integer
