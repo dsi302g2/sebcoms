@@ -552,13 +552,13 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $art = $ems->findAll();
             $client = $em->getRepository('sebcomBundle\Entity\sebcom\client')->find($id);
-            $client->setAdresse($_POST['adr']);
-            $client->setTel($_POST['ntel']);
-            $client->setPass($_POST['pwd']);
+            $client->setAdresse($_POST['adresse']);
+            $client->setTel($_POST['tel']);
+            $client->setPass($_POST['pass']);
             $em->flush();
             return $this->render('sebcomBundle:Default:homeclient.html.twig',array('art'=>$art));
         }
-        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client');
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
         $client=$ems->findByid($id);
         $artadresse=$client[0]->getAdresse();
         $arttel=$client[0]->getTel();
@@ -589,6 +589,21 @@ class DefaultController extends Controller
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " Votre commande est bien enregistrer!"));
 
     }
+    /**
+     * @Route("/delete/{id}", name="commande_delete")
+     *
+     * @return Response
+     */
+    public function deletecommandeAction(commande $commande){
 
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($commande);
+        $em->flush();
+        $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\commande') ;
+        $cmd=$ems->findAll();
+        return $this->render('sebcomBundle:Default:ajoutarticle.html.twig',array('commande'=> $cmd));
+
+
+    }
 
 }
