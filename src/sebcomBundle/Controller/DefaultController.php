@@ -531,7 +531,33 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * @Route("/modifier/{id}", name="client_modifier")
+     *
+     * @return Response
+     */
+    public function modifierclientAction($id)
+    {
+        if ($_POST) {
+            $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client');
+            $em = $this->getDoctrine()->getManager();
+            $art = $ems->findAll();
+            $client = $em->getRepository('sebcomBundle\Entity\sebcom\client')->find($id);
+            $client->setAdresse($_POST['adresse']);
+            $client->setTel($_POST['tel']);
+            $client->setPass($_POST['pass']);
+            $em->flush();
+            return $this->render('sebcomBundle:Default:homeclient.html.twig',array('art'=>$art));
+        }
+        $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
+        $client=$ems->findByid($id);
+        $artadresse=$client[0]->getAdresse();
+        $arttel=$client[0]->getTel();
+        $artpass=$client[0]->getPass();
+
+        return $this->render('sebcomBundle:Default:homeclient.html.twig', array('adresse'=>$artadresse,'tel'=>$arttel,'pass'=>$artpass));
 
 
+    }
 
 }
