@@ -557,6 +557,27 @@ class DefaultController extends Controller
 
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array('adresse'=>$artadresse,'tel'=>$arttel,'pass'=>$artpass));
 
+    /************Panier**********/
+    public function panierAction(){
+
+        $em=$this->getDoctrine()->getManager();
+        $panier= new panier();
+        $panier->setNom($_POST['nom']);
+        $panier->setPrenom($_POST['prenom']);
+            $client->setLogin($_POST['login']);
+            $client->setPass($_POST['pass']);
+            $client->setAdresse($_POST['adresse']);
+            $client->setTel($_POST['tel']);
+            $client->setEmail($_POST['email']);
+            $em->persist($client);
+            $em->flush();
+            return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " Vous pouvez connectez maintenant"));
+
+
+
+    }
+
+
 
     }
 
