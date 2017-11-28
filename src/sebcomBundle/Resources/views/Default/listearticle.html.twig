@@ -72,17 +72,18 @@
             timer: 900
         });
 
-        function passToSym(tab) {
-            $.ajax({
-                url: Routing.generate('/commander'),
-                data: {artsTab:tab},
-                type: "POST",
-                success: function (data) {
-                  //  alert(data);
-                }
-            });
-        }
 
+    }
+    
+    function passToSym(tab) {
+        $.ajax({
+            url: Routing.generate('/commander'),
+            data: {artsTab:tab},
+            type: "POST",
+            success: function (data) {
+                //  alert(data);
+            }
+        });
     }
     function valider() {
 
