@@ -568,13 +568,13 @@ class DefaultController extends Controller
         return $this->render('sebcomBundle:Default:homeclient.html.twig', array('adresse'=>$artadresse,'tel'=>$arttel,'pass'=>$artpass));
 
     }
-    /************Panier**********/
+    /***********Panier***************/
     /**
      * @Route("/commander/{arts}", name="commande_confirmer")
      *
      * @return Response
      */
-    /***********confirmer commande***************/
+
     public function commanderAction($arts){
 
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
@@ -589,7 +589,7 @@ class DefaultController extends Controller
         $commande->setIdliv(0);
         $commande->setIdclient(1);
         $emss->persist($commande);
-        /*9
+        /*
         $lignecommande = new lignecommande();
         $lignecommande->setIdcommande();
         $lignecommande->setIdproduit();
