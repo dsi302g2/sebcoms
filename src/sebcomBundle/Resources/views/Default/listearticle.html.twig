@@ -15,11 +15,12 @@
 
 
         <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/Sweetalert2/sweetalert2.min.css')}}">
+<<<<<<< HEAD
         <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/css/bootstrap-slider.min.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
 
 
-
+<<<<<<< HEAD
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
         <style>
             .badge-notify{
@@ -33,6 +34,12 @@
                 z-index: 999;
             }
         </style>
+=======
+>>>>>>> b3265dab2db147c7f16416381eff27d6d303b079
+=======
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+>>>>>>> d951b879c0e4b380a5de6e4fcf73098caf62a8ac
     {% endblock %}
 {% block javascript %}
 
@@ -41,56 +48,24 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css"></script>
 
     <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
+<<<<<<< HEAD
+<<<<<<< HEAD
     <script src="{{ asset('bundles/js/jquery-2.2.3.min.js') }}"></script>
     <script src="{{ asset('bundles/js/jquery.mycart.js') }}"></script>
     <script src="{{ asset('bundles/js/bootstrap.min.js') }}"></script>
 
-    
+
+
+=======
     <script src="{{ asset('bundles/bootstrap/js/bootstrap-slider.min.js') }}" ></script>
+>>>>>>> b3265dab2db147c7f16416381eff27d6d303b079
+=======
+
+>>>>>>> d951b879c0e4b380a5de6e4fcf73098caf62a8ac
     <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
     <script type="text/javascript">
-        $(function () {
-            $(".my-cart-btn").myCart(options);
-        });
-        var options = {
-            currencySymbol: '$',
-            classCartIcon: 'my-cart-icon',
-            classCartBadge: 'my-cart-badge',
-            classProductQuantity: 'my-product-quantity',
-            classProductRemove: 'my-product-remove',
-            classCheckoutCart: 'my-cart-checkout',
-            affixCartIcon: true,
-            showCheckoutModal: true,
-            numberOfDecimals: 2,
-            cartItems: [
-                {id: 1, name: 'product 1', summary: 'summary 1', price: 10, quantity: 1, image: 'images/img_1.png'}
-            ],
-            clickOnAddToCart: function($addTocart){
-                goToCartIcon($addTocart);
-            },
-            afterAddOnCart: function(products, totalPrice, totalQuantity) {
-                console.log("afterAddOnCart", products, totalPrice, totalQuantity);
-            },
-            clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {
-                console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
-            },
-            checkoutCart: function(products, totalPrice, totalQuantity) {
-                var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
-                checkoutString += "\n\n id \t name \t summary \t price \t quantity \t";
-                $.each(products, function(){
-                    checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity);
-                });
-                alert(checkoutString)
-                console.log("checking out", products, totalPrice, totalQuantity);
-            },
-            getDiscountPrice: function(products, totalPrice, totalQuantity) {
-                console.log("calculating discount", products, totalPrice, totalQuantity);
-                return totalPrice * 0.5;
-            }
-        };
-    /*$(document).ready(function () {
+    $(document).ready(function () {
 
-        $("#rechS").slider({});
 
     });
 
@@ -119,7 +94,7 @@
                  var nomArt=tabArt[0];
                  var prixArt=tabArt[1];
 
-            $("#divCart").prepend("<div id="+id+"> <label id='artN'>"+nomArt+" | Prix : </label> <label id='artP'>"+prixArt+"</label><button type='button' id='"+id+"' onclick='rmv(this.id)' class='close' style='color:red;opacity: 1 ' aria-label='Close'><span aria-hidden='true'></span></button><input style='color:black;float: right;margin-right: 3%;height: 20px;width: 50px' value='1' type='number' class='input input-sm' min='1' max='10' onkeyup='tot()' id='qteJ' onchange='tot()'/> <br/><br/>")
+            $("#divCart").prepend("<div id="+id+"> <label id='artN'>Article : "+nomArt+" | Prix : </label> <label id='artP'>"+prixArt+"</label><button type='button' id='"+id+"' onclick='rmv(this.id)' class='close' style='color:red;opacity: 1 ' aria-label='Close'><span aria-hidden='true'>&times;</span></button><input style='color:black;float: right;margin-right: 3%;height: 20px;width: 50px' value='1' type='number' class='input input-sm' min='1' max='10' onkeyup='tot()' id='qteJ' onchange='tot()'/> <br/><br/>")
 
         tot();
 
@@ -130,18 +105,8 @@
             timer: 900
         });
 
+//
 
-    }
-
-    function passToSym(tab) {
-        $.ajax({
-            url: Routing.generate('/commander'),
-            data: {artsTab:tab},
-            type: "POST",
-            success: function (data) {
-                //  alert(data);
-            }
-        });
     }
     function valider() {
 
@@ -170,7 +135,7 @@
             allArt.push(art);
 
         });
-        passToSym(allArt);
+
     }
 
     function rmv(id) {
@@ -240,9 +205,7 @@
         ptot+=tabP[i]*tabQte[i];
 
         $('#prixTot').text(ptot);
-    }*/
-
-
+    }
 
     </script>
 
@@ -250,9 +213,6 @@
 {% endblock %}
     {% block body %}
 <body>
-<div style="float: right; cursor: pointer;">
-    <span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
-</div>
 <form name="f" action="/commander" method="POST">
 <img src="bundles/images/sebcomLogo.png" style="display:block;margin:auto;margin-top: 1%">
 <nav class="navbar navbar-default custom-header" style="height:13%;margin-top: 1%" >
@@ -272,7 +232,7 @@
     </div>
 </nav>
 <!---------------------------cart-------------------------------->
-<!--<div class="dropdown" style="z-index: 21;position:fixed;right:100px" >
+<div class="dropdown" style="z-index: 21;position:fixed;right:100px" >
     <a href="#" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
 
     <ul class="dropdown-menu dropdown-menu-right"  id="btnCart"   style="background-color: #292c2f;">
@@ -290,18 +250,20 @@
           </form>
       </li>
     </ul>
-</div>->
-
+</div>
 <!----------------------------------------------------------------------------->
 <div>
     <div class="row bare_rech" style="display: flex; margin: 3%">
-        <div class="col-md-3"><h3 class="text-center"><strong class="label label-default">Mots clés:</strong></h3></div>
+        <div class="col-md-3"><h2 class="text-center"><strong class="label label-default">Mots clés:</strong></h2></div>
         <div class="col-md-3">
             <input style="margin-top: 22px;" class="form-control" type="text">
         </div>
-        <div class="col-md-3"><h3 class="text-center"><strong class="label label-default">Prix: </strong></h3></div>
-        <div class="col-md-3" style="margin-top: 2%">
-            <b>10 DT </b> <input id="rechS" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="10" data-slider-value="[250,450]"/> <b> 1000 DT</b>
+        <div class="col-md-3"><h2 class="text-center"><strong class="label label-default">Prix: </strong></h2></div>
+        <div class="col-md-2">
+            <script type="text/javascript">
+                $("#ex2").slider({});
+            </script>
+            <input style="margin-top: 32px;" id="ex2" type="range" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
         </div>
     </div>
 </div>
