@@ -15,8 +15,10 @@
 
 
         <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/Sweetalert2/sweetalert2.min.css')}}">
+        <link rel="stylesheet" href="{{ asset ('bundles/bootstrap/css/bootstrap-slider.min.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+
     {% endblock %}
 {% block javascript %}
 
@@ -25,11 +27,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css"></script>
 
     <script src="{{ asset('bundles/bootstrap/js/jquery.js') }}" ></script>
-
+    <script src="{{ asset('bundles/bootstrap/js/bootstrap-slider.min.js') }}" ></script>
     <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
     <script type="text/javascript">
     $(document).ready(function () {
 
+        $("#rechS").slider({});
 
     });
 
@@ -69,7 +72,16 @@
             timer: 900
         });
 
-//
+        function passToSym(tab) {
+            $.ajax({
+                url: Routing.generate('/commander'),
+                data: {artsTab:tab},
+                type: "POST",
+                success: function (data) {
+                  //  alert(data);
+                }
+            });
+        }
 
     }
     function valider() {
@@ -99,7 +111,7 @@
             allArt.push(art);
 
         });
-
+        passToSym(allArt);
     }
 
     function rmv(id) {
@@ -218,16 +230,13 @@
 <!----------------------------------------------------------------------------->
 <div>
     <div class="row bare_rech" style="display: flex; margin: 3%">
-        <div class="col-md-3"><h2 class="text-center"><strong class="label label-default">Mots clés:</strong></h2></div>
+        <div class="col-md-3"><h3 class="text-center"><strong class="label label-default">Mots clés:</strong></h3></div>
         <div class="col-md-3">
             <input style="margin-top: 22px;" class="form-control" type="text">
         </div>
-        <div class="col-md-3"><h2 class="text-center"><strong class="label label-default">Prix: </strong></h2></div>
-        <div class="col-md-2">
-            <script type="text/javascript">
-                $("#ex2").slider({});
-            </script>
-            <input style="margin-top: 32px;" id="ex2" type="range" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
+        <div class="col-md-3"><h3 class="text-center"><strong class="label label-default">Prix: </strong></h3></div>
+        <div class="col-md-3" style="margin-top: 2%">
+            <b>10 DT </b> <input id="rechS" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="10" data-slider-value="[250,450]"/> <b> 1000 DT</b>
         </div>
     </div>
 </div>
