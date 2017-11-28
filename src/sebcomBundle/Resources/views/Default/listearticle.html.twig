@@ -58,7 +58,7 @@
                  var nomArt=tabArt[0];
                  var prixArt=tabArt[1];
 
-            $("#divCart").prepend(" <label>Article : "+nomArt+" | Prix : </label> <label id='artP'>"+prixArt+"</label> <input style='color:black;float: right' value='1' type='number' class='input input-sm' min='1' max='10' onkeyup='tot()' id='qteJ' onchange='tot()'/> <br/><br/>")
+            $("#divCart").prepend("<div id="+id+"> <label id='artN'>Article : "+nomArt+" | Prix : </label> <label id='artP'>"+prixArt+"</label><button type='button' id='"+id+"' onclick='rmv(this.id)' class='close' style='color:red;opacity: 1 ' aria-label='Close'><span aria-hidden='true'>&times;</span></button><input style='color:black;float: right;margin-right: 3%;height: 20px;width: 50px' value='1' type='number' class='input input-sm' min='1' max='10' onkeyup='tot()' id='qteJ' onchange='tot()'/> <br/><br/>")
 
         tot();
 
@@ -69,8 +69,53 @@
             timer: 900
         });
 
-        if($( "#btnCart" ).is( ":hidden" ))
-        $('#btnCart').toggle('dropdown');
+//        if($( "#btnCart" ).is( ":hidden" ))
+//        $('#btnCart').toggle('dropdown');
+
+    }
+    function valider() {
+
+        var allArt=[];
+
+        $('#divCart > div').each(function() {
+
+
+              var  prix=$(this).children("#artP").text();
+            prix=prix.substring(0, prix.length-3);
+
+              var   nom=$(this).children("#artN").text();
+                nom=nom.substring(9,nom.length-10);
+
+
+
+               var qte=$(this).children("#qteJ").val();
+
+
+            var art={
+                nom:nom,
+                prix:prix,
+                qte:qte
+            };
+
+            allArt.push(art);
+
+        });
+
+    }
+
+    function rmv(id) {
+
+        $("[id]").each(function(){
+
+
+            if($(this).attr("id")==id && $(this).is("div") )
+            {
+                $(this).remove();
+                tot();
+
+            }
+
+        });
 
     }
 
@@ -141,7 +186,7 @@
 
 
                 <label>Prix Total :</label> <label id="prixTot" class="label label-warning"> 0</label><br>
-                <input type="submit" value="Valider" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
+                <input type="submit" value="Valider" onclick="valider()" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
 
 
         </div>
