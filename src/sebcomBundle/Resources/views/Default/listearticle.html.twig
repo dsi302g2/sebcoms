@@ -104,6 +104,19 @@
 
         });
         $("#rechS").slider({});
+
+
+        $("#rechS").on("input change", function()
+        {
+            var val = $(this).val();
+            var min=val.substring(0,val.indexOf(','));
+            var max=val.substring(val.indexOf(',')+1,val.length);
+
+            console.log("min: "+min);
+            console.log("max: "+max);
+        });
+
+
     });
         function fn()
         {
@@ -479,7 +492,7 @@
         {% if art is defined %}
 
             {% for c in art %}
-        <div class="col-md-4">
+        <div class="col-md-4" id="{{ c.id }}">
             <div class="row">
                 <div class="col-md-12" ><img src="bundles/images/{{ c.image }}" height="150" width="110"></div>
             </div>
