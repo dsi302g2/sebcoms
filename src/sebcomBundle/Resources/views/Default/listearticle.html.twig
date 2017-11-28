@@ -69,8 +69,7 @@
             timer: 900
         });
 
-//        if($( "#btnCart" ).is( ":hidden" ))
-//        $('#btnCart').toggle('dropdown');
+//
 
     }
     function valider() {
@@ -110,8 +109,30 @@
 
             if($(this).attr("id")==id && $(this).is("div") )
             {
+
+
+                swal({
+                    title: 'Voulez vous vraiment supprimer cet Article?',
+                    text: "Vous ne serez pas en mesure de rétablir cette action!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Oui, supprime-le!'
+                }).then((result) => {
+                    if (result.value) {
+                swal(
+                    'Supprimer!',
+                    'Votre article a été supprimé.',
+                    'success'
+                )
                 $(this).remove();
                 tot();
+            }
+            });
+
+
+
 
             }
 
