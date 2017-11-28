@@ -570,12 +570,12 @@ class DefaultController extends Controller
     }
     /************Panier**********/
     /**
-     * @Route("/commander/{id}", name="commande_confirmer")
+     * @Route("/commander/{arts}", name="commande_confirmer")
      *
      * @return Response
      */
-    /***********confirmer commande***************/
-    public function commanderAction(){
+
+    public function commanderAction($arts){
 
         $ems = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article');
         $art = $ems->findAll();
@@ -589,7 +589,7 @@ class DefaultController extends Controller
         $commande->setIdliv(0);
         $commande->setIdclient(1);
         $emss->persist($commande);
-        /*9
+        /*
         $lignecommande = new lignecommande();
         $lignecommande->setIdcommande();
         $lignecommande->setIdproduit();
