@@ -43,11 +43,82 @@
 
     <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
     <script type="text/javascript">
+
+
+        $(window).on('load',function(){
+
+
+
+            var test=localStorage.getItem("erreur");
+
+
+            {% if key is defined %}
+            affDd();
+            {% else %}
+            document.getElementById("usr").setAttribute("data-toggle","modal");
+            document.getElementById("usr").setAttribute("data-target","#mConnect");
+            document.getElementById("usr").removeClass("dropdown-toggle");
+
+            {% endif %}
+
+
+            if(test=="true")
+            {
+                $('#mConnect').modal('show');
+                localStorage.clear();
+                localStorage.setItem("erreur","false");
+            }
+
+
+        });
     $(document).ready(function () {
 
+        $("#btnSi").click(function () {
+            $("#divSi").show()
+            $("#divSu").hide()
 
+            if($(this).hasClass('btn btn-default btn-lg'))
+            {
+                $(this).removeClass();
+                $(this).addClass('btn btn-info btn-lg')
+                $("#btnSu").removeClass();
+                $("#btnSu").addClass('btn btn-default btn-lg')
+
+            }
+
+
+        });
+
+        $("#btnSu").click(function () {
+            $("#divSi").hide()
+            $("#divSu").show()
+
+            if($(this).hasClass('btn btn-default btn-lg'))
+            {
+                $(this).removeClass();
+                $(this).addClass('btn btn-info btn-lg')
+                $("#btnSi").removeClass();
+                $("#btnSi").addClass('btn btn-default btn-lg')
+
+            }
+
+        });
         $("#rechS").slider({});
     });
+        function fn()
+        {
+            var url='{{ path("client_ajouter")}}';
+            document.getElementById("signup").setAttribute("href",url);
+
+        }
+
+        function affDd()
+        {
+            document.getElementById("usr").setAttribute("data-toggle","dropdown");
+            document.getElementById("usr").removeAttribute("data-target");
+            document.getElementById("usr").addClass("dropdown-toggle");
+
+        }
 
 
 
@@ -210,23 +281,168 @@
     {% block body %}
 <body>
 <form name="f" action="/commander" method="POST">
-<img src="bundles/images/sebcomLogo.png" style="display:block;margin:auto;margin-top: 1%">
-<nav class="navbar navbar-default custom-header" style="height:13%;margin-top: 1%" >
-    <div class="container-fluid">
-        <div class="navbar-header"><a href="/home" class="navbar-brand navbar-link">Seb<span>Com </span> </a>
-            <button data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+    <img src="bundles/images/sebcomLogo.png" style="display:block;margin:auto;margin-top: 1%">
+    <nav class="navbar navbar-default custom-header" style="height:13%;margin-top: 1%" >
+        <div class="container-fluid">
+            <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">Seb<span>Com </span> </a>
+                <button data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav links" >
+                    <li role="presentation"><a href="/home">Home </a></li>
+                    <li role="presentation">
+                    <li role="presentation" style="margin-top:7%">
+                        <div class="dropdown" >
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Services <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/articles">Article</a></li>
+                                <li><a href="#">Another action</a></li>
+                            </ul>
+                        </div></li>
+                    </li>
+                    <li role="presentation"><a href="/contact">Contact</a></li>
+                    {% if key is defined %}
+                        <li role="presentation"><a href="/contact">{{ key.nom }}</a></li>
+                    {% endif %}
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <div class="dropdown" >
+                        <a class="btn btn-danger" style="width: 40px;height: 40px" id="usr" data-toggle="modal" data-target="#mConnect"  href="#">
+                            <span class="fa fa-user fa-2x" style="margin-left: -4px"></span></a>
+
+                        <ul class="dropdown-menu" id="ddConnect">
+                            <li><a href="#" data-toggle="modal" data-target="#mProfile" >Modifier Profile</a></li>
+                            <li><a onclick="resetP()" href="/home">Disconnect</a></li>
+
+                        </ul>
+
+                    </div>
+
+
+                </ul>
+            </div>
         </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="nav navbar-nav links" >
-                <li role="presentation"><a href="/home">Home </a></li>
-                <li role="presentation"><a href="#">Services </a></li>
-                <li role="presentation"><a href="/contact">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right"><a class="btn btn-danger" style="width: 40px;height: 40px" data-toggle="modal" data-target="#mConnect" href="#">
-                    <span class="fa fa-user fa-2x" style="margin-left: -4px"></span></a></ul>
+    </nav>
+
+    <!----------------------------------------------------------------------------->
+    <div id="mConnect" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×</button>
+                    <h4 id="myModalLabel">Don't Wait, Login now!</h4>
+                </div>
+                <div class="modal-body modal-body-sub" style="margin:2%;">
+                    <div class="row">
+                        <div>
+                            <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                                <div style="vertical-align: middle">
+                                    <input type="button" class="btn btn-info btn-lg" id="btnSi" value="Sign in" />
+                                    <input type="button" class="btn btn-default btn-lg" id="btnSu" value="Sign up" />
+                                </div>
+
+                                <div id="divSi">
+                                    <h3 >Sign in</h3>
+                                    <form action="/home" method="POST">
+
+                                        <input class="form-control" name="login" placeholder="Username" type="text" required=""></br>
+                                        <input class="form-control" name="pass" placeholder="Password" type="password" required=""></br>
+                                        {% if error is defined %}
+                                            <script type="text/javascript">
+                                                localStorage.clear();
+                                                localStorage.setItem("erreur","true");
+                                                localStorage.setItem("ctd","false");
+                                            </script>
+                                            <label class="alert alert-danger" role="alert">
+                                                <strong>Erreur !</strong> {{ error }}
+                                            </label>
+                                            <br/>
+                                        {% endif %}
+                                        {% if msg is defined %}
+
+                                            <label class="alert alert-success" role="alert">
+                                                <strong>Success !</strong> {{ msg }}
+                                            </label>
+                                            <br/>
+
+                                        {% endif %}
+                                        <div class="modal-footer">
+                                            <div class="sign-up" style="float: left">
+                                                <input class="btn btn-primary btn-md" onclick="fnctd()" type="submit" value="Sign in">
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="divSu" style="display:none">
+                                <h3>Sign up</h3>
+                                <form action="/signup" method="post">
+                                    <input class="form-control" placeholder="First Name" name="nom" type="text" required=""></br>
+                                    <input class="form-control" placeholder="Last Name" name="prenom" type="text" required=""></br>
+                                    <input class="form-control" placeholder="Username" name="login" type="text" required=""></br>
+                                    <input class="form-control" placeholder="Email Address" name="email" type="email" required=""></br>
+                                    <input class="form-control" placeholder="Address" name="adresse" type="text" required=""></br>
+                                    <input class="form-control" placeholder="Phone Number" name="tel" type="text" required=""></br>
+                                    <input class="form-control" placeholder="Password" name="pass" type="password" required=""></br>
+                                    <input class="form-control" placeholder="Confirm Password" name="CPassword" type="password" required=""></br>
+
+                                    <div>
+                                        <input class="btn btn-primary" onclick="fn()" id="signup" type="submit" value="Create Account">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-</nav>
+
+
+    <div id="mProfile" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            {% if key is defined %}
+                <form name="f" action="/modifierclient/{{ key.id }}"  method="POST">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                ×</button>
+                            <h4 id="myModalLabel">Modifier Profile</h4>
+                        </div>
+                        <div class="modal-body modal-body-sub">
+                            <h5 id="myModalLabel">Adresse</h5>
+                            <input type="text" class="form-control" placeholder="Adresse" name="adr" value="{{ key.adresse }}" /><br/>
+                            <h5 id="myModalLabel">Numero Du Telephone</h5>
+                            <input type="text" class="form-control" placeholder="Numero Tel" name="ntel" value="{{ key.tel }}"/><br/>
+                            <h5 id="myModalLabel">Mot De Passe</h5>
+                            <input type="password" class="form-control" placeholder="Password" name="pwd" value="{{ key.pass }}" required/>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <div style="float: left">
+                                <input class="btn btn-success btn-md" type="submit" value="Confirm changes">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            {% endif %}
+
+        </div>
+    </div>
 <!---------------------------cart-------------------------------->
 <div class="dropdown" style="z-index: 21;position:fixed;right:100px" >
     <a href="#" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" ><span class="glyphicon glyphicon-shopping-cart"></span></a>
@@ -281,11 +497,6 @@
             {% endfor %}
         {% endif %}
     </div>
-</div>
-<div>
-
-
-
 </div>
 {% block footer %}
 <footer>
