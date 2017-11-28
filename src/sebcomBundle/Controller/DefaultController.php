@@ -3,6 +3,7 @@
 namespace sebcomBundle\Controller;
 use sebcomBundle\Entity\sebcom\article;
 use sebcomBundle\Entity\sebcom\commande;
+use sebcomBundle\Entity\sebcom\lignecommande;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use sebcomBundle\Entity\sebcom\compte;
@@ -588,6 +589,13 @@ class DefaultController extends Controller
         $commande->setIdliv(0);
         $commande->setIdclient(1);
         $emss->persist($commande);
+        /*9
+        $lignecommande = new lignecommande();
+        $lignecommande->setIdcommande();
+        $lignecommande->setIdproduit();
+        $lignecommande->setQuantite();
+        $lignecommande->setPrixtot();
+        $emss->persist($lignecommande);*/
         $emss->flush();
         return $this->render('sebcomBundle:Default:listearticle.html.twig', array("msg" => " Votre commande est bien enregistrer!"));
 
