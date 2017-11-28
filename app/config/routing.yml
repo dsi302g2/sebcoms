@@ -37,3 +37,6 @@ client_ajouter:
 client_modifier:
     path:     /modifierclient/{id}
     defaults: { _controller: sebcomBundle:Default:modifierclient }
+commande_confirmer:
+    path:     /commander/{arts}
+    defaults: { _controller: sebcomBundle:Default:commander }
