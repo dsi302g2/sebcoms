@@ -58,28 +58,45 @@
 
         var i=0;
         var tabArt=[];
-
+        var test = false;
 
         $("[id]").each(function(){
 
 
             if($(this).attr("id")==id && i!=2){
+
               var x= $(this).text();
-
-             tabArt.push(x);
-
+                 tabArt.push(x);
                 i++;
             }
 
         });
 
+        $('#divCart > div').each(function() {
 
-                 var nomArt=tabArt[0];
-                 var prixArt=tabArt[1];
+            if ($(this).attr("id") == id) {
+                test = true;
+                var child = $(this).children("#qteJ").val();
+                child++;
+                $(this).children("#qteJ").val(child);
+                tot();
+                return false;
+            }
+
+        });
+
+        if(!test)
+        {
+
+            var nomArt=tabArt[0];
+            var prixArt=tabArt[1];
 
             $("#divCart").prepend("<div id="+id+"> <label id='artN'>Article : "+nomArt+" | Prix : </label> <label id='artP'>"+prixArt+"</label><button type='button' id='"+id+"' onclick='rmv(this.id)' class='close' style='color:red;opacity: 1 ' aria-label='Close'><span aria-hidden='true'>&times;</span></button><input style='color:black;float: right;margin-right: 3%;height: 20px;width: 50px' value='1' type='number' class='input input-sm' min='1' max='10' onkeyup='tot()' id='qteJ' onchange='tot()'/> <br/><br/>")
 
-        tot();
+            tot();
+
+
+        }
 
         swal({
             type: 'success',
@@ -88,7 +105,6 @@
             timer: 900
         });
 
-//
 
     }
     function valider() {
