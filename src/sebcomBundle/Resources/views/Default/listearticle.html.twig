@@ -1,6 +1,4 @@
-
-
-    {% block stylesheets %}
+{% block stylesheets %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article</title>
@@ -21,8 +19,6 @@
 
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
-
-
 
     {% endblock %}
 {% block javascript %}
@@ -57,7 +53,7 @@
             {% else %}
             document.getElementById("usr").setAttribute("data-toggle","modal");
             document.getElementById("usr").setAttribute("data-target","#mConnect");
-            document.getElementById("usr").removeClass("dropdown-toggle");
+            document.getElementById("usr").removeAttribute("dropdown-toggle");
 
             {% endif %}
 
@@ -111,9 +107,32 @@
             var val = $(this).val();
             var min=val.substring(0,val.indexOf(','));
             var max=val.substring(val.indexOf(',')+1,val.length);
+            //console.log("val= "+val+ "min= "+min+" max= "+max);
 
-            console.log("min: "+min);
-            console.log("max: "+max);
+
+            $('.article').each(function () {
+
+               var k=$(this).find('.prix').text();
+               k=k.substring(0,k.length-3);
+
+               if(!(k>=min && k<=max))
+               {
+                   $(this).hide();
+
+               }
+               else
+               {
+                   if($(this).is(':hidden'))
+                       $(this).show();
+               }
+
+
+
+            });
+
+
+
+
         });
 
 
@@ -172,7 +191,14 @@
             var nomArt=tabArt[0];
             var prixArt=tabArt[1];
 
-            $("#divCart").prepend("<div id="+id+"> <label id='artN'>Article : "+nomArt+" | Prix : </label> <label id='artP'>"+prixArt+"</label><button type='button' id='"+id+"' onclick='rmv(this.id)' class='close' style='color:red;opacity: 1 ' aria-label='Close'><span aria-hidden='true'>&times;</span></button><input style='color:black;float: right;margin-right: 3%;height: 20px;width: 50px' value='1' type='number' class='input input-sm' min='1' max='10' onkeyup='tot()' id='qteJ' onchange='tot()'/> <br/><br/>")
+            $("#divCart").prepend("<div id="+id+">" +
+                "<label id='artN'>Article : "+nomArt+" | Prix : </label>" +
+                "<label id='artP'>"+prixArt+"</label>" +
+                "<button type='button' id='"+id+"' onclick='rmv(this.id)' class='close' style='color:red;opacity: 1 ' aria-label='Close'>" +
+                "<span aria-hidden='true'>&times;</span>" +
+                "</button>" +
+                "<input style='color:black;float: right;margin-right: 3%;height: 20px;width: 50px' value='1' type='number' class='input input-sm' min='1' max='10' onkeyup='tot()' onchange='tot()'  id='qteJ' /> " +
+                "<br/><br/>")
 
             tot();
 
@@ -215,6 +241,7 @@
             allArt.push(art);
 
         });
+
 
     }
 
@@ -263,20 +290,19 @@
         var tabP=[];
         var tabQte=[];
 
-        $("[id]").each(function(){
-
-            if($(this).attr("id")=="artP" ){
-                var x= $(this).text();
-                x=x.substring(0, x.length-3);
-
-               tabP.push(x);
+        $('#divCart > div').each(function() {
 
 
-            }
-            if($(this).attr("id")=="qteJ" ){
-                var x=$(this).val();
-                tabQte.push(x);
-            }
+            var  prix=$(this).children('#artP').text();
+            prix=prix.substring(0, prix.length-3);
+
+                  tabP.push(prix);
+
+
+
+            var qte=$(this).children('#qteJ').val();
+
+                tabQte.push(qte);
 
 
         });
@@ -284,7 +310,11 @@
         for(var i=0;i<tabP.length;i++)
         ptot+=tabP[i]*tabQte[i];
 
+
         $('#prixTot').text(ptot);
+
+
+
     }
 
     </script>
@@ -369,7 +399,6 @@
                                             <script type="text/javascript">
                                                 localStorage.clear();
                                                 localStorage.setItem("erreur","true");
-                                                localStorage.setItem("ctd","false");
                                             </script>
                                             <label class="alert alert-danger" role="alert">
                                                 <strong>Erreur !</strong> {{ error }}
@@ -384,11 +413,8 @@
                                             <br/>
 
                                         {% endif %}
-                                        <div class="modal-footer">
-                                            <div class="sign-up" style="float: left">
-                                                <input class="btn btn-primary btn-md" onclick="fnctd()" type="submit" value="Sign in">
-                                            </div>
-
+                                        <div>
+                                                <input class="btn btn-primary btn-md" onclick="fnctd()" style="float: left" type="submit" value="Sign in">
                                         </div>
                                     </form>
                                 </div>
@@ -407,7 +433,7 @@
                                     <input class="form-control" placeholder="Confirm Password" name="CPassword" type="password" required=""></br>
 
                                     <div>
-                                        <input class="btn btn-primary" onclick="fn()" id="signup" type="submit" value="Create Account">
+                                        <input class="btn btn-success" onclick="fn()" id="signup" type="submit" value="Create Account">
                                     </div>
                                 </form>
                             </div>
@@ -484,15 +510,15 @@
             <input style="margin-top: 22px;" class="form-control" type="text">
         </div>
         <div class="col-md-3"><h3 class="text-center"><strong class="label label-default">Prix: </strong></h3></div>
-        <div class="col-md-3" style="margin-top: 2%"><b>10 </b> <input id="rechS" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="10" data-slider-value="[250,450]"/> <b> 1000 DT</b>   </div>
+        <div class="col-md-3" style="margin-top: 2%"><b>10 </b> <input id="rechS" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="10" data-slider-value="[10,1000]"/> <b> 1000 DT</b>   </div>
     </div>
 </div>
 <div>
-    <div class="row prod">
+    <div class="row prod" style="min-height: 400px">
         {% if art is defined %}
 
             {% for c in art %}
-        <div class="col-md-4" id="{{ c.id }}">
+        <div class="col-md-4 article">
             <div class="row">
                 <div class="col-md-12" ><img src="bundles/images/{{ c.image }}" height="150" width="110"></div>
             </div>
@@ -501,9 +527,12 @@
             </div>
             <div class="row">
                 <div class="col-md-12" style="font-weight: bold" >
-                    <p id="{{ c.id }}">{{ c.prix }} DT</p>
+                    <p class="prix" id="{{ c.id }}">{{ c.prix }} DT</p>
                     <a class="btn btn-default" style="width: 40px;height: 40px" id="{{ c.id }}" onclick="ajtP(this.id)"  href="#">
+
                         <span class="fa fa-shopping-cart fa-2x" style="margin-left: -5px"></span></a>
+
+
                 </div>
             </div>
         </div>

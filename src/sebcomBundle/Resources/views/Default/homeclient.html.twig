@@ -28,14 +28,12 @@
 
             var test=localStorage.getItem("erreur");
 
-
             {% if key is defined %}
             affDd();
             {% else %}
             document.getElementById("usr").setAttribute("data-toggle","modal");
             document.getElementById("usr").setAttribute("data-target","#mConnect");
-            document.getElementById("usr").removeClass("dropdown-toggle");
-
+            document.getElementById("usr").removeAttribute("dropdown-toggle");
             {% endif %}
 
 
@@ -256,7 +254,6 @@
                                         <script type="text/javascript">
                                             localStorage.clear();
                                             localStorage.setItem("erreur","true");
-                                            localStorage.setItem("ctd","false");
                                         </script>
                                         <label class="alert alert-danger" role="alert">
                                             <strong>Erreur !</strong> {{ error }}
@@ -271,12 +268,9 @@
                                         <br/>
 
                                     {% endif %}
-                                    <div class="modal-footer">
-                                    <div class="sign-up" style="float: left">
-                                        <input class="btn btn-primary btn-md" onclick="fnctd()" type="submit" value="Sign in">
-                                    </div>
-
-                                    </div>
+                                        <div>
+                                        <input class="btn btn-primary btn-md" onclick="fnctd()" style="float: left" type="submit" value="Sign in">
+                                        </div>
                                 </form>
                             </div>
                         </div>
@@ -294,7 +288,7 @@
                             <input class="form-control" placeholder="Confirm Password" name="CPassword" type="password" required=""></br>
 
                                 <div>
-                                <input class="btn btn-primary" onclick="fn()" id="signup" type="submit" value="Create Account">
+                                <input class="btn btn-success" onclick="fn()" id="signup" type="submit" value="Create Account">
                             </div>
                             </form>
                         </div>
