@@ -108,12 +108,15 @@
             var min=val.substring(0,val.indexOf(','));
             var max=val.substring(val.indexOf(',')+1,val.length);
             //console.log("val= "+val+ "min= "+min+" max= "+max);
+            min=parseInt(min);
+            max=parseInt(max);
 
 
             $('.article').each(function () {
 
                var k=$(this).find('.prix').text();
                k=k.substring(0,k.length-3);
+               k=parseInt(k);
 
                if(!(k>=min && k<=max))
                {
@@ -126,15 +129,14 @@
                        $(this).show();
                }
 
-
-
             });
 
-
-
-
         });
-
+        jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
+            return function( elem ) {
+                return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+            };
+        });
 
     });
         function fn()
@@ -507,7 +509,7 @@
     <div class="row bare_rech" style="display: flex; margin: 3%">
         <div class="col-md-3"><h3 class="text-center"><strong class="label label-default">Mots clés:</strong></h3></div>
         <div class="col-md-3">
-            <input style="margin-top: 22px;" class="form-control" type="text">
+            <input style="margin-top: 22px;" id="rechM" class="form-control" type="text">
         </div>
         <div class="col-md-3"><h3 class="text-center"><strong class="label label-default">Prix: </strong></h3></div>
         <div class="col-md-3" style="margin-top: 2%"><b>10 </b> <input id="rechS" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="10" data-slider-value="[10,1000]"/> <b> 1000 DT</b>   </div>
@@ -523,7 +525,7 @@
                 <div class="col-md-12" ><img src="bundles/images/{{ c.image }}" height="150" width="110"></div>
             </div>
             <div class="row">
-                <div class="col-md-12 prod" style="font-weight: bold"><p id="{{ c.id }}">{{ c.nom }}</p></div>
+                <div class="col-md-12 prod" style="font-weight: bold"><p id="{{ c.id }}" class="nom">{{ c.nom }}</p></div>
             </div>
             <div class="row">
                 <div class="col-md-12" style="font-weight: bold" >
