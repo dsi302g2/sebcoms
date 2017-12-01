@@ -69,6 +69,8 @@
         });
     $(document).ready(function () {
 
+
+
         $("#btnSi").click(function () {
             $("#divSi").show()
             $("#divSu").hide()
@@ -142,7 +144,7 @@
                     $(this).show();
                     return;
                 }
-                
+
                 var p=$(this).find('.prix').text();
                 p=p.substring(0,p.length-3);
 
@@ -242,6 +244,16 @@
 
 
     }
+        function passToSym(tabArts) {
+            $.ajax({
+                url: Routing.generate('/commander'),
+                data: {arts:tabArts},
+                type: "POST",
+                success: function (data) {
+                    //alert(data);
+                }
+            });
+        }
     function valider() {
 
         var allArt=[];
@@ -270,7 +282,7 @@
 
         });
 
-
+        passToSym(allArt);
     }
 
     function rmv(id) {
@@ -350,6 +362,20 @@
 
 {% endblock %}
     {% block body %}
+        <style>
+            #navUl.dropdown-menu > li {
+                display: inline-block;
+                float:left;
+                min-width: 130px;
+
+            }
+            dl > dt {
+                color:red;
+            }
+            .open > ul {
+                display: inline-flex !important;
+            }
+        </style>
 <body>
 <form name="f" action="/commander" method="POST">
     <img src="bundles/images/sebcomLogo.png" style="display:block;margin:auto;margin-top: 1%">
@@ -360,20 +386,30 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav links" >
-                    <li role="presentation"><a href="/home">Home </a></li>
-                    <li role="presentation">
-                    <li role="presentation" style="margin-top:7%">
+                    <li ><a href="/home">Home </a></li>
+                    <li style="margin-top:6%">
                         <div class="dropdown" >
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Services <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/articles">Article</a></li>
-                                <li><a href="#">Another action</a></li>
+                            <ul class="dropdown-menu" id="navUl" style="color:white;">
+
+                                            <li>
+                                                 <dl>
+                                                    <dt>Class parent</dt>
+                                                    <dd>child 1</dd>
+                                                    <dd>child 2</dd>
+                                                    <dd>child 3</dd>
+                                                </dl>
+                                            </li>
                             </ul>
-                        </div></li>
+
+                        </div>
                     </li>
-                    <li role="presentation"><a href="/contact">Contact</a></li>
+
+                    <li>
+                        <a href="/contact">Contact</a>
+                    </li>
                     {% if key is defined %}
-                        <li role="presentation"><a href="/contact">{{ key.nom }}</a></li>
+                        <li><a href="/contact">{{ key.nom }}</a></li>
                     {% endif %}
 
                 </ul>
