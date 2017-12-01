@@ -107,7 +107,6 @@
             var val = $(this).val();
             var min=val.substring(0,val.indexOf(','));
             var max=val.substring(val.indexOf(',')+1,val.length);
-            //console.log("val= "+val+ "min= "+min+" max= "+max);
             min=parseInt(min);
             max=parseInt(max);
 
@@ -132,11 +131,38 @@
             });
 
         });
-        jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
-            return function( elem ) {
-                return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
-            };
+
+        $("#rechM").keyup(function () {
+            var data = this.value.toLowerCase();
+            console.log(data);
+
+            $('.article').each(function () {
+
+                if (data == "") {
+                    $(this).show();
+                    return;
+                }
+                
+                var p=$(this).find('.prix').text();
+                p=p.substring(0,p.length-3);
+
+                var n=$(this).find('.nom').text();
+
+                var str=p+" "+n;
+                console.log(str);
+
+                $(this).hide();
+                if (str.toLowerCase().indexOf(data) >= 0)
+                {
+                    $(this).show();
+                }
+
+            });
+
+
+
         });
+
 
     });
         function fn()
