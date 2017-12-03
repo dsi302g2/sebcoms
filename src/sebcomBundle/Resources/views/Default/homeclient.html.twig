@@ -28,6 +28,12 @@
 
             var test=localStorage.getItem("erreur");
 
+            {% if log is defined %}
+            affDd();
+
+            {% endif %}
+
+
             {% if key is defined %}
             affDd();
             {% else %}

@@ -47,6 +47,10 @@
 
             var test=localStorage.getItem("erreur");
 
+            {% if log is defined %}
+                affDd();
+            {% endif %}
+
 
             {% if key is defined %}
             affDd();
@@ -232,7 +236,6 @@
 
             tot();
 
-
         }
 
         swal({
@@ -254,39 +257,44 @@
                 }
             });
         }
-    function valider() {
 
-        var allArt=[];
+        function getArts()
+        {
+            var allArt=[];
 
-        $('#divCart > div').each(function() {
+            $('#divCart > div').each(function() {
 
 
-              var  prix=$(this).children("#artP").text();
-            prix=prix.substring(0, prix.length-3);
+                var  prix=$(this).children("#artP").text();
+                prix=prix.substring(0, prix.length-3);
 
-              var   nom=$(this).children("#artN").text();
+                var   nom=$(this).children("#artN").text();
                 nom=nom.substring(9,nom.length-10);
 
 
 
-               var qte=$(this).children("#qteJ").val();
+                var qte=$(this).children("#qteJ").val();
 
 
-            var art={
-                nom:nom,
-                prix:prix,
-                qte:qte
-            };
+                var art={
+                    nom:nom,
+                    prix:prix,
+                    qte:qte
+                };
 
-            allArt.push(art);
+                allArt.push(art);
 
-        });
+            });
+            return allArt;
+        }
 
-        passToSym(allArt);
+    function valider() {
+
+      var tabArt=getArts();
+       passToSym(tabArt);
     }
+
     function vider() {
-
-
 
         swal({
             title: 'Voulez vous vraiment vider votre Panier?',
@@ -343,7 +351,6 @@
 
 
 
-
             }
 
         });
@@ -384,6 +391,29 @@
 
     }
 
+    function addToConsult() {
+
+            var tab=getArts();
+            var total=$('#prixTot').text();
+            var numC=$(".cmd").length+1;
+            var divLst="<div style='background-color: #1E88E5;min-height: 150px' id='section"+numC+"'><h3>Prix Commande <label class='label label-success'>"+total+"</label></h3><br/><p style='margin:1%'>";
+        if(tab.length>0) {
+            $("#lstSec").append("<li class='cmd'><a href='#section"+numC+"'>Commandes " + numC + "</a></li>");
+            if(numC==1)
+                $(".cmd").addClass("active");
+
+            for (var i = 0; i < tab.length; i++) {
+                var art = tab[i];
+                divLst+=art.qte+" * "+art.nom+" | Prix : "+art.prix+"<br/>";
+
+            }
+
+        divLst+="</p><br/><label style='float:right' class='label label-warning'>Non Confirmer</label></div>";
+        $("#divSec").append(divLst);
+        $(".artPanier").remove();
+        }
+    }
+
     </script>
 
 
@@ -400,8 +430,12 @@
             dl > dt {
                 color:red;
             }
-            .open > ul {
+            #navUl.open > ul {
                 display: inline-flex !important;
+            }
+            ul.nav-pills {
+                top: 30%;
+                position: fixed;
             }
         </style>
 <body>
@@ -472,7 +506,7 @@
                             <span class="fa fa-user fa-2x" style="margin-left: -4px"></span></a>
 
                         <ul class="dropdown-menu" id="ddConnect">
-                            <li><a href="#" data-toggle="modal" data-target="#consultC">Consulter mes Commandes</a></li>
+                            <li><a href="#" data-toggle="modal" onclick="addToConsult()" data-target="#consultC">Consulter mes Commandes</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#mProfile" >Modifier Profile</a></li>
                             <li><a onclick="resetP()" href="/home">Disconnect</a></li>
 
@@ -487,7 +521,7 @@
     </nav>
 
     <!----------------------------------------------------------------------------->
-    {% if log is not defined %}
+    {#{% if log is not defined %}#}
     <div id="mConnect" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -566,7 +600,7 @@
         </div>
     </div>
 
-    <div id="consultC" class="modal fade" role="dialog">
+    <div id="consultC" class="modal fade" style="max-height: 500px" role="dialog" data-spy="scroll" data-target="#scrollSpyC" data-offset="0">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -577,14 +611,10 @@
                         <div class="row">
                             <nav class="col-sm-3" id="scrollSpyC">
                                 <ul id="lstSec" class="nav nav-pills nav-stacked">
-                                    <li class="active"><a href="#section1">Section 1</a></li>
 
                                 </ul>
                             </nav>
-                            <div id="divSec" class="col-sm-9">
-                                <div id="section1">
-                                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-                                </div>
+                            <div id="divSec" class="col-sm-9" style="color: white;max-width: 400px;">
                             </div>
                         </div>
                     </div>
@@ -593,25 +623,39 @@
         </div>
     </div>
 
-=======
-    {% endif %}
+    {#{% endif %}#}
+
 
 
     <div id="mProfile" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
-            {% if log is defined %}
-                <form name="f" action="/modifierclient/{{ log }}"  method="POST">
+            {% if key is defined %}
+                <form name="f" action="/modifierclient/{{ key.id }}"  method="POST">
 
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                 ×</button>
-                            <h4 id="myModalLabel"><a href="/home">Modifier Profile</a></h4>
+                            <h4 id="myModalLabel">Modifier Profile</h4>
                         </div>
+                        <div class="modal-body modal-body-sub">
+                            <h5 id="myModalLabel">Adresse</h5>
+                            <input type="text" class="form-control" placeholder="Adresse" name="adr" value="{{ key.adresse }}" /><br/>
+                            <h5 id="myModalLabel">Numero Du Telephone</h5>
+                            <input type="text" class="form-control" placeholder="Numero Tel" name="ntel" value="{{ key.tel }}"/><br/>
+                            <h5 id="myModalLabel">Mot De Passe</h5>
+                            <input type="password" class="form-control" placeholder="Password" name="pwd" value="{{ key.pass }}" required/>
 
 
+                        </div>
+                        <div class="modal-footer">
+                            <div style="float: left">
+                                <input class="btn btn-success btn-md" type="submit" value="Confirm changes">
+                            </div>
+
+                        </div>
 
                     </div>
                 </form>
