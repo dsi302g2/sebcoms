@@ -393,12 +393,31 @@
                             <ul class="dropdown-menu" id="navUl" style="color:white;">
 
                                             <li>
-                                                 <dl>
-                                                    <dt>Class parent</dt>
-                                                    <dd>child 1</dd>
-                                                    <dd>child 2</dd>
-                                                    <dd>child 3</dd>
+                                                {% if cat is defined %}
+                                                    {% for c in cat %}
+                                                        {% if cat is defined %}
+                                                            {% if c.parentid==0 %}
+                                                <dl>
+                                                    <dt>{{ c.nom }}</dt>
+                                                                    {% for a in cat %}
+                                                                        {% if a.id==c.parentid %}
+                                                                            <td><i>{{ a.nom }}</i></td>
+
+                                                                        {% endif %}
+                                                                    {% endfor %}
+
+                                                                {% for b in cat %}
+                                                                    {% if c.id==b.parentid %}
+                                                                        <dd ><a href="/articles?cat={{b.nom }}">{{b.nom }}</a></dd>
+
+                                                                    {% endif %}
+                                                                {% endfor %}
                                                 </dl>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+
                                             </li>
                             </ul>
 

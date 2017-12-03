@@ -216,11 +216,11 @@
                                         </option>
                                         {% if cat is defined %}
                                             {% for c in cat %}
+                                                {% if c.parentid !=0 %}
                                                 <option value="{{ c.nom }}">
-                                                    {% if cat is defined %}
                                                         <th>{{ c.nom }}</th>
-                                                    {% endif %}
                                                 </option>
+                                                {% endif %}
                                             {% endfor %}
                                         {% endif %}
                                         {% if error is defined %}
@@ -309,11 +309,11 @@
                                 </option>
                                 {% if cat is defined %}
                                     {% for c in cat %}
-                                        <option value="{{ c.nom }}">
-                                            {% if cat is defined %}
+                                        {% if c.parentid !=0 %}
+                                            <option value="{{ c.nom }}">
                                                 <th>{{ c.nom }}</th>
-                                            {% endif %}
-                                        </option>
+                                            </option>
+                                        {% endif %}
                                     {% endfor %}
                                 {% endif %}
                                 {% if error is defined %}

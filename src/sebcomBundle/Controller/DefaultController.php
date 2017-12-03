@@ -523,10 +523,29 @@ class DefaultController extends Controller
     /************listearticle**********/
     public function listearticleAction()
     {
-        $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
-        $art=$em->findAll();
-        if($art){
-            return $this->render('sebcomBundle:Default:listearticle.html.twig',array('art'=> $art));
+
+
+        if($_GET) {
+            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+            $art=$em->findBycategorie($_GET['cat']);
+            $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
+            $cat=$ems->findAll();
+            if($art){
+                return $this->render('sebcomBundle:Default:listearticle.html.twig',array('art'=> $art,'cat'=>$cat));
+            }
+            else{
+                return $this->render('sebcomBundle:Default:listearticle.html.twig',array('cat'=>$cat));
+            }
+
+
+        }
+        else{
+            $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+            $art=$em->findAll();
+            $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
+            $cat=$ems->findAll();
+
+            return $this->render('sebcomBundle:Default:listearticle.html.twig',array('art'=> $art,'cat'=>$cat));
         }
 
     }
