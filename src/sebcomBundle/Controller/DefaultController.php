@@ -470,6 +470,9 @@ class DefaultController extends Controller
 
     public function clientAction()
     {
+        if($_GET){
+            return $this->render('sebcomBundle:Default:homeclient.html.twig', array('log' =>$_GET['log']));
+        }
         if ($_POST) {
             $em = $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client');
             $client = $em->findOneBy(array('login' => $_POST['login'], 'pass' => $_POST['pass']));

@@ -133,6 +133,9 @@
                 {% if key is defined %}
                     <li role="presentation"><a href="/contact">{{ key.login }}</a></li>
                 {% endif %}
+                {% if log is defined %}
+                    <li><a href="/contact">{{ log }}</a></li>
+                {% endif %}
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
