@@ -472,6 +472,7 @@
                             <span class="fa fa-user fa-2x" style="margin-left: -4px"></span></a>
 
                         <ul class="dropdown-menu" id="ddConnect">
+                            <li><a href="#" data-toggle="modal" data-target="#consultC">Consulter mes Commandes</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#mProfile" >Modifier Profile</a></li>
                             <li><a onclick="resetP()" href="/home">Disconnect</a></li>
 
@@ -557,6 +558,33 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="consultC" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Liste des Commandes effectuées</h4>
+                </div>
+                <div class="modal-body modal-body-sub">
+                    <div>
+                        <div class="row">
+                            <nav class="col-sm-3" id="scrollSpyC">
+                                <ul id="lstSec" class="nav nav-pills nav-stacked">
+                                    <li class="active"><a href="#section1">Section 1</a></li>
+
+                                </ul>
+                            </nav>
+                            <div id="divSec" class="col-sm-9">
+                                <div id="section1">
+                                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
