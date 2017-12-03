@@ -120,14 +120,18 @@
                     <div class="dropdown" >
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Services <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/articles">Article</a></li>
+                            {% if key is defined %}
+                            <li><a href="/articles?log={{ key.login }}&amp;cat=0">Article</a></li>
+                                {% else %}
+                                    <li><a href="/articles">Article</a></li>
+                            {% endif %}
                             <li><a href="#">Another action</a></li>
                         </ul>
                     </div></li>
                 </li>
                 <li role="presentation"><a href="/contact">Contact</a></li>
                 {% if key is defined %}
-                    <li role="presentation"><a href="/contact">{{ key.nom }}</a></li>
+                    <li role="presentation"><a href="/contact">{{ key.login }}</a></li>
                 {% endif %}
 
             </ul>

@@ -528,13 +528,18 @@ class DefaultController extends Controller
         if($_GET) {
             $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
             $art=$em->findBycategorie($_GET['cat']);
+            $e= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\client') ;
+            $log=$e->findByid(1);
             $ems= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\Categorie') ;
             $cat=$ems->findAll();
-            if($art){
-                return $this->render('sebcomBundle:Default:listearticle.html.twig',array('art'=> $art,'cat'=>$cat));
+
+            if($art && $_GET['cat']!='0'){
+                return $this->render('sebcomBundle:Default:listearticle.html.twig',array('art'=> $art,'cat'=>$cat,'log'=>$log));
             }
             else{
-                return $this->render('sebcomBundle:Default:listearticle.html.twig',array('cat'=>$cat));
+                $em= $this->getDoctrine()->getRepository('sebcomBundle\Entity\sebcom\article') ;
+                $art=$em->findAll();
+                return $this->render('sebcomBundle:Default:listearticle.html.twig',array('art'=> $art,'cat'=>$cat,'log'=>$_GET['log']));
             }
 
 
