@@ -221,7 +221,7 @@
             var nomArt=tabArt[0];
             var prixArt=tabArt[1];
 
-            $("#divCart").prepend("<div id="+id+">" +
+            $("#divCart").prepend("<div class='artPanier' id="+id+">" +
                 "<label id='artN'>Article : "+nomArt+" | Prix : </label>" +
                 "<label id='artP'>"+prixArt+"</label>" +
                 "<button type='button' id='"+id+"' onclick='rmv(this.id)' class='close' style='color:red;opacity: 1 ' aria-label='Close'>" +
@@ -284,6 +284,33 @@
 
         passToSym(allArt);
     }
+    function vider() {
+
+
+
+        swal({
+            title: 'Voulez vous vraiment vider votre Panier?',
+            text: "Vous ne serez pas en mesure de rétablir cette action!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, Vider-le!'
+        }).then((result) => {
+            if (result.value) {
+            swal(
+                'Supprimer!',
+                'Votre article a été supprimé.',
+                'success'
+            )
+            $(".artPanier").remove();
+            tot();
+        }
+    });
+
+
+    }
+    
 
     function rmv(id) {
 
@@ -367,6 +394,7 @@
                 display: inline-block;
                 float:left;
                 min-width: 130px;
+                max-width: 150px;
 
             }
             dl > dt {
@@ -392,16 +420,19 @@
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Services <b class="caret"></b></a>
                             <ul class="dropdown-menu" id="navUl" style="color:white;">
 
-                                            <li>
+
                                                 {% if cat is defined %}
+                                                    <li>
                                                     {% for c in cat %}
+
                                                         {% if cat is defined %}
+
                                                             {% if c.parentid==0 %}
                                                 <dl>
                                                     <dt>{{ c.nom }}</dt>
                                                                     {% for a in cat %}
                                                                         {% if a.id==c.parentid %}
-                                                                            <td><i>{{ a.nom }}</i></td>
+                                                                            <dd>{{ a.nom }}</dd>
 
                                                                         {% endif %}
                                                                     {% endfor %}
@@ -414,11 +445,14 @@
                                                                 {% endfor %}
                                                 </dl>
                                                             {% endif %}
+
                                                         {% endif %}
+
                                                     {% endfor %}
+                                                    </li>
                                                 {% endif %}
 
-                                            </li>
+
                             </ul>
 
                         </div>
@@ -575,9 +609,10 @@
           <div class="container" id="divCart" style="width:500px;color:white">
 
 
-
+                <hr/>
                 <label>Prix Total :</label> <label id="prixTot" class="label label-warning"> 0</label><br>
-                <input type="submit" value="Valider" onclick="valider()" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" class="btn btn-danger btn-sm"/>
+              <hr/>
+                <input type="submit" value="Valider" onclick="valider()" class="btn btn-primary btn-sm"/> <input type="reset" value="Vider" onclick="vider()" class="btn btn-danger btn-sm"/>
 
 
         </div>
