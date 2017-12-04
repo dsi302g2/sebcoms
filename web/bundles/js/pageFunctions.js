@@ -40,6 +40,7 @@ $(document).ready(function(){
         tbl.hide();
         tbl.filter(function (i, v) {
             var t = $(this);
+
             for (var d = 0; d < data.length; d++) {
                 if (t.is(":Contains('" + data[d] + "')")) {
                     return true;

@@ -44,14 +44,22 @@ else
             y = rows[i + 1].getElementsByTagName("TD")[n];
             /*check if the two rows should switch place,
             based on the direction, asc or desc:*/
+            x=x.innerHTML.toLowerCase();
+            y=y.innerHTML.toLowerCase();
+            if(n==3)
+            {
+                x=parseInt(x);
+                y=parseInt(y);
+            }
+
             if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                if (x > y) {
                     //if so, mark as a switch and break the loop:
                     shouldSwitch= true;
                     break;
                 }
             } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                if (x < y) {
                     //if so, mark as a switch and break the loop:
                     shouldSwitch= true;
                     break;
