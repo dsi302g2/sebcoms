@@ -69,7 +69,7 @@
                 <a class="navbar-brand">SebCom</a>
             </div>
             <ul class="nav navbar-nav"  id="menu" >
-                <li id="home" onclick="lien(this.id)"><a href="/menu">&nbsp;&nbsp;&nbsp; Home &nbsp;&nbsp;&nbsp;</a></li>
+                <li id="home" onclick="lien(this.id)"><a href="/menu">&nbsp;&nbsp;&nbsp; Accueil &nbsp;&nbsp;&nbsp;</a></li>
                 <li id="ac" onclick="lien(this.id)"><a href="/ajoutcat" >Gestion Catégories</a></li>
                 <li id="aa" onclick="lien(this.id)"><a href="/ajoutarticle">Gestion Articles</a></li>
                 <li id="gc" onclick="lien(this.id)"><a href="gestioncommande">Gestion Commandes</a></li>
@@ -83,7 +83,7 @@
                 {% if name is defined %}
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ name }}</a></li>
                 {% endif %}
-                <li><a id="login" href="/login" onclick="lien('home')" ><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+                <li><a id="login" href="/login" onclick="lien('home')" ><span class="glyphicon glyphicon-log-in"; style="padding: 2px" ></span>Déconnexion</a></li>
             </ul>
         </div>
 

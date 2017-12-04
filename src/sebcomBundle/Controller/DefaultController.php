@@ -47,7 +47,7 @@ class DefaultController extends Controller
                     return $this->redirect('/menu');
                     die();
                 }else{
-                    return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>" login Incorrect !"));
+                    return $this->render('sebcomBundle:Default:login.html.twig',array("error"=>" Pseudo ou mot de passe  Incorrect !"));
                 }
         }else{
         return $this->render('sebcomBundle:Default:login.html.twig');
@@ -483,7 +483,7 @@ class DefaultController extends Controller
                 return $this->render('sebcomBundle:Default:homeclient.html.twig', array("key" =>$client));
                 die();
             } else {
-                return $this->render('sebcomBundle:Default:homeclient.html.twig', array("error" => " login Incorrect !"));
+                return $this->render('sebcomBundle:Default:homeclient.html.twig', array("error" => " Pseudo incorrect !"));
             }
         }
         else{
@@ -513,7 +513,7 @@ class DefaultController extends Controller
             $client->setEmail($_POST['email']);
             $em->persist($client);
             $em->flush();
-            return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => " Vous pouvez connectez maintenant"));
+            return $this->render('sebcomBundle:Default:homeclient.html.twig', array("msg" => "Vous-pouvez connectez maintenant"));
 
         }
         else{
