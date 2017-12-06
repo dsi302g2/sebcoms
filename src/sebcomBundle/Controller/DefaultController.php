@@ -1,7 +1,7 @@
 <?php
 
 namespace sebcomBundle\Controller;
-use sebcomBundle\Entity\sebcom\article;
+
 use sebcomBundle\Entity\sebcom\commande;
 use sebcomBundle\Entity\sebcom\lignecommande;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
