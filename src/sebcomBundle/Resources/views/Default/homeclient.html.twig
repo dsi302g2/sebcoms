@@ -120,20 +120,13 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav links" >
-                <li role="presentation"><a href="/home">Home </a></li>
-                <li role="presentation">
-                <li role="presentation" style="margin-top:7%">
-                    <div class="dropdown" >
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Services <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
+                <li><a href="/home">Home </a></li>
+                <li  style="margin-top:7%">
                             {% if key is defined %}
-                            <li><a href="/articles?log={{ key.login }}&amp;cat=0">Article</a></li>
+                            <li><a href="/articles?log={{ key.login }}&amp;cat=0">Articles</a></li>
                                 {% else %}
-                                    <li><a href="/articles">Article</a></li>
+                                    <li><a href="/articles">Articles</a></li>
                             {% endif %}
-                            <li><a href="#">Another action</a></li>
-                        </ul>
-                    </div></li>
                 </li>
                 <li role="presentation"><a href="/contact">Contact</a></li>
                 {% if key is defined %}
